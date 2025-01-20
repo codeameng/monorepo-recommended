@@ -117,9 +117,18 @@ $RECYCLE.BIN/
 # dependency directories
 node_modules/
 
+# build directories
+dist/
+
+# turbo cache
+.turbo
+
 # unsupported lock files
 package-lock.json
 pnpm-lock.yaml
+
+# typescript build info
+*.tsbuildinfo
 # ┬───────────────── End: Workspace Rules
 # │                                                                           │
 # │                                                                           │

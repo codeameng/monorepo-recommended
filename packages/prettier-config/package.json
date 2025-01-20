@@ -1,0 +1,19 @@
+{
+  "name": "@packages/prettier-config",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "setup": "tsup --clean",
+    "dev": "tsup --watch"
+  },
+  "devDependencies": {
+    "@packages/tsup-config": "workspace:*",
+    "@packages/typescript-config": "workspace:*",
+    "prettier": "3.4.2",
+    "tsup": "8.3.5",
+    "typescript": "5.7.3"
+  },
+  "peerDependencies": {
+    "prettier": "3.4.2"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.root.json",
+    },
+    {
+      "path": "./packages/prettier-config",
+    },
+    {
+      "path": "./packages/tsup-config",
+    },
+  ],
+}
