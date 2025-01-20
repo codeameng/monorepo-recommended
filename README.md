@@ -8,3 +8,5 @@
 - [ ] Add scripts to check if the package manager being used strictly follows the packageManager restriction
 - [ ] Add scripts to check if all package.json files contain required fields
 - [ ] Add scripts to check if the "type" field in package.json is correctly set to "module"
+- [ ] Add scripts to configure VSCode
+  - [ ] use Markdown parser for .cursorrules files
