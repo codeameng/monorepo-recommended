@@ -1,0 +1,12 @@
+{
+  "@keep-sorted": {
+    "prefix": "@keep-sorted",
+    "body": ["// @keep-sorted"],
+    "description": "Keep the object keys or array items sorted.",
+  },
+  "// @keep-sorted": {
+    "prefix": "// @keep-sorted",
+    "body": ["// @keep-sorted"],
+    "description": "Keep the object keys or array items sorted.",
+  },
+}

@@ -5,6 +5,9 @@
       "path": "./tsconfig.root.json",
     },
     {
+      "path": "./packages/eslint-config",
+    },
+    {
       "path": "./packages/prettier-config",
     },
     {

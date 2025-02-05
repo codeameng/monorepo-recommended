@@ -10,6 +10,10 @@
 - [ ] Add scripts to check if the "type" field in package.json is correctly set to "module"
 - [ ] Add scripts to configure VSCode
   - [ ] use Markdown parser for .cursorrules files
+  - [ ] configure ESLint extension for monorepo workspace
+    - [ ] set workspaceFolder as the working directory
+    - [ ] configure workingDirectories for multi-root workspaces
+    - [ ] ensure proper ESLint configuration resolution in sub-packages
 - [ ] Add scripts to verify that dependencies in package.json use exact version numbers
 - [ ] Add scripts to verify that tsconfig.root.json excludes workspace directories
 - [ ] Add scripts to verify that @typescript/node\* version in @packages/typescript-config matches the Node.js version specified in root package.json engines.node
@@ -19,3 +23,23 @@
 - [ ] Add scripts to verify that JSON files comply with their respective $schema constraints
 - [ ] Add scripts to verify that all strings in YAML files are properly quoted
 - [ ] Add ESLint rules to verify that all dependencies used in code are properly listed in package.json
+- [ ] Add scripts to verify that no directory and file share the same name (excluding file extensions) within the same level
+- [ ] Add scripts to verify that all packages include ESLint configuration and lint scripts in their package.json
+- [ ] Add ESLint rules to enforce that default import names must be strongly related to their package names (excluding special characters)
+- [ ] Add scripts to verify that no unknown rules exist in ESLint configurations
+- [ ] Add ESLint enhancement to automatically discover and include all .gitignore files recursively from rootDirname
+- [ ] Create a unified utilities package (@packages/utilities) to manage common function libraries
+  - [ ] centralize remeda and other utility libraries
+  - [ ] provide consistent API and documentation
+  - [ ] enforce usage through ESLint rules
+  - [ ] add type safety and validation
+- [ ] Add ESLint rules to enforce pure functions and prevent side effects
+  - [ ] enforce immutability for function parameters and return values
+  - [ ] prevent direct state mutations
+  - [ ] restrict usage of global variables and I/O operations
+  - [ ] require explicit error handling through return values
+- [ ] Add ESLint rules to enforce arrow functions
+  - [ ] prohibit function declarations and function expressions
+  - [ ] allow arrow functions only
+  - [ ] ensure consistent arrow function body style
+  - [ ] enforce proper handling of this context
