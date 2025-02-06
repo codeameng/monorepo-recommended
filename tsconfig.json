@@ -1,5 +1,4 @@
 {
-  "files": [],
   "references": [
     {
       "path": "./tsconfig.root.json",
@@ -14,4 +13,5 @@
       "path": "./packages/tsup-config",
     },
   ],
+  "files": [],
 }

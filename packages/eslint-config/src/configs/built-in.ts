@@ -27,6 +27,14 @@ const createBuiltInConfig = function (): FlatConfig[] {
           },
         ],
         'max-lines-per-function': 'off',
+        'max-lines': [
+          'error',
+          {
+            max: 512,
+            skipBlankLines: true,
+            skipComments: true,
+          },
+        ],
         'no-continue': 'off',
         'no-duplicate-imports': 'off',
         'no-ternary': 'off',

@@ -32,6 +32,8 @@ const FILES = {
 };
 const JAVASCRIPT_LIKE_FILES = [FILES.js, FILES.ts, FILES.jsx, FILES.tsx];
 const PACKAGE_JSON_FILES = '**/package.json';
+const TS_CONFIG_JSON_FILES = ['**/tsconfig.json', '**/tsconfig.*.json'];
+const TURBO_JSON_FILES = '**/turbo.json';
 
 const defineInfiniteDepthFlatConfig = function (
   infiniteDepthFlatConfigs: InfiniteDepthFlatConfig[],
@@ -161,4 +163,6 @@ export {
   OFF_LEVEL_IN_EDITOR,
   PACKAGE_JSON_FILES,
   type RuleLevel,
+  TS_CONFIG_JSON_FILES,
+  TURBO_JSON_FILES,
 };

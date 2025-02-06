@@ -6,16 +6,6 @@
     "setup": "tsup --clean",
     "dev": "tsup --watch"
   },
-  "devDependencies": {
-    "@packages/tsup-config": "workspace:*",
-    "@packages/typescript-config": "workspace:*",
-    "eslint": "9.18.0",
-    "tsup": "8.3.5",
-    "typescript": "5.7.3"
-  },
-  "peerDependencies": {
-    "eslint": "9.18.0"
-  },
   "dependencies": {
     "@eslint/js": "9.18.0",
     "@stylistic/eslint-plugin": "2.13.0",
@@ -28,5 +18,15 @@
     "is-in-editor": "0.2.0",
     "remeda": "2.19.2",
     "typescript-eslint": "8.21.0"
+  },
+  "devDependencies": {
+    "@packages/tsup-config": "workspace:*",
+    "@packages/typescript-config": "workspace:*",
+    "eslint": "9.18.0",
+    "tsup": "8.3.5",
+    "typescript": "5.7.3"
+  },
+  "peerDependencies": {
+    "eslint": "9.18.0"
   }
 }
