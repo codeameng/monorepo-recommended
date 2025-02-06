@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "yarn run setup",
     "setup": "turbo run setup",
-    "dev": "turbo run dev --ui=tui",
+    "dev": "turbo run dev",
     "code-review": "run-s --print-name \"code-review:*\"",
     "code-review:tsc": "tsc --build",
     "code-review:eslint": "cross-env ESLINT_ENABLE_ALL_RULES=true eslint .",
@@ -20,7 +20,7 @@
     "eslint": "9.18.0",
     "npm-run-all2": "7.0.2",
     "prettier": "3.4.2",
-    "turbo": "2.3.3",
+    "turbo": "2.4.0",
     "typescript": "5.7.3"
   },
   "engines": {
