@@ -1,5 +1,6 @@
 import { config as defineConfig } from 'typescript-eslint';
 import type { ConfigArray } from 'typescript-eslint';
+import { isInEditor } from 'is-in-editor';
 import eslintJs from '@eslint/js';
 import * as R from 'remeda';
 
@@ -21,6 +22,7 @@ interface BoundedConfigExtends extends BoundedConfigBase {
 }
 type BoundedConfig = BoundedConfigExtends | BoundedConfigIgnores;
 
+const OFF_LEVEL_IN_EDITOR = isInEditor() ? 'off' : 'error';
 const FILES = {
   js: '**/*.{js,cjs,mjs}',
   ts: '**/*.{ts,cts,mts}',
@@ -153,5 +155,6 @@ export {
   getAllRulesConfig,
   JAVASCRIPT_LIKE_FILES,
   normalizeRuleLevel,
+  OFF_LEVEL_IN_EDITOR,
   type RuleLevel,
 };

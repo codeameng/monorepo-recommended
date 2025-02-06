@@ -100,6 +100,7 @@ const createTypescriptConfig = function (options: Options): FlatConfig[] {
             ignore: [0, 1],
           },
         ],
+        '@typescript-eslint/no-unused-vars': 'off',
         '@typescript-eslint/prefer-readonly-parameter-types': 'off',
         '@typescript-eslint/restrict-template-expressions': [
           'error',

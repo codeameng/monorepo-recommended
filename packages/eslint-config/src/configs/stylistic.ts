@@ -58,6 +58,7 @@ const createStylisticConfig = function (): FlatConfig[] {
             },
           },
         ],
+        '@stylistic/object-curly-spacing': 'off',
         '@stylistic/object-property-newline': 'off',
         '@stylistic/operator-linebreak': 'off',
         '@stylistic/padding-line-between-statements': [
@@ -178,13 +179,6 @@ const createStylisticConfig = function (): FlatConfig[] {
           {
             blankLine: 'never',
             prev: 'function-overload',
-            next: 'function',
-          },
-
-          /** Overrides */
-          {
-            blankLine: 'any',
-            prev: ['interface', 'type'],
             next: 'function',
           },
         ],

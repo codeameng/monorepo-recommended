@@ -43,3 +43,8 @@
   - [ ] allow arrow functions only
   - [ ] ensure consistent arrow function body style
   - [ ] enforce proper handling of this context
+- [ ] Add ESLint rules using eslint-plugin-import-x to check for duplicate imports
+- [ ] Reconfigure @stylistic/padding-line-between-statements rule with minimalist principles
+  - [ ] review and remove unnecessary blank line requirements
+  - [ ] keep only essential spacing rules for code readability
+  - [ ] document rationale for each retained rule

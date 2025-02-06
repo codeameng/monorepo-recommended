@@ -1,5 +1,6 @@
 import * as R from 'remeda';
 
+import { createUnusedImportsConfig } from './configs/unused-imports.ts';
 import { createPerfectionistConfig } from './configs/perfectionist.ts';
 import { createTypescriptConfig } from './configs/typescript.ts';
 import { createStylisticConfig } from './configs/stylistic.ts';
@@ -17,7 +18,7 @@ import {
 interface Options {
   prettierPrintWidth: number;
   rootDirname: string;
-  ruleLevel: RuleLevel | undefined;
+  ruleLevel: null | RuleLevel;
   shouldEnableAllRules: boolean;
 }
 
@@ -46,6 +47,11 @@ const createConfig = function (options: Options): FlatConfig[] {
       extends: createTypescriptConfig({
         tsconfigRootDir: rootDirname,
       }),
+    },
+    {
+      name: 'unused-imports',
+      files: JAVASCRIPT_LIKE_FILES,
+      extends: createUnusedImportsConfig(),
     },
     {
       name: 'perfectionist',

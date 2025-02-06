@@ -30,7 +30,6 @@ const createBuiltInConfig = function (): FlatConfig[] {
         'no-continue': 'off',
         'no-duplicate-imports': 'off',
         'no-ternary': 'off',
-        'no-undefined': 'off',
         'one-var': ['error', 'never'],
         'sort-imports': 'off',
         'sort-keys': 'off',
