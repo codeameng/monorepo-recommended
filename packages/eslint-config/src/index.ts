@@ -8,11 +8,15 @@ import { createBuiltInConfig } from './configs/built-in.ts';
 import { createIgnoreConfig } from './configs/gitignore.ts';
 import type { FlatConfig, RuleLevel } from './utilities.ts';
 import { createCommandConfig } from './configs/command.ts';
+import { createDependConfig } from './configs/depend.ts';
+import { createJsoncConfig } from './configs/jsonc.ts';
 import {
   defineBoundedConfig,
+  FILES,
   getAllRulesConfig,
   JAVASCRIPT_LIKE_FILES,
   normalizeRuleLevel,
+  PACKAGE_JSON_FILES,
 } from './utilities.ts';
 
 interface Options {
@@ -64,6 +68,16 @@ const createConfig = function (options: Options): FlatConfig[] {
       name: 'stylistic',
       files: JAVASCRIPT_LIKE_FILES,
       extends: createStylisticConfig(),
+    },
+    {
+      name: 'jsonc',
+      files: [FILES.json],
+      extends: createJsoncConfig(),
+    },
+    {
+      name: 'depend',
+      files: [PACKAGE_JSON_FILES, ...JAVASCRIPT_LIKE_FILES],
+      extends: createDependConfig(),
     },
   ]);
 

@@ -5,6 +5,7 @@
     "allowImportingTsExtensions": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
+    "exactOptionalPropertyTypes": false,
   },
   "exclude": ["dist"],
 }

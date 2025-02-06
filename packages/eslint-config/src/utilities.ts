@@ -28,8 +28,10 @@ const FILES = {
   ts: '**/*.{ts,cts,mts}',
   jsx: '**/*.{jsx,cjsx,mjsx}',
   tsx: '**/*.{tsx,ctsx,mtsx}',
+  json: '**/*.{json,jsonc,code-snippets}',
 };
 const JAVASCRIPT_LIKE_FILES = [FILES.js, FILES.ts, FILES.jsx, FILES.tsx];
+const PACKAGE_JSON_FILES = '**/package.json';
 
 const defineInfiniteDepthFlatConfig = function (
   infiniteDepthFlatConfigs: InfiniteDepthFlatConfig[],
@@ -151,10 +153,12 @@ const normalizeRuleLevel = function (
 export {
   defineBoundedConfig,
   defineInfiniteDepthFlatConfig,
+  FILES,
   type FlatConfig,
   getAllRulesConfig,
   JAVASCRIPT_LIKE_FILES,
   normalizeRuleLevel,
   OFF_LEVEL_IN_EDITOR,
+  PACKAGE_JSON_FILES,
   type RuleLevel,
 };

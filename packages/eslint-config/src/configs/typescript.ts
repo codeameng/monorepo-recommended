@@ -38,6 +38,7 @@ const createTypescriptConfig = function (options: Options): FlatConfig[] {
     {
       // @keep-sorted
       rules: {
+        '@typescript-eslint/explicit-function-return-type': 'error',
         '@typescript-eslint/naming-convention': [
           'error',
           {

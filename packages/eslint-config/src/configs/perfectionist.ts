@@ -46,6 +46,7 @@ const createPerfectionistConfig = function (options: Options): FlatConfig[] {
         ],
         'perfectionist/sort-interfaces': 'error',
         'perfectionist/sort-modules': 'off',
+        'perfectionist/sort-named-exports': 'error',
         'perfectionist/sort-named-imports': 'error',
         'perfectionist/sort-objects': [
           'error',

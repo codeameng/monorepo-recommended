@@ -1,0 +1,23 @@
+import jsoncPlugin from 'eslint-plugin-jsonc';
+
+import { defineInfiniteDepthFlatConfig } from '../utilities.ts';
+import type { FlatConfig } from '../utilities.ts';
+
+const createJsoncConfig = function (): FlatConfig[] {
+  return defineInfiniteDepthFlatConfig([
+    jsoncPlugin.configs['flat/recommended-with-jsonc'],
+    {
+      // @keep-sorted
+      rules: {
+        'jsonc/array-element-newline': 'off',
+        'jsonc/comma-dangle': 'off',
+        'jsonc/indent': 'off',
+        'jsonc/key-name-casing': 'off',
+        'jsonc/sort-array-values': 'off',
+        'jsonc/sort-keys': 'off',
+      },
+    },
+  ]);
+};
+
+export { createJsoncConfig };
