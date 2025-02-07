@@ -1,12 +1,6 @@
 import { R } from '@packages/utilities';
 
-import {
-  FILES,
-  JAVASCRIPT_LIKE_FILES,
-  PACKAGE_JSON_FILES,
-  TS_CONFIG_JSON_FILES,
-  TURBO_JSON_FILES,
-} from '$utilities/files.ts';
+import { files } from '$utilities/files.ts';
 
 import { createUnusedImportsConfig } from './configs/unused-imports.ts';
 import { createPerfectionistConfig } from './configs/perfectionist.ts';
@@ -57,73 +51,73 @@ const createConfig = function (options: Options): FlatConfig[] {
     },
     {
       name: 'command',
-      files: JAVASCRIPT_LIKE_FILES,
+      files: files['javascript-like'],
       extends: createCommandConfig(),
     },
     {
       name: 'built-in',
-      files: JAVASCRIPT_LIKE_FILES,
+      files: files['javascript-like'],
       extends: createBuiltInConfig(),
     },
     {
       name: 'typescript',
-      files: JAVASCRIPT_LIKE_FILES,
+      files: files['javascript-like'],
       extends: createTypescriptConfig({
         tsconfigRootDir,
       }),
     },
     {
       name: 'import-x',
-      files: JAVASCRIPT_LIKE_FILES,
+      files: files['javascript-like'],
       extends: createImportXConfig({
         tsconfigProject,
       }),
     },
     {
       name: 'unused-imports',
-      files: JAVASCRIPT_LIKE_FILES,
+      files: files['javascript-like'],
       extends: createUnusedImportsConfig(),
     },
     {
       name: 'perfectionist',
-      files: JAVASCRIPT_LIKE_FILES,
+      files: files['javascript-like'],
       extends: createPerfectionistConfig({
         sortImportsMaxLineLength: prettierPrintWidth,
       }),
     },
     {
       name: 'stylistic',
-      files: JAVASCRIPT_LIKE_FILES,
+      files: files['javascript-like'],
       extends: createStylisticConfig(),
     },
     {
       name: 'jsonc',
-      files: [FILES.json],
+      files: [files.json],
       extends: createJsoncConfig(),
     },
     {
       name: 'depend',
-      files: [PACKAGE_JSON_FILES, ...JAVASCRIPT_LIKE_FILES],
+      files: [files['package-json'], ...files['javascript-like']],
       extends: createDependConfig(),
     },
     {
       name: 'sort-json',
-      files: [FILES.json],
+      files: [files.json],
       extends: createSortJsonConfig(),
     },
     {
       name: 'sort-json/package-json',
-      files: [PACKAGE_JSON_FILES],
+      files: [files['package-json']],
       extends: createSortPackageJsonConfig(),
     },
     {
       name: 'sort-json/tsconfig-json',
-      files: TS_CONFIG_JSON_FILES,
+      files: files['tsconfig-json'],
       extends: createSortTsconfigJsonConfig(),
     },
     {
       name: 'sort-json/turbo-json',
-      files: [TURBO_JSON_FILES],
+      files: [files['turbo-json']],
       extends: createSortTurboJsonConfig(),
     },
   ]);
@@ -139,6 +133,4 @@ const createConfig = function (options: Options): FlatConfig[] {
   return [...config, ...overrides];
 };
 
-export { createConfig };
-
-export * from './utilities/files.ts';
+export { createConfig, files };

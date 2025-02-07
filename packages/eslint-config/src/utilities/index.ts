@@ -4,7 +4,7 @@ import { isInEditor } from 'is-in-editor';
 import { R } from '@packages/utilities';
 import eslintJs from '@eslint/js';
 
-import { JAVASCRIPT_LIKE_FILES } from './files.ts';
+import { files } from './files.ts';
 
 type FlatConfig = ConfigArray[number];
 type Plugins = NonNullable<FlatConfig['plugins']>;
@@ -91,7 +91,7 @@ const getPluginsAllRuleNames = function (plugins?: Plugins): string[] {
 const getAllRulesConfig = function (configs: FlatConfig[]): FlatConfig[] {
   const builtInAllConfig: FlatConfig = {
     name: 'all-rules/built-in',
-    files: JAVASCRIPT_LIKE_FILES,
+    files: files['javascript-like'],
     rules: createErrorRuleConfigFromNames(getBuiltInAllRuleNames()),
   };
   const pluginsAllConfigs = R.pipe(
