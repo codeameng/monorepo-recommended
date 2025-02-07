@@ -1,12 +1,13 @@
-import * as R from 'remeda';
+import { R } from '@packages/utilities';
 
 import { createUnusedImportsConfig } from './configs/unused-imports.ts';
 import { createPerfectionistConfig } from './configs/perfectionist.ts';
+import type { FlatConfig, RuleLevel } from './utilities/index.ts';
 import { createTypescriptConfig } from './configs/typescript.ts';
 import { createStylisticConfig } from './configs/stylistic.ts';
 import { createBuiltInConfig } from './configs/built-in.ts';
 import { createIgnoreConfig } from './configs/gitignore.ts';
-import type { FlatConfig, RuleLevel } from './utilities.ts';
+import { createImportXConfig } from './configs/import-x.ts';
 import { createCommandConfig } from './configs/command.ts';
 import { createDependConfig } from './configs/depend.ts';
 import { createJsoncConfig } from './configs/jsonc.ts';
@@ -25,18 +26,26 @@ import {
   PACKAGE_JSON_FILES,
   TS_CONFIG_JSON_FILES,
   TURBO_JSON_FILES,
-} from './utilities.ts';
+} from './utilities/index.ts';
 
 interface Options {
+  overrides: FlatConfig[];
   prettierPrintWidth: number;
-  rootDirname: string;
   ruleLevel: null | RuleLevel;
   shouldEnableAllRules: boolean;
+  tsconfigProject: string[];
+  tsconfigRootDir: string;
 }
 
 const createConfig = function (options: Options): FlatConfig[] {
-  const { prettierPrintWidth, rootDirname, ruleLevel, shouldEnableAllRules } =
-    options;
+  const {
+    overrides,
+    prettierPrintWidth,
+    ruleLevel,
+    shouldEnableAllRules,
+    tsconfigProject,
+    tsconfigRootDir,
+  } = options;
 
   let config = defineBoundedConfig([
     {
@@ -57,7 +66,14 @@ const createConfig = function (options: Options): FlatConfig[] {
       name: 'typescript',
       files: JAVASCRIPT_LIKE_FILES,
       extends: createTypescriptConfig({
-        tsconfigRootDir: rootDirname,
+        tsconfigRootDir,
+      }),
+    },
+    {
+      name: 'import-x',
+      files: JAVASCRIPT_LIKE_FILES,
+      extends: createImportXConfig({
+        tsconfigProject,
       }),
     },
     {
@@ -117,7 +133,7 @@ const createConfig = function (options: Options): FlatConfig[] {
     config = normalizeRuleLevel(config, ruleLevel);
   }
 
-  return config;
+  return [...config, ...overrides];
 };
 
 export { createConfig };

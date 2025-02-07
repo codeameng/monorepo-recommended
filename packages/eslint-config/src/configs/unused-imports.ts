@@ -1,10 +1,10 @@
 import unusedImportsPlugin from 'eslint-plugin-unused-imports';
+import type { FlatConfig } from '$utilities/index.ts';
 
-import type { FlatConfig } from '../utilities.ts';
 import {
   defineInfiniteDepthFlatConfig,
   OFF_LEVEL_IN_EDITOR,
-} from '../utilities.ts';
+} from '$utilities/index.ts';
 
 const createUnusedImportsConfig = function (): FlatConfig[] {
   return defineInfiniteDepthFlatConfig([

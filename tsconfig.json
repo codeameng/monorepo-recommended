@@ -12,6 +12,9 @@
     {
       "path": "./packages/tsup-config",
     },
+    {
+      "path": "./packages/utilities",
+    },
   ],
   "files": [],
 }

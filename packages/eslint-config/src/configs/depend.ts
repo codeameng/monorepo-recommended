@@ -1,7 +1,7 @@
+import type { FlatConfig } from '$utilities/index.ts';
 import dependPlugin from 'eslint-plugin-depend';
 
-import { defineInfiniteDepthFlatConfig } from '../utilities.ts';
-import type { FlatConfig } from '../utilities.ts';
+import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
 const createDependConfig = function (): FlatConfig[] {
   return defineInfiniteDepthFlatConfig([

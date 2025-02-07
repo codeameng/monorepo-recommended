@@ -1,7 +1,7 @@
 import perfectionistPlugin from 'eslint-plugin-perfectionist';
+import type { FlatConfig } from '$utilities/index.ts';
 
-import { defineInfiniteDepthFlatConfig } from '../utilities.ts';
-import type { FlatConfig } from '../utilities.ts';
+import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
 interface Options {
   sortImportsMaxLineLength: number;
@@ -29,10 +29,16 @@ const createPerfectionistConfig = function (options: Options): FlatConfig[] {
             type: 'line-length',
             order: 'desc',
             maxLineLength: sortImportsMaxLineLength,
+            customGroups: {
+              value: {
+                'global-alias': '^\\$.*$',
+              },
+            },
             groups: [
               ['builtin', 'builtin-type'],
               ['external', 'external-type'],
               ['internal', 'internal-type'],
+              ['global-alias'],
               ['parent', 'parent-type'],
               ['sibling', 'sibling-type'],
               ['index', 'index-type'],
@@ -46,7 +52,12 @@ const createPerfectionistConfig = function (options: Options): FlatConfig[] {
         ],
         'perfectionist/sort-interfaces': 'error',
         'perfectionist/sort-modules': 'off',
-        'perfectionist/sort-named-exports': 'error',
+        'perfectionist/sort-named-exports': [
+          'error',
+          {
+            groupKind: 'values-first',
+          },
+        ],
         'perfectionist/sort-named-imports': 'error',
         'perfectionist/sort-objects': [
           'error',
