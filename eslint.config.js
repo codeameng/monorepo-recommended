@@ -1,4 +1,7 @@
-import { createConfig } from '@packages/eslint-config';
+import {
+  createConfig,
+  JAVASCRIPT_LIKE_CONFIG_FILES,
+} from '@packages/eslint-config';
 
 export default createConfig({
   /** General options */
@@ -11,7 +14,7 @@ export default createConfig({
   /** Overrides */
   overrides: [
     {
-      files: ['**/*.config.{js,cjs,mjs,ts,cts,mts}'],
+      files: [JAVASCRIPT_LIKE_CONFIG_FILES],
       rules: {
         'import-x/no-default-export': 'off',
       },

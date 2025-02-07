@@ -1,5 +1,13 @@
 import { R } from '@packages/utilities';
 
+import {
+  FILES,
+  JAVASCRIPT_LIKE_FILES,
+  PACKAGE_JSON_FILES,
+  TS_CONFIG_JSON_FILES,
+  TURBO_JSON_FILES,
+} from '$utilities/files.ts';
+
 import { createUnusedImportsConfig } from './configs/unused-imports.ts';
 import { createPerfectionistConfig } from './configs/perfectionist.ts';
 import type { FlatConfig, RuleLevel } from './utilities/index.ts';
@@ -19,13 +27,8 @@ import {
 } from './configs/sort-json.ts';
 import {
   defineBoundedConfig,
-  FILES,
   getAllRulesConfig,
-  JAVASCRIPT_LIKE_FILES,
   normalizeRuleLevel,
-  PACKAGE_JSON_FILES,
-  TS_CONFIG_JSON_FILES,
-  TURBO_JSON_FILES,
 } from './utilities/index.ts';
 
 interface Options {
@@ -137,3 +140,5 @@ const createConfig = function (options: Options): FlatConfig[] {
 };
 
 export { createConfig };
+
+export * from './utilities/files.ts';

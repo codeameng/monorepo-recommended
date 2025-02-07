@@ -4,6 +4,8 @@ import { isInEditor } from 'is-in-editor';
 import { R } from '@packages/utilities';
 import eslintJs from '@eslint/js';
 
+import { JAVASCRIPT_LIKE_FILES } from './files.ts';
+
 type FlatConfig = ConfigArray[number];
 type Plugins = NonNullable<FlatConfig['plugins']>;
 type Rules = NonNullable<FlatConfig['rules']>;
@@ -23,19 +25,6 @@ interface BoundedConfigExtends extends BoundedConfigBase {
 type BoundedConfig = BoundedConfigExtends | BoundedConfigIgnores;
 
 const OFF_LEVEL_IN_EDITOR = isInEditor() ? 'off' : 'error';
-
-const FILES = {
-  js: '**/*.{js,cjs,mjs}',
-  ts: '**/*.{ts,cts,mts}',
-  jsx: '**/*.{jsx,cjsx,mjsx}',
-  tsx: '**/*.{tsx,ctsx,mtsx}',
-  json: '**/*.{json,jsonc,code-snippets}',
-};
-
-const PACKAGE_JSON_FILES = '**/package.json';
-const TS_CONFIG_JSON_FILES = ['**/tsconfig.json', '**/tsconfig.*.json'];
-const TURBO_JSON_FILES = '**/turbo.json';
-const JAVASCRIPT_LIKE_FILES = [FILES.js, FILES.ts, FILES.jsx, FILES.tsx];
 
 const defineInfiniteDepthFlatConfig = function (
   infiniteDepthFlatConfigs: InfiniteDepthFlatConfig[],
@@ -157,14 +146,9 @@ const normalizeRuleLevel = function (
 export {
   defineBoundedConfig,
   defineInfiniteDepthFlatConfig,
-  FILES,
   getAllRulesConfig,
-  JAVASCRIPT_LIKE_FILES,
   normalizeRuleLevel,
   OFF_LEVEL_IN_EDITOR,
-  PACKAGE_JSON_FILES,
-  TS_CONFIG_JSON_FILES,
-  TURBO_JSON_FILES,
   type FlatConfig,
   type RuleLevel,
 };
