@@ -4,7 +4,7 @@ const jsx = '**/*.{jsx,cjsx,mjsx}';
 const tsx = '**/*.{tsx,ctsx,mtsx}';
 const json = '**/*.{json,jsonc,code-snippets}';
 
-export const files = {
+const files = {
   /** General extensions */
   js,
   ts,
@@ -21,3 +21,5 @@ export const files = {
   'javascript-like': [js, ts, jsx, tsx],
   'javascript-like-config': '**/*.config.{js,cjs,mjs,ts,cts,mts}',
 };
+
+export { files };

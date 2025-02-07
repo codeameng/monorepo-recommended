@@ -1,6 +1,6 @@
 import unusedImportsPlugin from 'eslint-plugin-unused-imports';
-import type { FlatConfig } from '$utilities/index.ts';
 
+import type { FlatConfig } from '$utilities/index.ts';
 import {
   defineInfiniteDepthFlatConfig,
   OFF_LEVEL_IN_EDITOR,

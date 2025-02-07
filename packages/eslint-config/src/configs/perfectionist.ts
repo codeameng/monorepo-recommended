@@ -1,7 +1,7 @@
 import perfectionistPlugin from 'eslint-plugin-perfectionist';
-import type { FlatConfig } from '$utilities/index.ts';
 
 import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
+import type { FlatConfig } from '$utilities/index.ts';
 
 interface Options {
   sortImportsMaxLineLength: number;
@@ -33,12 +33,15 @@ const createPerfectionistConfig = function (options: Options): FlatConfig[] {
               value: {
                 'global-alias': '^\\$.*$',
               },
+              type: {
+                'global-alias-type': '^\\$.*$',
+              },
             },
             groups: [
               ['builtin', 'builtin-type'],
               ['external', 'external-type'],
               ['internal', 'internal-type'],
-              ['global-alias'],
+              ['global-alias', 'global-alias-type'],
               ['parent', 'parent-type'],
               ['sibling', 'sibling-type'],
               ['index', 'index-type'],

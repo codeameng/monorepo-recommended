@@ -1,7 +1,7 @@
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
-import type { FlatConfig } from '$utilities/index.ts';
 import importXPlugin from 'eslint-plugin-import-x';
 
+import type { FlatConfig } from '$utilities/index.ts';
 import {
   defineInfiniteDepthFlatConfig,
   OFF_LEVEL_IN_EDITOR,
