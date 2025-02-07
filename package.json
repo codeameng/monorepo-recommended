@@ -2,6 +2,13 @@
   "name": "@codeameng/monorepo-recommended",
   "type": "module",
   "packageManager": "yarn@4.6.0",
+  "engines": {
+    "node": "^20.16.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "postinstall": "yarn run setup",
     "setup": "turbo run setup",
@@ -22,12 +29,5 @@
     "prettier": "3.4.2",
     "turbo": "2.4.0",
     "typescript": "5.7.3"
-  },
-  "engines": {
-    "node": "^20.16.0"
-  },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  }
 }
