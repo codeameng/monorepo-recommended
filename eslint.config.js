@@ -6,7 +6,7 @@ export default createConfig({
   ruleLevel: null,
   prettierPrintWidth: 80,
   tsconfigRootDir: import.meta.dirname,
-  tsconfigProject: ['**/tsconfig.json', '**/tsconfig.*.json'],
+  tsconfigProject: files['tsconfig-json'],
 
   /** Overrides */
   overrides: [
