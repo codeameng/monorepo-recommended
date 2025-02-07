@@ -1,10 +1,11 @@
-import { configs, plugin } from 'typescript-eslint';
 import eslintJs from '@eslint/js';
+import { configs, plugin } from 'typescript-eslint';
 
 import { R } from '@packages/utilities';
 
-import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 import type { FlatConfig } from '$utilities/index.ts';
+
+import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
 const disableRedundantRules = function (): FlatConfig {
   return {

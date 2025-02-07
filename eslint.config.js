@@ -4,7 +4,6 @@ export default createConfig({
   /** General options */
   shouldEnableAllRules: process.env['ESLINT_ENABLE_ALL_RULES'] === 'true',
   ruleLevel: null,
-  prettierPrintWidth: 80,
   tsconfigRootDir: import.meta.dirname,
   tsconfigProject: files['tsconfig-json'],
 

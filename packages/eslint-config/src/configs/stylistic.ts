@@ -1,7 +1,8 @@
 import stylisticPlugin from '@stylistic/eslint-plugin';
 
-import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 import type { FlatConfig } from '$utilities/index.ts';
+
+import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
 const createStylisticConfig = function (): FlatConfig[] {
   return defineInfiniteDepthFlatConfig([

@@ -1,15 +1,10 @@
 import perfectionistPlugin from 'eslint-plugin-perfectionist';
 
-import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 import type { FlatConfig } from '$utilities/index.ts';
 
-interface Options {
-  sortImportsMaxLineLength: number;
-}
+import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
-const createPerfectionistConfig = function (options: Options): FlatConfig[] {
-  const { sortImportsMaxLineLength } = options;
-
+const createPerfectionistConfig = function (): FlatConfig[] {
   return defineInfiniteDepthFlatConfig([
     {
       plugins: {
@@ -26,9 +21,6 @@ const createPerfectionistConfig = function (options: Options): FlatConfig[] {
         'perfectionist/sort-imports': [
           'error',
           {
-            type: 'line-length',
-            order: 'desc',
-            maxLineLength: sortImportsMaxLineLength,
             customGroups: {
               value: {
                 'global-alias': '^\\$.*$',
@@ -40,19 +32,27 @@ const createPerfectionistConfig = function (options: Options): FlatConfig[] {
               },
             },
             groups: [
-              ['builtin', 'builtin-type'],
-              ['external', 'external-type'],
-              ['internal', 'internal-type'],
-              ['workspace-package', 'workspace-package-type'],
-              ['global-alias', 'global-alias-type'],
-              ['parent', 'parent-type'],
-              ['sibling', 'sibling-type'],
-              ['index', 'index-type'],
-              ['object'],
-              ['style'],
-              ['side-effect'],
-              ['side-effect-style'],
-              ['unknown'],
+              'builtin-type',
+              'builtin',
+              'external-type',
+              'external',
+              'internal-type',
+              'internal',
+              'workspace-package-type',
+              'workspace-package',
+              'global-alias-type',
+              'global-alias',
+              'parent-type',
+              'parent',
+              'sibling-type',
+              'sibling',
+              'index-type',
+              'index',
+              'object',
+              'style',
+              'side-effect',
+              'side-effect-style',
+              'unknown',
             ],
           },
         ],

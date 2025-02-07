@@ -1,7 +1,8 @@
 import eslintJs from '@eslint/js';
 
-import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 import type { FlatConfig } from '$utilities/index.ts';
+
+import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
 const createBuiltInConfig = function (): FlatConfig[] {
   return defineInfiniteDepthFlatConfig([

@@ -1,7 +1,8 @@
 import jsoncPlugin from 'eslint-plugin-jsonc';
 
-import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 import type { FlatConfig } from '$utilities/index.ts';
+
+import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
 const createJsoncConfig = function (): FlatConfig[] {
   return defineInfiniteDepthFlatConfig([

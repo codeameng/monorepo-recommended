@@ -2,23 +2,24 @@ import { R } from '@packages/utilities';
 
 import { files } from '$utilities/files.ts';
 
-import { createUnusedImportsConfig } from './configs/unused-imports.ts';
-import { createPerfectionistConfig } from './configs/perfectionist.ts';
 import type { FlatConfig, RuleLevel } from './utilities/index.ts';
-import { createTypescriptConfig } from './configs/typescript.ts';
-import { createStylisticConfig } from './configs/stylistic.ts';
+
 import { createBuiltInConfig } from './configs/built-in.ts';
-import { createIgnoreConfig } from './configs/gitignore.ts';
-import { createImportXConfig } from './configs/import-x.ts';
 import { createCommandConfig } from './configs/command.ts';
 import { createDependConfig } from './configs/depend.ts';
+import { createIgnoreConfig } from './configs/gitignore.ts';
+import { createImportXConfig } from './configs/import-x.ts';
 import { createJsoncConfig } from './configs/jsonc.ts';
+import { createPerfectionistConfig } from './configs/perfectionist.ts';
 import {
   createSortJsonConfig,
   createSortPackageJsonConfig,
   createSortTsconfigJsonConfig,
   createSortTurboJsonConfig,
 } from './configs/sort-json.ts';
+import { createStylisticConfig } from './configs/stylistic.ts';
+import { createTypescriptConfig } from './configs/typescript.ts';
+import { createUnusedImportsConfig } from './configs/unused-imports.ts';
 import {
   defineBoundedConfig,
   getAllRulesConfig,
@@ -27,7 +28,6 @@ import {
 
 interface Options {
   overrides: FlatConfig[];
-  prettierPrintWidth: number;
   ruleLevel: null | RuleLevel;
   shouldEnableAllRules: boolean;
   tsconfigProject: string[];
@@ -37,7 +37,6 @@ interface Options {
 const createConfig = function (options: Options): FlatConfig[] {
   const {
     overrides,
-    prettierPrintWidth,
     ruleLevel,
     shouldEnableAllRules,
     tsconfigProject,
@@ -81,9 +80,7 @@ const createConfig = function (options: Options): FlatConfig[] {
     {
       name: 'perfectionist',
       files: files['javascript-like'],
-      extends: createPerfectionistConfig({
-        sortImportsMaxLineLength: prettierPrintWidth,
-      }),
+      extends: createPerfectionistConfig(),
     },
     {
       name: 'stylistic',
