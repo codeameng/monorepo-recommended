@@ -182,6 +182,7 @@ const createStylisticConfig = function (): FlatConfig[] {
             next: 'function',
           },
         ],
+        '@stylistic/quote-props': 'off',
         '@stylistic/quotes': 'off',
         '@stylistic/semi': 'off',
         '@stylistic/space-infix-ops': 'off',
