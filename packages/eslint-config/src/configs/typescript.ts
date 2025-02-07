@@ -1,6 +1,7 @@
 import { configs, plugin } from 'typescript-eslint';
-import { R } from '@packages/utilities';
 import eslintJs from '@eslint/js';
+
+import { R } from '@packages/utilities';
 
 import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 import type { FlatConfig } from '$utilities/index.ts';

@@ -1,8 +1,9 @@
 import { config as defineConfig } from 'typescript-eslint';
 import type { ConfigArray } from 'typescript-eslint';
 import { isInEditor } from 'is-in-editor';
-import { R } from '@packages/utilities';
 import eslintJs from '@eslint/js';
+
+import { R } from '@packages/utilities';
 
 import { files } from './files.ts';
 

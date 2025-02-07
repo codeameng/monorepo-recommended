@@ -32,15 +32,18 @@ const createPerfectionistConfig = function (options: Options): FlatConfig[] {
             customGroups: {
               value: {
                 'global-alias': '^\\$.*$',
+                'workspace-package': '^\\@packages\\/.*$',
               },
               type: {
                 'global-alias-type': '^\\$.*$',
+                'workspace-package-type': '^\\@packages\\/.*$',
               },
             },
             groups: [
               ['builtin', 'builtin-type'],
               ['external', 'external-type'],
               ['internal', 'internal-type'],
+              ['workspace-package', 'workspace-package-type'],
               ['global-alias', 'global-alias-type'],
               ['parent', 'parent-type'],
               ['sibling', 'sibling-type'],
