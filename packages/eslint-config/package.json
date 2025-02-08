@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@eslint/js": "9.18.0",
+    "@packages/tsup-config": "workspace:*",
     "@packages/utilities": "workspace:*",
     "@stylistic/eslint-plugin": "2.13.0",
     "eslint-config-flat-gitignore": "1.0.0",
@@ -22,7 +23,6 @@
     "typescript-eslint": "8.21.0"
   },
   "devDependencies": {
-    "@packages/tsup-config": "workspace:*",
     "@packages/typescript-config": "workspace:*",
     "eslint": "9.18.0",
     "tsup": "8.3.5",

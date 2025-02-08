@@ -6,9 +6,11 @@
     "setup": "tsup --clean",
     "dev": "tsup --watch"
   },
+  "dependencies": {
+    "tsup": "8.3.5"
+  },
   "devDependencies": {
     "@packages/typescript-config": "workspace:*",
-    "tsup": "8.3.5",
     "typescript": "5.7.3"
   },
   "peerDependencies": {
