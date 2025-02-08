@@ -1,7 +1,7 @@
 declare module 'eslint-plugin-prefer-arrow' {
-  import type { Linter } from 'eslint';
+  import type { ESLint } from 'eslint';
 
-  const plugin: NonNullable<Linter.Config['plugins']>[string];
+  const plugin: ESLint.Plugin;
 
-  export default plugin;
+  export = plugin;
 }
