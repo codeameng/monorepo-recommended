@@ -11,6 +11,7 @@ import { createIgnoreConfig } from './configs/gitignore.ts';
 import { createImportXConfig } from './configs/import-x.ts';
 import { createJsoncConfig } from './configs/jsonc.ts';
 import { createPerfectionistConfig } from './configs/perfectionist.ts';
+import { createRegexpConfig } from './configs/regexp.ts';
 import {
   createSortJsonConfig,
   createSortPackageJsonConfig,
@@ -54,6 +55,11 @@ const createConfig = function (options: Options): FlatConfig[] {
       extends: createCommandConfig(),
     },
     {
+      name: 'depend',
+      files: [files['package-json'], ...files['javascript-like']],
+      extends: createDependConfig(),
+    },
+    {
       name: 'built-in',
       files: files['javascript-like'],
       extends: createBuiltInConfig(),
@@ -64,6 +70,11 @@ const createConfig = function (options: Options): FlatConfig[] {
       extends: createTypescriptConfig({
         tsconfigRootDir,
       }),
+    },
+    {
+      name: 'regexp',
+      files: files['javascript-like'],
+      extends: createRegexpConfig(),
     },
     {
       name: 'import-x',
@@ -91,11 +102,6 @@ const createConfig = function (options: Options): FlatConfig[] {
       name: 'jsonc',
       files: [files.json],
       extends: createJsoncConfig(),
-    },
-    {
-      name: 'depend',
-      files: [files['package-json'], ...files['javascript-like']],
-      extends: createDependConfig(),
     },
     {
       name: 'sort-json',

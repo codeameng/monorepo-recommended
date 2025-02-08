@@ -41,6 +41,7 @@ const createBuiltInConfig = function (): FlatConfig[] {
         'no-ternary': 'off',
         'object-shorthand': 'error',
         'one-var': ['error', 'never'],
+        'require-unicode-regexp': 'off',
         'sort-imports': 'off',
         'sort-keys': 'off',
       },
