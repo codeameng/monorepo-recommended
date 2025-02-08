@@ -4,7 +4,69 @@ import type { FlatConfig } from '$utilities/index.ts';
 
 import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
-const createPerfectionistConfig = function (): FlatConfig[] {
+interface Options {
+  aliasPathPatterns: string[];
+  workspacePackagePathPatterns: string[];
+}
+
+interface CustomGroups {
+  type: Record<string, string>;
+  value: Record<string, string>;
+}
+
+interface CustomGroupEntry {
+  pattern: string;
+  typeKey: string;
+  valueKey: string;
+}
+
+type Groups = [string[], string[]];
+
+const createCustomGroupEntry = (
+  baseKey: string,
+  pattern: string,
+  index: number,
+): CustomGroupEntry => ({
+  typeKey: `${baseKey}-type-${index}`,
+  valueKey: `${baseKey}-${index}`,
+  pattern,
+});
+
+const createPerfectionistConfig = function (options: Options): FlatConfig[] {
+  const { aliasPathPatterns, workspacePackagePathPatterns } = options;
+
+  const customGroups: CustomGroups = {
+    type: {},
+    value: {},
+  };
+
+  const workspacePackagePathGroups: Groups = [[], []];
+  const aliasPathGroups: Groups = [[], []];
+
+  const addToCustomGroups = (entry: CustomGroupEntry): void => {
+    customGroups.type[entry.typeKey] = entry.pattern;
+    customGroups.value[entry.valueKey] = entry.pattern;
+  };
+
+  const addToGroupArrays = (groups: Groups, entry: CustomGroupEntry): void => {
+    groups[0].push(entry.typeKey);
+    groups[1].push(entry.valueKey);
+  };
+
+  workspacePackagePathPatterns.forEach((pattern, index) => {
+    const entry = createCustomGroupEntry('workspace-package', pattern, index);
+
+    addToCustomGroups(entry);
+    addToGroupArrays(workspacePackagePathGroups, entry);
+  });
+
+  aliasPathPatterns.forEach((pattern, index) => {
+    const entry = createCustomGroupEntry('global-alias', pattern, index);
+
+    addToCustomGroups(entry);
+    addToGroupArrays(aliasPathGroups, entry);
+  });
+
   return defineInfiniteDepthFlatConfig([
     {
       plugins: {
@@ -21,16 +83,7 @@ const createPerfectionistConfig = function (): FlatConfig[] {
         'perfectionist/sort-imports': [
           'error',
           {
-            customGroups: {
-              value: {
-                'global-alias': '^\\$.*$',
-                'workspace-package': '^\\@packages\\/.*$',
-              },
-              type: {
-                'global-alias-type': '^\\$.*$',
-                'workspace-package-type': '^\\@packages\\/.*$',
-              },
-            },
+            customGroups,
             groups: [
               'builtin-type',
               'builtin',
@@ -38,10 +91,8 @@ const createPerfectionistConfig = function (): FlatConfig[] {
               'external',
               'internal-type',
               'internal',
-              'workspace-package-type',
-              'workspace-package',
-              'global-alias-type',
-              'global-alias',
+              ...workspacePackagePathGroups,
+              ...aliasPathGroups,
               'parent-type',
               'parent',
               'sibling-type',

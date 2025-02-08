@@ -187,6 +187,7 @@ const createStylisticConfig = function (): FlatConfig[] {
         '@stylistic/quotes': 'off',
         '@stylistic/semi': 'off',
         '@stylistic/space-infix-ops': 'off',
+        '@stylistic/type-annotation-spacing': 'off',
         '@stylistic/wrap-regex': 'off',
       },
     },

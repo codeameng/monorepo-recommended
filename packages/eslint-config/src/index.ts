@@ -28,20 +28,26 @@ import {
 } from './utilities/index.ts';
 
 interface Options {
+  importConfig: {
+    aliasPathPatterns: string[];
+    workspacePackagePathPatterns: string[];
+  };
   overrides: FlatConfig[];
   ruleLevel: null | RuleLevel;
   shouldEnableAllRules: boolean;
-  tsconfigProject: string[];
-  tsconfigRootDir: string;
+  typescriptConfig: {
+    tsconfigProject: string[];
+    tsconfigRootDir: string;
+  };
 }
 
 const createConfig = function (options: Options): FlatConfig[] {
   const {
+    importConfig,
     overrides,
     ruleLevel,
     shouldEnableAllRules,
-    tsconfigProject,
-    tsconfigRootDir,
+    typescriptConfig,
   } = options;
 
   let config = defineBoundedConfig([
@@ -68,7 +74,7 @@ const createConfig = function (options: Options): FlatConfig[] {
       name: 'typescript',
       files: files['javascript-like'],
       extends: createTypescriptConfig({
-        tsconfigRootDir,
+        tsconfigRootDir: typescriptConfig.tsconfigRootDir,
       }),
     },
     {
@@ -80,7 +86,8 @@ const createConfig = function (options: Options): FlatConfig[] {
       name: 'import-x',
       files: files['javascript-like'],
       extends: createImportXConfig({
-        tsconfigProject,
+        aliasPathPatterns: importConfig.aliasPathPatterns,
+        tsconfigProject: typescriptConfig.tsconfigProject,
       }),
     },
     {
@@ -91,7 +98,10 @@ const createConfig = function (options: Options): FlatConfig[] {
     {
       name: 'perfectionist',
       files: files['javascript-like'],
-      extends: createPerfectionistConfig(),
+      extends: createPerfectionistConfig({
+        aliasPathPatterns: importConfig.aliasPathPatterns,
+        workspacePackagePathPatterns: importConfig.workspacePackagePathPatterns,
+      }),
     },
     {
       name: 'stylistic',

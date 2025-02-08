@@ -4,8 +4,14 @@ export default createConfig({
   /** General options */
   shouldEnableAllRules: process.env['ESLINT_ENABLE_ALL_RULES'] === 'true',
   ruleLevel: null,
-  tsconfigRootDir: import.meta.dirname,
-  tsconfigProject: files['tsconfig-json'],
+  typescriptConfig: {
+    tsconfigRootDir: import.meta.dirname,
+    tsconfigProject: files['tsconfig-json'],
+  },
+  importConfig: {
+    workspacePackagePathPatterns: ['^\\@packages\\/.*$'],
+    aliasPathPatterns: ['^\\$.*$'],
+  },
 
   /** Overrides */
   overrides: [

@@ -9,11 +9,12 @@ import {
 } from '$utilities/index.ts';
 
 interface Options {
+  aliasPathPatterns: string[];
   tsconfigProject: string[];
 }
 
 const createImportXConfig = function (options: Options): FlatConfig[] {
-  const { tsconfigProject } = options;
+  const { aliasPathPatterns, tsconfigProject } = options;
 
   return defineInfiniteDepthFlatConfig([
     importXPlugin.flatConfigs.recommended,
@@ -65,7 +66,7 @@ const createImportXConfig = function (options: Options): FlatConfig[] {
         'import-x/no-relative-parent-imports': [
           'error',
           {
-            ignore: ['^\\$.*$'],
+            ignore: aliasPathPatterns,
           },
         ],
         'import-x/no-rename-default': 'off',
