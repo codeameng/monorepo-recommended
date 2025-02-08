@@ -6,7 +6,7 @@ import { config as defineConfig } from 'typescript-eslint';
 
 import { R } from '@packages/utilities';
 
-import { files } from './files.ts';
+import { FILES } from './files.ts';
 
 type FlatConfig = ConfigArray[number];
 type Plugins = NonNullable<FlatConfig['plugins']>;
@@ -95,7 +95,7 @@ const getPluginsAllRuleNames = (plugins?: Plugins): string[] => {
 const getAllRulesConfig = (configs: FlatConfig[]): FlatConfig[] => {
   const builtInAllConfig: FlatConfig = {
     name: 'all-rules/built-in',
-    files: files['javascript-like'],
+    files: FILES['js-like'],
     rules: createErrorRuleConfigFromNames(getBuiltInAllRuleNames()),
   };
   const pluginsAllConfigs = R.pipe(

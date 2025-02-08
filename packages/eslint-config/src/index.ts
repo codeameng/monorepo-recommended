@@ -1,6 +1,6 @@
 import { R } from '@packages/utilities';
 
-import { files } from '$utilities/files.ts';
+import { FILES } from '$utilities/files.ts';
 
 import type { FlatConfig, RuleLevel } from './utilities/index.ts';
 
@@ -58,39 +58,39 @@ const createConfig = (options: Options): FlatConfig[] => {
     },
     {
       name: 'command',
-      files: files['javascript-like'],
+      files: FILES['js-like'],
       extends: createCommandConfig(),
     },
     {
       name: 'depend',
-      files: [files['package-json'], ...files['javascript-like']],
+      files: [FILES['package.json'], ...FILES['js-like']],
       extends: createDependConfig(),
     },
     {
       name: 'built-in',
-      files: files['javascript-like'],
+      files: FILES['js-like'],
       extends: createBuiltInConfig(),
     },
     {
       name: 'typescript',
-      files: files['javascript-like'],
+      files: FILES['js-like'],
       extends: createTypescriptConfig({
         tsconfigRootDir: typescriptConfig.tsconfigRootDir,
       }),
     },
     {
       name: 'prefer-arrow',
-      files: files['javascript-like'],
+      files: FILES['js-like'],
       extends: createPreferArrowConfig(),
     },
     {
       name: 'regexp',
-      files: files['javascript-like'],
+      files: FILES['js-like'],
       extends: createRegexpConfig(),
     },
     {
       name: 'import-x',
-      files: files['javascript-like'],
+      files: FILES['js-like'],
       extends: createImportXConfig({
         aliasPathPatterns: importConfig.aliasPathPatterns,
         tsconfigProject: typescriptConfig.tsconfigProject,
@@ -98,12 +98,12 @@ const createConfig = (options: Options): FlatConfig[] => {
     },
     {
       name: 'unused-imports',
-      files: files['javascript-like'],
+      files: FILES['js-like'],
       extends: createUnusedImportsConfig(),
     },
     {
       name: 'perfectionist',
-      files: files['javascript-like'],
+      files: FILES['js-like'],
       extends: createPerfectionistConfig({
         aliasPathPatterns: importConfig.aliasPathPatterns,
         workspacePackagePathPatterns: importConfig.workspacePackagePathPatterns,
@@ -111,46 +111,46 @@ const createConfig = (options: Options): FlatConfig[] => {
     },
     {
       name: 'stylistic',
-      files: files['javascript-like'],
+      files: FILES['js-like'],
       extends: createStylisticConfig(),
     },
     {
       name: 'jsonc',
-      files: [files.json],
+      files: [FILES['*.json']],
       extends: createJsoncConfig(),
     },
     {
       name: 'sort-json',
-      files: [files.json],
+      files: [FILES['*.json']],
       extends: createSortJsonConfig(),
     },
     {
       name: 'sort-json/package-json',
-      files: [files['package-json']],
+      files: [FILES['package.json']],
       extends: createSortPackageJsonConfig(),
     },
     {
       name: 'sort-json/tsconfig-json',
-      files: files['tsconfig-json'],
+      files: FILES['tsconfig.json'],
       extends: createSortTsconfigJsonConfig(),
     },
     {
       name: 'sort-json/turbo-json',
-      files: [files['turbo-json']],
+      files: [FILES['turbo.json']],
       extends: createSortTurboJsonConfig(),
     },
   ]);
 
   const specialConfig: FlatConfig[] = [
     {
-      files: [files['javascript-like-config'], files['package-d-ts']],
+      files: [FILES['js-like-config'], FILES['package.d.ts']],
       rules: {
         'import-x/no-default-export': 'off',
       },
     },
     {
       name: 'dts',
-      files: [files.dts],
+      files: [FILES['*.d.ts']],
       rules: {
         'import-x/unambiguous': 'off',
       },
@@ -170,4 +170,4 @@ const createConfig = (options: Options): FlatConfig[] => {
   return config;
 };
 
-export { createConfig, files };
+export { createConfig, FILES };

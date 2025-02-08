@@ -1,28 +1,28 @@
-const js = '**/*.{js,cjs,mjs}';
-const ts = '**/*.{ts,cts,mts}';
-const dts = '**/*.d.ts';
-const jsx = '**/*.{jsx,cjsx,mjsx}';
-const tsx = '**/*.{tsx,ctsx,mtsx}';
-const json = '**/*.{json,jsonc,code-snippets}';
+const JS = '**/*.{js,cjs,mjs}';
+const TS = '**/*.{ts,cts,mts}';
+const D_TS = '**/*.d.ts';
+const JSX = '**/*.{jsx,cjsx,mjsx}';
+const TSX = '**/*.{tsx,ctsx,mtsx}';
+const JSON = '**/*.{json,jsonc,code-snippets}';
 
-const files = {
+const FILES = {
   /** General extensions */
-  js,
-  ts,
-  dts,
-  jsx,
-  tsx,
-  json,
-
-  /** Special files */
-  'package-d-ts': '**/package.d.ts',
-  'package-json': '**/package.json',
-  'tsconfig-json': ['**/tsconfig.json', '**/tsconfig.*.json'],
-  'turbo-json': '**/turbo.json',
+  '*.js': JS,
+  '*.ts': TS,
+  '*.d.ts': D_TS,
+  '*.jsx': JSX,
+  '*.tsx': TSX,
+  '*.json': JSON,
 
   /** Grouped files */
-  'javascript-like': [js, ts, jsx, tsx],
-  'javascript-like-config': '**/*.config.{js,cjs,mjs,ts,cts,mts}',
+  'js-like': [JS, TS, JSX, TSX],
+  'js-like-config': '**/*.config.{js,cjs,mjs,ts,cts,mts}',
+
+  /** Special files */
+  'package.d.ts': '**/package.d.ts',
+  'package.json': '**/package.json',
+  'tsconfig.json': ['**/tsconfig.json', '**/tsconfig.*.json'],
+  'turbo.json': '**/turbo.json',
 };
 
-export { files };
+export { FILES };

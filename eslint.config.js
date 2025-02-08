@@ -1,4 +1,4 @@
-import { createConfig, files } from '@packages/eslint-config';
+import { createConfig, FILES } from '@packages/eslint-config';
 
 export default createConfig({
   /** General options */
@@ -6,7 +6,7 @@ export default createConfig({
   ruleLevel: null,
   typescriptConfig: {
     tsconfigRootDir: import.meta.dirname,
-    tsconfigProject: files['tsconfig-json'],
+    tsconfigProject: FILES['tsconfig.json'],
   },
   importConfig: {
     workspacePackagePathPatterns: ['^\\@packages\\/.*$'],
