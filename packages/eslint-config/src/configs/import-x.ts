@@ -13,7 +13,7 @@ interface Options {
   tsconfigProject: string[];
 }
 
-const createImportXConfig = function (options: Options): FlatConfig[] {
+const createImportXConfig = (options: Options): FlatConfig[] => {
   const { aliasPathPatterns, tsconfigProject } = options;
 
   return defineInfiniteDepthFlatConfig([

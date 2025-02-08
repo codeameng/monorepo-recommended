@@ -4,7 +4,7 @@ import type { FlatConfig } from '$utilities/index.ts';
 
 import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
-const createRegexpConfig = function (): FlatConfig[] {
+const createRegexpConfig = (): FlatConfig[] => {
   return defineInfiniteDepthFlatConfig([
     configs['flat/recommended'],
     {

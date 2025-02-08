@@ -26,13 +26,15 @@ const createCustomGroupEntry = (
   baseKey: string,
   pattern: string,
   index: number,
-): CustomGroupEntry => ({
-  typeKey: `${baseKey}-type-${index}`,
-  valueKey: `${baseKey}-${index}`,
-  pattern,
-});
+): CustomGroupEntry => {
+  return {
+    typeKey: `${baseKey}-type-${index}`,
+    valueKey: `${baseKey}-${index}`,
+    pattern,
+  };
+};
 
-const createPerfectionistConfig = function (options: Options): FlatConfig[] {
+const createPerfectionistConfig = (options: Options): FlatConfig[] => {
   const { aliasPathPatterns, workspacePackagePathPatterns } = options;
 
   const customGroups: CustomGroups = {

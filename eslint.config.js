@@ -14,12 +14,5 @@ export default createConfig({
   },
 
   /** Overrides */
-  overrides: [
-    {
-      files: [files['javascript-like-config']],
-      rules: {
-        'import-x/no-default-export': 'off',
-      },
-    },
-  ],
+  overrides: [],
 });

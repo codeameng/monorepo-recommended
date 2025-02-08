@@ -4,7 +4,7 @@ import type { FlatConfig } from '$utilities/index.ts';
 
 import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
-const createJsoncConfig = function (): FlatConfig[] {
+const createJsoncConfig = (): FlatConfig[] => {
   return defineInfiniteDepthFlatConfig([
     jsoncPlugin.configs['flat/recommended-with-jsonc'],
     {

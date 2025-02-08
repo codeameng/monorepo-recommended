@@ -28,15 +28,13 @@ type BoundedConfig = BoundedConfigExtends | BoundedConfigIgnores;
 
 const OFF_LEVEL_IN_EDITOR = isInEditor() ? 'off' : 'error';
 
-const defineInfiniteDepthFlatConfig = function (
+const defineInfiniteDepthFlatConfig = (
   infiniteDepthFlatConfigs: InfiniteDepthFlatConfig[],
-): FlatConfig[] {
+): FlatConfig[] => {
   return defineConfig(infiniteDepthFlatConfigs);
 };
 
-const defineBoundedConfig = function (
-  boundedConfigs: BoundedConfig[],
-): FlatConfig[] {
+const defineBoundedConfig = (boundedConfigs: BoundedConfig[]): FlatConfig[] => {
   boundedConfigs.forEach((boundedConfig) => {
     const boundedConfigName = boundedConfig.name.trim();
 
@@ -58,15 +56,17 @@ const defineBoundedConfig = function (
   return defineConfig(boundedConfigs);
 };
 
-const getBuiltInAllRuleNames = function (): string[] {
+const getBuiltInAllRuleNames = (): string[] => {
   return R.keys(eslintJs.configs.all.rules);
 };
 
-const createErrorRuleConfigFromNames = function (ruleNames: string[]): Rules {
-  return R.mapToObj(ruleNames, (ruleName) => [ruleName, 'error']);
+const createErrorRuleConfigFromNames = (ruleNames: string[]): Rules => {
+  return R.mapToObj(ruleNames, (ruleName) => {
+    return [ruleName, 'error'];
+  });
 };
 
-const getPluginsAllRuleNames = function (plugins?: Plugins): string[] {
+const getPluginsAllRuleNames = (plugins?: Plugins): string[] => {
   if (!plugins) {
     return [];
   }
@@ -86,11 +86,13 @@ const getPluginsAllRuleNames = function (plugins?: Plugins): string[] {
 
         return !isDeprecated;
       })
-      .map(([ruleName]) => `${pluginName}/${ruleName}`);
+      .map(([ruleName]) => {
+        return `${pluginName}/${ruleName}`;
+      });
   });
 };
 
-const getAllRulesConfig = function (configs: FlatConfig[]): FlatConfig[] {
+const getAllRulesConfig = (configs: FlatConfig[]): FlatConfig[] => {
   const builtInAllConfig: FlatConfig = {
     name: 'all-rules/built-in',
     files: files['javascript-like'],
@@ -98,21 +100,25 @@ const getAllRulesConfig = function (configs: FlatConfig[]): FlatConfig[] {
   };
   const pluginsAllConfigs = R.pipe(
     configs,
-    R.map((config, configIndex) => ({
-      ...config,
-      name: `all-rules/${config.name ?? configIndex}`,
-      rules: createErrorRuleConfigFromNames(
-        getPluginsAllRuleNames(config.plugins),
-      ),
-    })),
-    R.filter((config) => !R.isEmpty(config.rules)),
+    R.map((config, configIndex) => {
+      return {
+        ...config,
+        name: `all-rules/${config.name ?? configIndex}`,
+        rules: createErrorRuleConfigFromNames(
+          getPluginsAllRuleNames(config.plugins),
+        ),
+      };
+    }),
+    R.filter((config) => {
+      return !R.isEmpty(config.rules);
+    }),
     R.map(R.pick(['name', 'files', 'ignores', 'rules'])),
   );
 
   return [builtInAllConfig, ...pluginsAllConfigs];
 };
 
-const isRuleLevelOff = function (ruleEntry?: RuleEntry): boolean {
+const isRuleLevelOff = (ruleEntry?: RuleEntry): boolean => {
   if (R.isNullish(ruleEntry)) {
     return true;
   }
@@ -122,10 +128,10 @@ const isRuleLevelOff = function (ruleEntry?: RuleEntry): boolean {
   return [0, 'off'].includes(ruleLevel);
 };
 
-const normalizeRuleLevel = function (
+const normalizeRuleLevel = (
   configs: FlatConfig[],
   level: RuleLevel,
-): FlatConfig[] {
+): FlatConfig[] => {
   const clonedConfigs = R.clone(configs);
 
   for (const { rules } of clonedConfigs) {

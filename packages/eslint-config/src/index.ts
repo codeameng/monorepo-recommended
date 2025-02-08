@@ -11,6 +11,7 @@ import { createIgnoreConfig } from './configs/gitignore.ts';
 import { createImportXConfig } from './configs/import-x.ts';
 import { createJsoncConfig } from './configs/jsonc.ts';
 import { createPerfectionistConfig } from './configs/perfectionist.ts';
+import { createPreferArrowConfig } from './configs/prefer-arrow.ts';
 import { createRegexpConfig } from './configs/regexp.ts';
 import {
   createSortJsonConfig,
@@ -41,7 +42,7 @@ interface Options {
   };
 }
 
-const createConfig = function (options: Options): FlatConfig[] {
+const createConfig = (options: Options): FlatConfig[] => {
   const {
     importConfig,
     overrides,
@@ -50,7 +51,7 @@ const createConfig = function (options: Options): FlatConfig[] {
     typescriptConfig,
   } = options;
 
-  let config = defineBoundedConfig([
+  const generalConfig = defineBoundedConfig([
     {
       ...createIgnoreConfig(),
       name: 'gitignore',
@@ -76,6 +77,11 @@ const createConfig = function (options: Options): FlatConfig[] {
       extends: createTypescriptConfig({
         tsconfigRootDir: typescriptConfig.tsconfigRootDir,
       }),
+    },
+    {
+      name: 'prefer-arrow',
+      files: files['javascript-like'],
+      extends: createPreferArrowConfig(),
     },
     {
       name: 'regexp',
@@ -135,6 +141,24 @@ const createConfig = function (options: Options): FlatConfig[] {
     },
   ]);
 
+  const specialConfig: FlatConfig[] = [
+    {
+      files: [files['javascript-like-config'], files['package-d-ts']],
+      rules: {
+        'import-x/no-default-export': 'off',
+      },
+    },
+    {
+      name: 'dts',
+      files: [files.dts],
+      rules: {
+        'import-x/unambiguous': 'off',
+      },
+    },
+  ];
+
+  let config = [...generalConfig, ...specialConfig, ...overrides];
+
   if (shouldEnableAllRules) {
     config = R.concat(getAllRulesConfig(config), config);
   }
@@ -143,7 +167,7 @@ const createConfig = function (options: Options): FlatConfig[] {
     config = normalizeRuleLevel(config, ruleLevel);
   }
 
-  return [...config, ...overrides];
+  return config;
 };
 
 export { createConfig, files };

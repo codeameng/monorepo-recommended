@@ -4,12 +4,13 @@ import type { FlatConfig } from '$utilities/index.ts';
 
 import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
-const createBuiltInConfig = function (): FlatConfig[] {
+const createBuiltInConfig = (): FlatConfig[] => {
   return defineInfiniteDepthFlatConfig([
     eslintJs.configs.recommended,
     {
       // @keep-sorted
       rules: {
+        'arrow-body-style': 'off',
         'capitalized-comments': [
           'error',
           'always',

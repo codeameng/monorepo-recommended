@@ -5,12 +5,12 @@ import type { FlatConfig } from '$utilities/index.ts';
 
 import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
-const createCommandConfig = function (): FlatConfig[] {
+const createCommandConfig = (): FlatConfig[] => {
   return defineInfiniteDepthFlatConfig([
     command({
-      commands: builtinCommands.filter(
-        (builtinCommand) => builtinCommand.name === 'keep-sorted',
-      ),
+      commands: builtinCommands.filter((builtinCommand) => {
+        return builtinCommand.name === 'keep-sorted';
+      }),
     }),
   ]);
 };

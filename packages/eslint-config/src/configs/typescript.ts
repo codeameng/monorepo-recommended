@@ -7,13 +7,15 @@ import type { FlatConfig } from '$utilities/index.ts';
 
 import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
-const disableRedundantRules = function (): FlatConfig {
+const disableRedundantRules = (): FlatConfig => {
   return {
     rules: R.pipe(
       eslintJs.configs.all.rules,
       R.keys(),
       R.intersection(R.keys(plugin.rules ?? {})),
-      R.mapToObj((ruleName) => [ruleName, 'off']),
+      R.mapToObj((ruleName) => {
+        return [ruleName, 'off'];
+      }),
     ),
   };
 };
@@ -22,7 +24,7 @@ interface Options {
   tsconfigRootDir: string;
 }
 
-const createTypescriptConfig = function (options: Options): FlatConfig[] {
+const createTypescriptConfig = (options: Options): FlatConfig[] => {
   const { tsconfigRootDir } = options;
 
   return defineInfiniteDepthFlatConfig([
@@ -74,7 +76,9 @@ const createTypescriptConfig = function (options: Options): FlatConfig[] {
             format: ['PascalCase', 'UPPER_CASE'],
             prefix: R.flatMap(
               ['is', 'should', 'has', 'can', 'did', 'will'],
-              (prefix) => [prefix, `${prefix.toUpperCase()}_`],
+              (prefix) => {
+                return [prefix, `${prefix.toUpperCase()}_`];
+              },
             ),
           },
           {

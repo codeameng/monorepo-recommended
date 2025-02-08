@@ -4,7 +4,7 @@ import type { FlatConfig } from '$utilities/index.ts';
 
 import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
-const createStylisticConfig = function (): FlatConfig[] {
+const createStylisticConfig = (): FlatConfig[] => {
   return defineInfiniteDepthFlatConfig([
     stylisticPlugin.configs['recommended-flat'],
     {

@@ -2,7 +2,7 @@ import type { FlatConfig } from '$utilities/index.ts';
 
 import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
-const createSortJsonConfig = function (): FlatConfig[] {
+const createSortJsonConfig = (): FlatConfig[] => {
   return defineInfiniteDepthFlatConfig([
     {
       rules: {
@@ -20,7 +20,7 @@ const createSortJsonConfig = function (): FlatConfig[] {
   ]);
 };
 
-const createSortPackageJsonConfig = function (): FlatConfig[] {
+const createSortPackageJsonConfig = (): FlatConfig[] => {
   return defineInfiniteDepthFlatConfig([
     {
       rules: {
@@ -202,7 +202,7 @@ const createSortPackageJsonConfig = function (): FlatConfig[] {
   ]);
 };
 
-const createSortTsconfigJsonConfig = function (): FlatConfig[] {
+const createSortTsconfigJsonConfig = (): FlatConfig[] => {
   return defineInfiniteDepthFlatConfig([
     {
       rules: {
@@ -334,7 +334,7 @@ const createSortTsconfigJsonConfig = function (): FlatConfig[] {
   ]);
 };
 
-const createSortTurboJsonConfig = function (): FlatConfig[] {
+const createSortTurboJsonConfig = (): FlatConfig[] => {
   return defineInfiniteDepthFlatConfig([
     {
       rules: {

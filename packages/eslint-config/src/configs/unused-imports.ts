@@ -7,7 +7,7 @@ import {
   OFF_LEVEL_IN_EDITOR,
 } from '$utilities/index.ts';
 
-const createUnusedImportsConfig = function (): FlatConfig[] {
+const createUnusedImportsConfig = (): FlatConfig[] => {
   return defineInfiniteDepthFlatConfig([
     {
       plugins: {

@@ -4,7 +4,7 @@ import type { FlatConfig } from '$utilities/index.ts';
 
 import { defineInfiniteDepthFlatConfig } from '$utilities/index.ts';
 
-const createDependConfig = function (): FlatConfig[] {
+const createDependConfig = (): FlatConfig[] => {
   return defineInfiniteDepthFlatConfig([
     dependPlugin.configs['flat/recommended'],
     {

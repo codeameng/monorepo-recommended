@@ -478,6 +478,7 @@ __metadata:
     eslint-plugin-import-x: "npm:4.6.1"
     eslint-plugin-jsonc: "npm:2.19.1"
     eslint-plugin-perfectionist: "npm:4.7.0"
+    eslint-plugin-prefer-arrow: "npm:1.2.3"
     eslint-plugin-regexp: "npm:2.7.0"
     eslint-plugin-unused-imports: "npm:4.1.4"
     is-in-editor: "npm:0.2.0"
@@ -1511,6 +1512,15 @@ __metadata:
   peerDependencies:
     eslint: ">=8.0.0"
   checksum: 10c0/cfe0ab97b21d4b74ea54f828b58d25c277ea0f3d76bc37dd0e16d2c86696788a28891a3fa8b4045d56e5edb7f79e3dc4fbb18a7d7c290c5dc29028c30fa0e956
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-prefer-arrow@npm:1.2.3":
+  version: 1.2.3
+  resolution: "eslint-plugin-prefer-arrow@npm:1.2.3"
+  peerDependencies:
+    eslint: ">=2.0.0"
+  checksum: 10c0/9fd463ae0a8b80f216bee947783813b565d1859583e82b7f72f8853931be7cf6297209610f8e4bdc0b7e5459328b6f0030eab695964d3662ef1939eaada2e86e
   languageName: node
   linkType: hard
 
