@@ -49,3 +49,8 @@
   - [ ] review and remove unnecessary blank line requirements
   - [ ] keep only essential spacing rules for code readability
   - [ ] document rationale for each retained rule
+- [ ] Add ESLint rules to restrict usage of native functions that overlap with remeda
+  - [ ] identify all overlapping function names between native JavaScript and remeda
+  - [ ] enforce using remeda's functional variants
+  - [ ] provide auto-fix suggestions for violations
+  - [ ] document exceptions where native functions are preferred
