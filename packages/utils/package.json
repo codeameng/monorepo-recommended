@@ -1,5 +1,5 @@
 {
-  "name": "@packages/utilities",
+  "name": "@packages/utils",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {

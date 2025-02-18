@@ -477,7 +477,7 @@ __metadata:
     "@eslint/js": "npm:9.20.0"
     "@packages/tsup-config": "workspace:*"
     "@packages/typescript-config": "workspace:*"
-    "@packages/utilities": "workspace:*"
+    "@packages/utils": "workspace:*"
     "@stylistic/eslint-plugin": "npm:3.1.0"
     eslint: "npm:9.20.1"
     eslint-config-flat-gitignore: "npm:2.0.0"
@@ -535,9 +535,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@packages/utilities@workspace:*, @packages/utilities@workspace:packages/utilities":
+"@packages/utils@workspace:*, @packages/utils@workspace:packages/utils":
   version: 0.0.0-use.local
-  resolution: "@packages/utilities@workspace:packages/utilities"
+  resolution: "@packages/utils@workspace:packages/utils"
   dependencies:
     "@packages/tsup-config": "workspace:*"
     "@packages/typescript-config": "workspace:*"

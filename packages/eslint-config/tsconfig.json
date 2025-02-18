@@ -3,7 +3,7 @@
   "compilerOptions": {
     "paths": {
       "$types/*": ["./src/types/*"],
-      "$utilities/*": ["./src/utilities/*"],
+      "$utils/*": ["./src/utils/*"],
     },
   },
   "exclude": ["dist"],

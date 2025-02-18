@@ -13,7 +13,7 @@
       "path": "./packages/tsup-config",
     },
     {
-      "path": "./packages/utilities",
+      "path": "./packages/utils",
     },
   ],
   "files": [],

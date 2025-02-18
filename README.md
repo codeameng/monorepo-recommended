@@ -29,7 +29,7 @@
 - [ ] Add ESLint rules to enforce that default import names must be strongly related to their package names (excluding special characters)
 - [ ] Add scripts to verify that no unknown rules exist in ESLint configurations
 - [ ] Add ESLint enhancement to automatically discover and include all .gitignore files recursively from rootDirname
-- [ ] Create a unified utilities package (@packages/utilities) to manage common function libraries
+- [ ] Create a unified utils package (@packages/utils) to manage common function libraries
   - [ ] centralize remeda and other utility libraries
   - [ ] provide consistent API and documentation
   - [ ] enforce usage through ESLint rules

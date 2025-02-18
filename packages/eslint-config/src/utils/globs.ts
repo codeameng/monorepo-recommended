@@ -1,4 +1,4 @@
-import { R } from '@packages/utilities';
+import { R } from '@packages/utils';
 
 const ALL_PACKAGE_D_TS = ['**/package.d.ts'];
 const ALL_PACKAGE_JSON = ['**/package.json'];

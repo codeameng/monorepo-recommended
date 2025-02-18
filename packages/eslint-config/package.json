@@ -9,7 +9,7 @@
   "dependencies": {
     "@eslint/js": "9.20.0",
     "@packages/tsup-config": "workspace:*",
-    "@packages/utilities": "workspace:*",
+    "@packages/utils": "workspace:*",
     "@stylistic/eslint-plugin": "3.1.0",
     "eslint": "9.20.1",
     "eslint-config-flat-gitignore": "2.0.0",
