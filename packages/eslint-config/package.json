@@ -22,6 +22,7 @@
     "eslint-plugin-regexp": "2.7.0",
     "eslint-plugin-unused-imports": "4.1.4",
     "is-in-editor": "0.2.0",
+    "simple-git": "3.27.0",
     "typescript-eslint": "8.24.0"
   },
   "devDependencies": {

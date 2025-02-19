@@ -41,12 +41,12 @@ function definePresetConfig(configs: PresetConfig[]): Config[] {
 export interface Options {
   rootDirectory: string;
 }
-export function createPresetConfig(options: Options): Config[] {
+export async function createPresetConfig(options: Options): Promise<Config[]> {
   const { rootDirectory } = options;
 
   return definePresetConfig([
     {
-      ...createGitignoreConfig({ rootDirectory }),
+      ...(await createGitignoreConfig({ rootDirectory })),
       name: 'gitignore',
     },
     {

@@ -7,10 +7,10 @@ import {
 interface Options {
   presetOptions: PresetOptions;
 }
-export function createConfig(options: Options): Config[] {
+export async function createConfig(options: Options): Promise<Config[]> {
   const { presetOptions } = options;
 
-  const presetConfigs = createPresetConfig(presetOptions);
+  const presetConfigs = await createPresetConfig(presetOptions);
 
   return presetConfigs;
 }
