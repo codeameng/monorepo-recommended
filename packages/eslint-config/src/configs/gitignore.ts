@@ -33,7 +33,6 @@ export async function createGitignoreConfig(
   const gitignoreFiles = await getGitignoreFiles(rootDirectory);
 
   return eslintConfigFlatGitignore({
-    strict: true,
     root: true,
     files: gitignoreFiles,
   });
