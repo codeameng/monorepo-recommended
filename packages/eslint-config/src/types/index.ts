@@ -1,4 +1,4 @@
 import { ConfigArray } from 'typescript-eslint';
 
-export type Config = ConfigArray[number];
-export type ConfigOrArray = Config | Config[];
+export type ESLintConfig = ConfigArray[number];
+export type ESLintConfigOrArray = ESLintConfig | ESLintConfig[];

@@ -1,4 +1,4 @@
-import { Config, ConfigOrArray } from '$types/index.ts';
+import { ESLintConfig, ESLintConfigOrArray } from '$types/index.ts';
 import { GLOBS } from '$utils/globs.ts';
 import { R } from '@packages/utils';
 import { createBuiltInConfig } from './built-in.ts';
@@ -13,11 +13,11 @@ interface PresetConfigWithIgnores {
 interface PresetConfigWithExtends {
   name: string;
   files: (string | string[])[];
-  extends: ConfigOrArray[];
+  extends: ESLintConfigOrArray[];
 }
 type PresetConfig = PresetConfigWithIgnores | PresetConfigWithExtends;
-function definePresetConfig(configs: PresetConfig[]): Config[] {
-  const presetConfigs: Config[] = [];
+function definePresetConfig(configs: PresetConfig[]): ESLintConfig[] {
+  const presetConfigs: ESLintConfig[] = [];
 
   R.forEach(configs, (config) => {
     if ('ignores' in config) {
@@ -41,7 +41,9 @@ function definePresetConfig(configs: PresetConfig[]): Config[] {
 export interface Options {
   rootDirectory: string;
 }
-export async function createPresetConfig(options: Options): Promise<Config[]> {
+export async function createPresetConfig(
+  options: Options,
+): Promise<ESLintConfig[]> {
   const { rootDirectory } = options;
 
   return definePresetConfig([
