@@ -56,7 +56,8 @@ export function definePresetConfig(configs: PresetConfig[]): ESLintConfig[] {
   return presetConfigs;
 }
 
-export function enableAllRules(configs: ESLintConfig[]): ESLintConfig[] {
+export function unshiftAllRules(configs: ESLintConfig[]): ESLintConfig[] {
+  const allRulesConfigs: ESLintConfig[] = [];
 
-  return configs;
+  return R.concat(allRulesConfigs, configs);
 }

@@ -1,7 +1,7 @@
 import { ESLintConfig } from '$types/index.ts';
 import { R } from '@packages/utils';
 import { createPresetConfig, PresetOptions } from './configs/index.ts';
-import { enableAllRules } from '$utils/index.ts';
+import { unshiftAllRules } from '$utils/index.ts';
 
 interface Options {
   shouldEnableAllRules: boolean;
@@ -14,6 +14,6 @@ export async function createConfig(options: Options): Promise<ESLintConfig[]> {
 
   return R.pipe(
     presetConfigs,
-    shouldEnableAllRules ? enableAllRules : R.identity(),
+    shouldEnableAllRules ? unshiftAllRules : R.identity(),
   );
 }
