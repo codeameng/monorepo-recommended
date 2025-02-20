@@ -17,7 +17,7 @@ async function getGitignoreFiles(rootDirectory: string) {
   return R.pipe(
     allFiles,
     R.split(/\r?\n/),
-    R.filter((file) => file.endsWith('.gitignore')),
+    R.filter(R.endsWith('.gitignore')),
     R.map((file) => path.join(rootDirectory, file)),
   );
 }
