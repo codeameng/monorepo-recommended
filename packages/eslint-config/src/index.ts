@@ -1,8 +1,5 @@
 import { ESLintConfig } from '$types/index.ts';
-import {
-  createPresetConfig,
-  Options as PresetOptions,
-} from './configs/index.ts';
+import { createPresetConfig, PresetOptions } from './configs/index.ts';
 
 interface Options {
   presetOptions: PresetOptions;

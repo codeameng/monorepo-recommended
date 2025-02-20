@@ -1,48 +1,15 @@
-import { ESLintConfig, ESLintConfigOrArray } from '$types/index.ts';
+import { ESLintConfig } from '$types/index.ts';
 import { GLOBS } from '$utils/globs.ts';
-import { R } from '@packages/utils';
 import { createBuiltInConfig } from './built-in.ts';
-import { defineConfig } from '$utils/index.ts';
 import { createTypescriptConfig } from './typescript.ts';
 import { createGitignoreConfig } from './gitignore.ts';
+import { definePresetConfig } from '$utils/index.ts';
 
-interface PresetConfigWithIgnores {
-  name: string;
-  ignores: string[];
-}
-interface PresetConfigWithExtends {
-  name: string;
-  files: (string | string[])[];
-  extends: ESLintConfigOrArray[];
-}
-type PresetConfig = PresetConfigWithIgnores | PresetConfigWithExtends;
-function definePresetConfig(configs: PresetConfig[]): ESLintConfig[] {
-  const presetConfigs: ESLintConfig[] = [];
-
-  R.forEach(configs, (config) => {
-    if ('ignores' in config) {
-      presetConfigs.push(config);
-    }
-
-    if ('extends' in config) {
-      const extendsConfigs = defineConfig(config.extends);
-      R.forEach(extendsConfigs, (extendsConfig) => {
-        presetConfigs.push({
-          ...extendsConfig,
-          files: config.files,
-        });
-      });
-    }
-  });
-
-  return presetConfigs;
-}
-
-export interface Options {
+export interface PresetOptions {
   rootDirectory: string;
 }
 export async function createPresetConfig(
-  options: Options,
+  options: PresetOptions,
 ): Promise<ESLintConfig[]> {
   const { rootDirectory } = options;
 
