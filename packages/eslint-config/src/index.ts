@@ -1,13 +1,19 @@
 import { ESLintConfig } from '$types/index.ts';
+import { R } from '@packages/utils';
 import { createPresetConfig, PresetOptions } from './configs/index.ts';
+import { enableAllRules } from '$utils/index.ts';
 
 interface Options {
+  shouldEnableAllRules: boolean;
   presetOptions: PresetOptions;
 }
 export async function createConfig(options: Options): Promise<ESLintConfig[]> {
-  const { presetOptions } = options;
+  const { shouldEnableAllRules, presetOptions } = options;
 
   const presetConfigs = await createPresetConfig(presetOptions);
 
-  return presetConfigs;
+  return R.pipe(
+    presetConfigs,
+    shouldEnableAllRules ? enableAllRules : R.identity(),
+  );
 }

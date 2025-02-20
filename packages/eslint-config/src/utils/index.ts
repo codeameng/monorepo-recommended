@@ -55,3 +55,8 @@ export function definePresetConfig(configs: PresetConfig[]): ESLintConfig[] {
 
   return presetConfigs;
 }
+
+export function enableAllRules(configs: ESLintConfig[]): ESLintConfig[] {
+
+  return configs;
+}
