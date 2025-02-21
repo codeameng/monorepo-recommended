@@ -3,7 +3,7 @@ import { GLOBS } from '$utils/globs.ts';
 import { createBuiltInConfig } from './built-in.ts';
 import { createTypescriptConfig } from './typescript.ts';
 import { createGitignoreConfig } from './gitignore.ts';
-import { definePresetConfig } from '$utils/index.ts';
+import { defineConfig } from '$utils/index.ts';
 
 export interface PresetOptions {
   rootDirectory: string;
@@ -13,7 +13,7 @@ export async function createPresetConfig(
 ): Promise<ESLintConfig[]> {
   const { rootDirectory } = options;
 
-  return definePresetConfig([
+  return defineConfig([
     {
       ...(await createGitignoreConfig({ rootDirectory })),
       name: 'gitignore',

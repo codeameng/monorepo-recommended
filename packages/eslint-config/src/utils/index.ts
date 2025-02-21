@@ -1,4 +1,4 @@
-import { ESLintConfig, ESLintConfigOrArray } from '$types/index.ts';
+import { ESLintConfig } from '$types/index.ts';
 import { R } from '@packages/utils';
 import { simpleGit } from 'simple-git';
 import path from 'path';
@@ -20,40 +20,32 @@ export async function getGitignoreFiles(rootDirectory: string) {
   );
 }
 
-export function defineConfig(configs: ESLintConfigOrArray[]): ESLintConfig[] {
-  return R.flat(configs);
+interface Config extends ESLintConfig {
+  extends?: (ESLintConfig | ESLintConfig[])[];
 }
+export function defineConfig(configs: (Config | Config[])[]): ESLintConfig[] {
+  const eslintConfigs: ESLintConfig[] = [];
 
-interface PresetConfigWithIgnores {
-  name: string;
-  ignores: string[];
-}
-interface PresetConfigWithExtends {
-  name: string;
-  files: (string | string[])[];
-  extends: ESLintConfigOrArray[];
-}
-type PresetConfig = PresetConfigWithIgnores | PresetConfigWithExtends;
-export function definePresetConfig(configs: PresetConfig[]): ESLintConfig[] {
-  const presetConfigs: ESLintConfig[] = [];
-
-  for (const config of configs) {
-    if ('ignores' in config) {
-      presetConfigs.push(config);
+  for (const config of R.flat(configs)) {
+    if (!config.extends) {
+      eslintConfigs.push(config);
+      continue;
     }
 
-    if ('extends' in config) {
-      const extendsConfigs = defineConfig(config.extends);
-      for (const extendsConfig of extendsConfigs) {
-        presetConfigs.push({
-          ...extendsConfig,
-          files: config.files,
-        });
-      }
+    for (const extendsConfig of R.flat(config.extends)) {
+      eslintConfigs.push(
+        R.pipe(
+          extendsConfig,
+          R.merge(R.pick(config, ['files', 'ignores'])),
+          R.omitBy(R.isNot(R.isDefined)),
+        ),
+      );
     }
+
+    eslintConfigs.push(R.omit(config, ['extends']));
   }
 
-  return presetConfigs;
+  return eslintConfigs;
 }
 
 export function unshiftAllRules(configs: ESLintConfig[]): ESLintConfig[] {
