@@ -37,21 +37,21 @@ type PresetConfig = PresetConfigWithIgnores | PresetConfigWithExtends;
 export function definePresetConfig(configs: PresetConfig[]): ESLintConfig[] {
   const presetConfigs: ESLintConfig[] = [];
 
-  R.forEach(configs, (config) => {
+  for (const config of configs) {
     if ('ignores' in config) {
       presetConfigs.push(config);
     }
 
     if ('extends' in config) {
       const extendsConfigs = defineConfig(config.extends);
-      R.forEach(extendsConfigs, (extendsConfig) => {
+      for (const extendsConfig of extendsConfigs) {
         presetConfigs.push({
           ...extendsConfig,
           files: config.files,
         });
-      });
+      }
     }
-  });
+  }
 
   return presetConfigs;
 }
