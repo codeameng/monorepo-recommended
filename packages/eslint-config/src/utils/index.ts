@@ -12,11 +12,7 @@ export function defineConfig(configs: ConfigWithExtendsOrArray[]): Config[] {
 
     for (const extendsConfig of R.flat(config.extends)) {
       eslintConfigs.push(
-        R.pipe(
-          extendsConfig,
-          R.merge(R.pick(config, ['files', 'ignores'])),
-          R.omitBy(R.isNot(R.isDefined)),
-        ),
+        R.merge(extendsConfig, R.pick(config, ['files', 'ignores'])),
       );
     }
 
