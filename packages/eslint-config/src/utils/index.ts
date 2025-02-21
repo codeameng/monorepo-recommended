@@ -1,24 +1,5 @@
 import { R } from '@packages/utils';
-import { simpleGit } from 'simple-git';
-import path from 'path';
 import { Config, ConfigWithExtendsOrArray } from '$types/index.ts';
-
-export async function getGitignoreFiles(rootDirectory: string) {
-  const git = simpleGit(rootDirectory);
-  const allFiles = await git.raw([
-    'ls-files',
-    '--cached',
-    '--others',
-    '--exclude-standard',
-  ]);
-
-  return R.pipe(
-    allFiles,
-    R.split(/\r?\n/),
-    R.filter(R.endsWith('.gitignore')),
-    R.map((file) => path.join(rootDirectory, file)),
-  );
-}
 
 export function defineConfig(configs: ConfigWithExtendsOrArray[]): Config[] {
   const eslintConfigs: Config[] = [];
@@ -43,10 +24,4 @@ export function defineConfig(configs: ConfigWithExtendsOrArray[]): Config[] {
   }
 
   return eslintConfigs;
-}
-
-export function unshiftAllRules(configs: Config[]): Config[] {
-  const allRulesConfigs: Config[] = [];
-
-  return R.concat(allRulesConfigs, configs);
 }

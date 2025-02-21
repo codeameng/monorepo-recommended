@@ -1,10 +1,16 @@
 import { R } from '@packages/utils';
-import { defineConfig, unshiftAllRules } from '$utils/index.ts';
+import { defineConfig } from '$utils/index.ts';
 import { createGitignoreConfig } from './configs/gitignore.ts';
 import { createBuiltInConfig } from './configs/built-in.ts';
 import { createTypescriptConfig } from './configs/typescript.ts';
 import { GLOBS } from '$utils/globs.ts';
 import { Config } from '$types/index.ts';
+
+function unshiftAllRules(configs: Config[]): Config[] {
+  const allRulesConfigs: Config[] = [];
+
+  return R.concat(allRulesConfigs, configs);
+}
 
 interface Options {
   rootDirectory: string;
@@ -15,8 +21,8 @@ export async function createConfig(options: Options): Promise<Config[]> {
 
   const configs = defineConfig([
     {
-      ...(await createGitignoreConfig({ rootDirectory })),
       name: 'gitignore',
+      extends: await createGitignoreConfig({ rootDirectory }),
     },
     {
       name: 'built-in',
