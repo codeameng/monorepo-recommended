@@ -1,19 +1,34 @@
-import { ESLintConfig } from '$types/index.ts';
 import { R } from '@packages/utils';
-import { createPresetConfig, PresetOptions } from './configs/index.ts';
-import { unshiftAllRules } from '$utils/index.ts';
+import { defineConfig, unshiftAllRules } from '$utils/index.ts';
+import { createGitignoreConfig } from './configs/gitignore.ts';
+import { createBuiltInConfig } from './configs/built-in.ts';
+import { createTypescriptConfig } from './configs/typescript.ts';
+import { GLOBS } from '$utils/globs.ts';
+import { Config } from '$types/index.ts';
 
 interface Options {
+  rootDirectory: string;
   shouldEnableAllRules: boolean;
-  presetOptions: PresetOptions;
 }
-export async function createConfig(options: Options): Promise<ESLintConfig[]> {
-  const { shouldEnableAllRules, presetOptions } = options;
+export async function createConfig(options: Options): Promise<Config[]> {
+  const { rootDirectory, shouldEnableAllRules } = options;
 
-  const presetConfigs = await createPresetConfig(presetOptions);
+  const configs = defineConfig([
+    {
+      ...(await createGitignoreConfig({ rootDirectory })),
+      name: 'gitignore',
+    },
+    {
+      name: 'built-in',
+      files: GLOBS.ALL_JS_LIKE,
+      extends: createBuiltInConfig(),
+    },
+    {
+      name: 'typescript',
+      files: GLOBS.ALL_JS_LIKE,
+      extends: createTypescriptConfig({ tsconfigRootDir: rootDirectory }),
+    },
+  ]);
 
-  return R.pipe(
-    presetConfigs,
-    shouldEnableAllRules ? unshiftAllRules : R.identity(),
-  );
+  return R.pipe(configs, shouldEnableAllRules ? unshiftAllRules : R.identity());
 }

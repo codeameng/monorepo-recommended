@@ -3,11 +3,11 @@ import eslintConfigFlatGitignore, {
   FlatConfigItem,
 } from 'eslint-config-flat-gitignore';
 
-interface GitignoreOptions {
+interface Options {
   rootDirectory: string;
 }
 export async function createGitignoreConfig(
-  options: GitignoreOptions,
+  options: Options,
 ): Promise<FlatConfigItem> {
   const { rootDirectory } = options;
 

@@ -1,7 +1,7 @@
-import { ESLintConfig } from '$types/index.ts';
 import { R } from '@packages/utils';
 import { simpleGit } from 'simple-git';
 import path from 'path';
+import { Config, ConfigWithExtendsOrArray } from '$types/index.ts';
 
 export async function getGitignoreFiles(rootDirectory: string) {
   const git = simpleGit(rootDirectory);
@@ -20,11 +20,8 @@ export async function getGitignoreFiles(rootDirectory: string) {
   );
 }
 
-interface Config extends ESLintConfig {
-  extends?: (ESLintConfig | ESLintConfig[])[];
-}
-export function defineConfig(configs: (Config | Config[])[]): ESLintConfig[] {
-  const eslintConfigs: ESLintConfig[] = [];
+export function defineConfig(configs: ConfigWithExtendsOrArray[]): Config[] {
+  const eslintConfigs: Config[] = [];
 
   for (const config of R.flat(configs)) {
     if (!config.extends) {
@@ -48,8 +45,8 @@ export function defineConfig(configs: (Config | Config[])[]): ESLintConfig[] {
   return eslintConfigs;
 }
 
-export function unshiftAllRules(configs: ESLintConfig[]): ESLintConfig[] {
-  const allRulesConfigs: ESLintConfig[] = [];
+export function unshiftAllRules(configs: Config[]): Config[] {
+  const allRulesConfigs: Config[] = [];
 
   return R.concat(allRulesConfigs, configs);
 }

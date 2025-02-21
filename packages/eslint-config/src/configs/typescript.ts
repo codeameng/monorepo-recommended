@@ -1,13 +1,11 @@
-import { ESLintConfig } from '$types/index.ts';
+import { Config } from '$types/index.ts';
 import { defineConfig } from '$utils/index.ts';
 import typescriptEslint from 'typescript-eslint';
 
-interface TypescriptOptions {
+interface Options {
   tsconfigRootDir: string;
 }
-export function createTypescriptConfig(
-  options: TypescriptOptions,
-): ESLintConfig[] {
+export function createTypescriptConfig(options: Options): Config[] {
   const { tsconfigRootDir } = options;
 
   return defineConfig([
