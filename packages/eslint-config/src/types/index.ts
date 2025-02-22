@@ -4,7 +4,7 @@ export type Config = ConfigArray[number];
 
 type ConfigOrArray = Config | Config[];
 
-interface ConfigWithExtends extends Config {
+export interface ConfigWithExtends extends Config {
   extends?: ConfigOrArray[];
 }
 

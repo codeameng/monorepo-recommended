@@ -19,5 +19,5 @@ export function defineConfig(configs: ConfigWithExtendsOrArray[]): Config[] {
     eslintConfigs.push(R.omit(config, ['extends']));
   }
 
-  return eslintConfigs;
+  return R.pipe(eslintConfigs, R.map(R.omitBy(R.isNullish)));
 }
