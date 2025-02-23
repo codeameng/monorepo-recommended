@@ -9,3 +9,9 @@ export interface ConfigWithExtends extends Config {
 }
 
 export type ConfigWithExtendsOrArray = ConfigWithExtends | ConfigWithExtends[];
+
+export type Plugin = NonNullable<Config['plugins']>[string];
+
+export type LooseRuleDefinition = NonNullable<Plugin['rules']>[string];
+
+export type Rules = NonNullable<Config['rules']>;

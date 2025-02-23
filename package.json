@@ -15,7 +15,7 @@
     "dev": "turbo run dev",
     "code-review": "run-s --print-name \"code-review:*\"",
     "code-review:tsc": "tsc --build",
-    "code-review:eslint": "cross-env ESLINT_ENABLE_ALL_RULES=true eslint .",
+    "code-review:eslint": "cross-env ESLINT_INJECT_ALL_RULES=true eslint .",
     "code-review:prettier": "prettier --check --log-level=warn ."
   },
   "devDependencies": {
