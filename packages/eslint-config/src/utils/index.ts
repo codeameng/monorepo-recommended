@@ -7,25 +7,8 @@ import {
 } from '$types/index.ts';
 import eslintJs from '@eslint/js';
 
-export function defineConfig(configs: ConfigWithExtendsOrArray[]): Config[] {
-  const eslintConfigs: Config[] = [];
-
-  for (const config of R.flat(configs)) {
-    if (!config.extends) {
-      eslintConfigs.push(config);
-      continue;
-    }
-
-    for (const extendsConfig of R.flat(config.extends)) {
-      eslintConfigs.push(
-        R.merge(extendsConfig, R.pick(config, ['files', 'ignores'])),
-      );
-    }
-
-    eslintConfigs.push(R.omit(config, ['extends']));
-  }
-
-  return R.pipe(eslintConfigs, R.map(R.omitBy(R.isNullish)));
+function getScopedConfig(config: Config): Config {
+  return R.pick(config, ['files', 'ignores']);
 }
 
 function isDeprecatedRule(rule: LooseRuleDefinition): boolean {
@@ -38,6 +21,25 @@ function isDeprecatedRule(rule: LooseRuleDefinition): boolean {
   return isDeprecatedInMeta ?? false;
 }
 
+export function defineConfig(configs: ConfigWithExtendsOrArray[]): Config[] {
+  const eslintConfigs: Config[] = [];
+
+  for (const config of R.flat(configs)) {
+    if (!config.extends) {
+      eslintConfigs.push(config);
+      continue;
+    }
+
+    for (const extendsConfig of R.flat(config.extends)) {
+      eslintConfigs.push(R.merge(extendsConfig, getScopedConfig(config)));
+    }
+
+    eslintConfigs.push(R.omit(config, ['extends']));
+  }
+
+  return R.pipe(eslintConfigs, R.map(R.omitBy(R.isNullish)));
+}
+
 export function injectAllRules(configs: Config[]): Config[] {
   const allRulesConfigs: Config[] = [eslintJs.configs.all];
 
@@ -46,7 +48,7 @@ export function injectAllRules(configs: Config[]): Config[] {
       continue;
     }
 
-    const allRulesConfig: Config = R.pick(config, ['files', 'ignores']);
+    const allRulesConfig = getScopedConfig(config);
 
     for (const [pluginName, plugin] of R.entries(config.plugins)) {
       if (!plugin.rules) {
