@@ -28,7 +28,7 @@ export function defineConfig(configs: ConfigWithExtendsOrArray[]): Config[] {
   return R.pipe(eslintConfigs, R.map(R.omitBy(R.isNullish)));
 }
 
-function isDeprecatedRuleDefinition(rule: LooseRuleDefinition): boolean {
+function isDeprecatedRule(rule: LooseRuleDefinition): boolean {
   const isDeprecatedInMeta =
     'meta' in rule &&
     rule.meta &&
@@ -55,7 +55,7 @@ export function injectAllRules(configs: Config[]): Config[] {
 
       const allRules: Rules = R.pipe(
         plugin.rules,
-        R.omitBy(isDeprecatedRuleDefinition),
+        R.omitBy(isDeprecatedRule),
         R.keys(),
         R.mapToObj((ruleName) => [`${pluginName}/${ruleName}`, 'error']),
       );
