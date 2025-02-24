@@ -30,9 +30,12 @@ export function defineConfig(configs: ConfigWithExtendsOrArray[]): Config[] {
       continue;
     }
 
-    for (const extendsConfig of R.flat(config.extends)) {
-      eslintConfigs.push(R.merge(extendsConfig, getScopedConfig(config)));
-    }
+    const extendsConfigs = R.flat(config.extends);
+
+    R.forEach(extendsConfigs, (subConfig) => {
+      const scopedConfig = getScopedConfig(config);
+      eslintConfigs.push(R.merge(subConfig, scopedConfig));
+    });
 
     eslintConfigs.push(R.omit(config, ['extends']));
   }
@@ -48,7 +51,7 @@ export function injectAllRules(configs: Config[]): Config[] {
       continue;
     }
 
-    const allRulesConfig = getScopedConfig(config);
+    const scopedConfig = getScopedConfig(config);
 
     for (const [pluginName, plugin] of R.entries(config.plugins)) {
       if (!plugin.rules) {
@@ -62,10 +65,10 @@ export function injectAllRules(configs: Config[]): Config[] {
         R.mapToObj((ruleName) => [`${pluginName}/${ruleName}`, 'error']),
       );
 
-      allRulesConfig.rules = R.merge(allRulesConfig.rules, allRules);
+      scopedConfig.rules = R.merge(scopedConfig.rules, allRules);
     }
 
-    allRulesConfigs.push(allRulesConfig);
+    allRulesConfigs.push(scopedConfig);
   }
 
   return R.concat(allRulesConfigs, configs);
