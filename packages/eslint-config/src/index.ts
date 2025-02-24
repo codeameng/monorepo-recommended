@@ -9,10 +9,11 @@ import { Config, StrictConfigWithExtends } from '$types/index.ts';
 interface Options {
   rootDirectory: string;
   shouldInjectAllRules: boolean;
+  overrideConfigs: Config[];
 }
 
 async function createConfig(options: Options): Promise<Config[]> {
-  const { rootDirectory, shouldInjectAllRules } = options;
+  const { rootDirectory, shouldInjectAllRules, overrideConfigs } = options;
 
   const configs = defineConfig([
     {
@@ -32,7 +33,11 @@ async function createConfig(options: Options): Promise<Config[]> {
     },
   ] satisfies StrictConfigWithExtends[]);
 
-  return R.pipe(configs, shouldInjectAllRules ? injectAllRules : R.identity());
+  return R.pipe(
+    configs,
+    shouldInjectAllRules ? injectAllRules : R.identity(),
+    R.concat(overrideConfigs),
+  );
 }
 
 export { GLOBS, createConfig };
