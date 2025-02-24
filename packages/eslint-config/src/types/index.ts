@@ -10,6 +10,12 @@ export interface ConfigWithExtends extends Config {
 
 export type ConfigWithExtendsOrArray = ConfigWithExtends | ConfigWithExtends[];
 
+export interface StrictConfigWithExtends {
+  name: ConfigWithExtends['name'];
+  files: ConfigWithExtends['files'];
+  extends: ConfigWithExtends['extends'];
+}
+
 export type Plugin = NonNullable<Config['plugins']>[string];
 
 export type LooseRuleDefinition = NonNullable<Plugin['rules']>[string];

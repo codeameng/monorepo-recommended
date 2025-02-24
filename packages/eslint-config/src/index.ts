@@ -4,13 +4,7 @@ import { createGitignoreConfig } from './configs/gitignore.ts';
 import { createBuiltInConfig } from './configs/built-in.ts';
 import { createTypescriptConfig } from './configs/typescript.ts';
 import { GLOBS } from '$utils/globs.ts';
-import { Config, ConfigWithExtends } from '$types/index.ts';
-
-interface StrictConfigWithExtends {
-  name: ConfigWithExtends['name'];
-  files: ConfigWithExtends['files'];
-  extends: ConfigWithExtends['extends'];
-}
+import { Config, StrictConfigWithExtends } from '$types/index.ts';
 
 interface Options {
   rootDirectory: string;
