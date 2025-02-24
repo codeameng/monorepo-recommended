@@ -52,6 +52,13 @@ export const createTypescriptConfig = (options: Options): Config[] => {
          * @see https://typescript-eslint.io/rules/consistent-type-imports
          */
         '@typescript-eslint/consistent-type-imports': 'error',
+        /**
+         * Requires explicit return types on functions and class methods.
+         * Forces developers to think about the types they're returning and serves as inline documentation.
+         *
+         * @see https://typescript-eslint.io/rules/explicit-function-return-type
+         */
+        '@typescript-eslint/explicit-function-return-type': 'error',
       },
     },
   ]);

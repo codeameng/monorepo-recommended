@@ -1,10 +1,11 @@
+import type { Config } from '$types/index.ts';
 import { defineConfig } from '$utils/index.ts';
 import { R } from '@packages/utils';
 import eslintConfigFlatGitignore from 'eslint-config-flat-gitignore';
 import path from 'path';
 import { simpleGit } from 'simple-git';
 
-const getGitignoreFiles = async (rootDirectory: string) => {
+const getGitignoreFiles = async (rootDirectory: string): Promise<string[]> => {
   const git = simpleGit(rootDirectory);
   const allFiles = await git.raw([
     'ls-files',
@@ -24,7 +25,9 @@ const getGitignoreFiles = async (rootDirectory: string) => {
 interface Options {
   rootDirectory: string;
 }
-export const createGitignoreConfig = async (options: Options) => {
+export const createGitignoreConfig = async (
+  options: Options,
+): Promise<Config[]> => {
   const { rootDirectory } = options;
 
   return defineConfig([
