@@ -1,4 +1,4 @@
-import { Config } from '$types/index.ts';
+import type { Config } from '$types/index.ts';
 import { defineConfig } from '$utils/index.ts';
 import typescriptEslint from 'typescript-eslint';
 import eslintJs from '@eslint/js';
@@ -7,7 +7,7 @@ import { R } from '@packages/utils';
 interface Options {
   tsconfigRootDir: string;
 }
-export function createTypescriptConfig(options: Options): Config[] {
+export const createTypescriptConfig = (options: Options): Config[] => {
   const { tsconfigRootDir } = options;
 
   return defineConfig([
@@ -22,7 +22,7 @@ export function createTypescriptConfig(options: Options): Config[] {
       },
     },
     {
-      name: 'typescript-disable-overridden-rules',
+      name: 'disable-overridden-rules',
       rules: R.pipe(
         eslintJs.configs.all.rules,
         R.keys(),
@@ -30,5 +30,29 @@ export function createTypescriptConfig(options: Options): Config[] {
         R.mapToObj((ruleName) => [ruleName, 'off']),
       ),
     },
+    {
+      rules: {
+        /**
+         * Disables the enforcement of readonly types for function parameters.
+         *
+         * - The rule is overly restrictive and requires excessive type annotations
+         * - Poor compatibility with type definitions from third-party libraries
+         * - Adds unnecessary complexity to the codebase and slows down development
+         *
+         * @see https://typescript-eslint.io/rules/prefer-readonly-parameter-types
+         */
+        '@typescript-eslint/prefer-readonly-parameter-types': 'off',
+        /**
+         * Enforces a consistent pattern for type imports.
+         *
+         * - Improves code organization and maintainability
+         * - Enhances tree-shaking capabilities
+         * - Creates a clear visual distinction between value and type imports
+         *
+         * @see https://typescript-eslint.io/rules/consistent-type-imports
+         */
+        '@typescript-eslint/consistent-type-imports': 'error',
+      },
+    },
   ]);
-}
+};

@@ -1,5 +1,5 @@
 import { R } from '@packages/utils';
-import {
+import type {
   Config,
   ConfigWithExtendsOrArray,
   LooseRuleDefinition,
@@ -7,11 +7,11 @@ import {
 } from '$types/index.ts';
 import eslintJs from '@eslint/js';
 
-function getScopedConfig(config: Config): Config {
+const getScopedConfig = (config: Config): Config => {
   return R.pick(config, ['files', 'ignores']);
-}
+};
 
-function isDeprecatedRule(rule: LooseRuleDefinition): boolean {
+const isDeprecatedRule = (rule: LooseRuleDefinition): boolean => {
   const isDeprecatedInMeta =
     'meta' in rule &&
     rule.meta &&
@@ -19,43 +19,45 @@ function isDeprecatedRule(rule: LooseRuleDefinition): boolean {
     rule.meta.deprecated === true;
 
   return isDeprecatedInMeta ?? false;
-}
+};
 
-export function defineConfig(configs: ConfigWithExtendsOrArray[]): Config[] {
+export const defineConfig = (configs: ConfigWithExtendsOrArray[]): Config[] => {
   const eslintConfigs: Config[] = [];
+  const flatConfigs = R.flat(configs);
 
-  for (const config of R.flat(configs)) {
+  R.forEach(flatConfigs, (config) => {
     if (!config.extends) {
       eslintConfigs.push(config);
-      continue;
+      return;
     }
 
-    const extendsConfigs = R.flat(config.extends);
+    const flatExtends = R.flat(config.extends);
 
-    R.forEach(extendsConfigs, (subConfig) => {
+    R.forEach(flatExtends, (subConfig) => {
       const scopedConfig = getScopedConfig(config);
       eslintConfigs.push(R.merge(subConfig, scopedConfig));
     });
 
     eslintConfigs.push(R.omit(config, ['extends']));
-  }
+  });
 
   return R.pipe(eslintConfigs, R.map(R.omitBy(R.isNullish)));
-}
+};
 
-export function injectAllRules(configs: Config[]): Config[] {
+export const injectAllRules = (configs: Config[]): Config[] => {
   const allRulesConfigs: Config[] = [eslintJs.configs.all];
 
-  for (const config of configs) {
+  R.forEach(configs, (config) => {
     if (!config.plugins) {
-      continue;
+      return;
     }
 
     const scopedConfig = getScopedConfig(config);
+    const pluginsEntries = R.entries(config.plugins);
 
-    for (const [pluginName, plugin] of R.entries(config.plugins)) {
+    R.forEach(pluginsEntries, ([pluginName, plugin]) => {
       if (!plugin.rules) {
-        continue;
+        return;
       }
 
       const allRules: Rules = R.pipe(
@@ -66,10 +68,10 @@ export function injectAllRules(configs: Config[]): Config[] {
       );
 
       scopedConfig.rules = R.merge(scopedConfig.rules, allRules);
-    }
+    });
 
     allRulesConfigs.push(scopedConfig);
-  }
+  });
 
   return R.concat(allRulesConfigs, configs);
-}
+};

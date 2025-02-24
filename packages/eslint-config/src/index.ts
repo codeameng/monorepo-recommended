@@ -4,7 +4,7 @@ import { createGitignoreConfig } from './configs/gitignore.ts';
 import { createBuiltInConfig } from './configs/built-in.ts';
 import { createTypescriptConfig } from './configs/typescript.ts';
 import { GLOBS } from '$utils/globs.ts';
-import { Config, StrictConfigWithExtends } from '$types/index.ts';
+import type { Config, StrictConfigWithExtends } from '$types/index.ts';
 
 interface Options {
   rootDirectory: string;
@@ -12,7 +12,7 @@ interface Options {
   overrideConfigs: Config[];
 }
 
-async function createConfig(options: Options): Promise<Config[]> {
+const createConfig = async (options: Options): Promise<Config[]> => {
   const { rootDirectory, shouldInjectAllRules, overrideConfigs } = options;
 
   const configs = defineConfig([
@@ -38,6 +38,6 @@ async function createConfig(options: Options): Promise<Config[]> {
     shouldInjectAllRules ? injectAllRules : R.identity(),
     R.concat(overrideConfigs),
   );
-}
+};
 
 export { GLOBS, createConfig };

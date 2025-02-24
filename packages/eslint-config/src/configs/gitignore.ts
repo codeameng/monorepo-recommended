@@ -4,7 +4,7 @@ import eslintConfigFlatGitignore from 'eslint-config-flat-gitignore';
 import path from 'path';
 import { simpleGit } from 'simple-git';
 
-async function getGitignoreFiles(rootDirectory: string) {
+const getGitignoreFiles = async (rootDirectory: string) => {
   const git = simpleGit(rootDirectory);
   const allFiles = await git.raw([
     'ls-files',
@@ -19,12 +19,12 @@ async function getGitignoreFiles(rootDirectory: string) {
     R.filter(R.endsWith('.gitignore')),
     R.map((file) => path.join(rootDirectory, file)),
   );
-}
+};
 
 interface Options {
   rootDirectory: string;
 }
-export async function createGitignoreConfig(options: Options) {
+export const createGitignoreConfig = async (options: Options) => {
   const { rootDirectory } = options;
 
   return defineConfig([
@@ -33,4 +33,4 @@ export async function createGitignoreConfig(options: Options) {
       files: await getGitignoreFiles(rootDirectory),
     }),
   ]);
-}
+};
