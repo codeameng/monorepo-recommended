@@ -6,14 +6,18 @@ import { createTypescriptConfig } from './configs/typescript.ts';
 import { GLOBS } from '$utils/globs.ts';
 import { Config, ConfigWithExtends } from '$types/index.ts';
 
-type StrictConfigWithExtends = {
+interface StrictConfigWithExtends {
+  name: ConfigWithExtends['name'];
   files: ConfigWithExtends['files'];
-} & Required<Pick<ConfigWithExtends, 'name' | 'extends'>>;
+  extends: ConfigWithExtends['extends'];
+}
+
 interface Options {
   rootDirectory: string;
   shouldInjectAllRules: boolean;
 }
-export async function createConfig(options: Options): Promise<Config[]> {
+
+async function createConfig(options: Options): Promise<Config[]> {
   const { rootDirectory, shouldInjectAllRules } = options;
 
   const configs = defineConfig([
@@ -36,3 +40,5 @@ export async function createConfig(options: Options): Promise<Config[]> {
 
   return R.pipe(configs, shouldInjectAllRules ? injectAllRules : R.identity());
 }
+
+export { GLOBS, createConfig };
