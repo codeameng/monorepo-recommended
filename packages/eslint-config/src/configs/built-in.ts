@@ -48,6 +48,17 @@ export const createBuiltInConfig = () => {
          * @see https://eslint.org/docs/rules/func-style
          */
         'func-style': 'error',
+        /**
+         * Disables the restriction on using ternary operators.
+         *
+         * - Ternary operators can improve code conciseness
+         * - Useful for simple conditional expressions
+         * - Common in modern JavaScript/TypeScript codebases
+         * - Enhances readability when used appropriately
+         *
+         * @see https://eslint.org/docs/rules/no-ternary
+         */
+        'no-ternary': 'off',
       },
     },
   ]);
