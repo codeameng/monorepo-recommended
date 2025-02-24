@@ -60,6 +60,25 @@ export const createBuiltInConfig = (): Config[] => {
          * @see https://eslint.org/docs/rules/no-ternary
          */
         'no-ternary': 'off',
+        /**
+         * Enforces a maximum number of lines per function to maintain code quality.
+         *
+         * - Encourages function decomposition for better maintainability
+         * - Improves code readability and testability
+         * - Helps identify functions that may violate single responsibility principle
+         * - Set to 64 lines to balance between flexibility and maintainability
+         *
+         * @see https://eslint.org/docs/rules/max-lines-per-function
+         */
+        'max-lines-per-function': [
+          'error',
+          {
+            max: 64,
+            skipBlankLines: true,
+            skipComments: true,
+            IIFEs: true,
+          },
+        ],
       },
     },
   ]);
