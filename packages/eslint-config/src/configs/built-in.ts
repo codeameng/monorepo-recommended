@@ -66,7 +66,7 @@ export const createBuiltInConfig = (): Config[] => {
          * - Encourages function decomposition for better maintainability
          * - Improves code readability and testability
          * - Helps identify functions that may violate single responsibility principle
-         * - Set to 64 lines to balance between flexibility and maintainability
+         * - Configured to balance between flexibility and maintainability
          *
          * @see https://eslint.org/docs/rules/max-lines-per-function
          */
@@ -90,6 +90,13 @@ export const createBuiltInConfig = (): Config[] => {
          * @see https://eslint.org/docs/rules/no-undefined
          */
         'no-undefined': 'off',
+        /**
+         * Warns about the presence of warning comments (TODO, FIXME, etc.).
+         * Set to warning level to maintain awareness without blocking development.
+         *
+         * @see https://eslint.org/docs/rules/no-warning-comments
+         */
+        'no-warning-comments': 'warn',
       },
     },
   ]);
