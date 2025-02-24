@@ -8,9 +8,13 @@ export default createConfig({
   overrideConfigs: [
     {
       files: GLOBS.ALL_JS_LIKE,
+      // TODO: Remove these rules once we have a better way to handle them
       rules: {
         'sort-keys': 'off',
         'sort-imports': 'off',
+        'arrow-body-style': 'off',
+        'require-unicode-regexp': 'off',
+        '@typescript-eslint/naming-convention': 'off',
       },
     },
   ],

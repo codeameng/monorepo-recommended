@@ -79,6 +79,17 @@ export const createBuiltInConfig = (): Config[] => {
             IIFEs: true,
           },
         ],
+        /**
+         * Disables the restriction on using the 'undefined' global variable.
+         *
+         * - Modern JavaScript engines protect 'undefined' from being overwritten
+         * - More readable than alternatives like 'void 0'
+         * - Commonly used in null checks and optional chaining
+         * - Standard practice in TypeScript codebases
+         *
+         * @see https://eslint.org/docs/rules/no-undefined
+         */
+        'no-undefined': 'off',
       },
     },
   ]);
