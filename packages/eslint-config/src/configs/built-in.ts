@@ -32,7 +32,6 @@ export const createBuiltInConfig = (): Config[] => {
          *
          * - Improves code readability
          * - Makes variable declarations easier to maintain
-         * - Prevents confusion with comma operator
          * - Simplifies version control diffs
          *
          * @see https://eslint.org/docs/rules/one-var
@@ -85,14 +84,15 @@ export const createBuiltInConfig = (): Config[] => {
          * - Modern JavaScript engines protect 'undefined' from being overwritten
          * - More readable than alternatives like 'void 0'
          * - Commonly used in null checks and optional chaining
-         * - Standard practice in TypeScript codebases
          *
          * @see https://eslint.org/docs/rules/no-undefined
          */
         'no-undefined': 'off',
         /**
          * Warns about the presence of warning comments (TODO, FIXME, etc.).
-         * Set to warning level to maintain awareness without blocking development.
+         *
+         * - Helps track technical debt and pending tasks
+         * - Set to warning level to maintain awareness without blocking development
          *
          * @see https://eslint.org/docs/rules/no-warning-comments
          */

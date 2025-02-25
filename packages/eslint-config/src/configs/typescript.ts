@@ -43,18 +43,28 @@ export const createTypescriptConfig = (options: Options): Config[] => {
          */
         '@typescript-eslint/prefer-readonly-parameter-types': 'off',
         /**
-         * Enforces a consistent pattern for type imports.
+         * Enforces consistent pattern for type imports.
          *
-         * - Improves code organization and maintainability
-         * - Enhances tree-shaking capabilities
-         * - Creates a clear visual distinction between value and type imports
+         * - Avoiding Unintentional Side Effects:
+         *   - Some modules may cause side effects when imported (e.g., network requests, DOM operations)
+         *   - Using type imports ensures these modules won't execute when only types are needed
+         *   - Helps control module loading order
+         *
+         * - Supporting Isolated Module Transpilation:
+         *   - Helps transpilers like Babel/SWC/Vite identify pure type imports
+         *   - Enables transpilers to correctly remove imports used only for type checking
+         *   - Optimizes final production code size
          *
          * @see https://typescript-eslint.io/rules/consistent-type-imports
          */
         '@typescript-eslint/consistent-type-imports': 'error',
         /**
          * Requires explicit return types on functions and class methods.
-         * Forces developers to think about the types they're returning and serves as inline documentation.
+         *
+         * - Improves code maintainability and self-documentation
+         * - Prevents accidental type changes during refactoring
+         * - Makes function signatures more predictable
+         * - Helps catch type-related bugs early in development
          *
          * @see https://typescript-eslint.io/rules/explicit-function-return-type
          */
