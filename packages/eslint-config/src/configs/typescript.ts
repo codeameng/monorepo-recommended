@@ -14,14 +14,6 @@ export const createTypescriptConfig = (options: Options): Config[] => {
     typescriptEslint.configs.strictTypeChecked,
     typescriptEslint.configs.stylisticTypeChecked,
     {
-      languageOptions: {
-        parserOptions: {
-          projectService: true,
-          tsconfigRootDir,
-        },
-      },
-    },
-    {
       name: 'disable-overridden-rules',
       rules: R.pipe(
         eslintJs.configs.all.rules,
@@ -31,6 +23,12 @@ export const createTypescriptConfig = (options: Options): Config[] => {
       ),
     },
     {
+      languageOptions: {
+        parserOptions: {
+          projectService: true,
+          tsconfigRootDir,
+        },
+      },
       rules: {
         /**
          * Disables the enforcement of readonly types for function parameters.
