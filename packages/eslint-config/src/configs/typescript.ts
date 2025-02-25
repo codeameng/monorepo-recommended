@@ -31,11 +31,17 @@ export const createTypescriptConfig = (options: Options): Config[] => {
       },
       rules: {
         /**
-         * Disables the enforcement of readonly types for function parameters.
+         * Disables the requirement for readonly parameter types.
          *
-         * - The rule is overly restrictive and requires excessive type annotations
-         * - Poor compatibility with type definitions from third-party libraries
-         * - Adds unnecessary complexity to the codebase and slows down development
+         * - Developer Experience:
+         *   - Reduces type definition burden
+         *   - Minimizes type conflicts with third-party libraries
+         *   - Avoids excessive type assertions and conversions
+         *
+         * - Practical Considerations:
+         *   - Theoretically sound but too restrictive in practice
+         *   - Not worth enforcing in most projects
+         *   - Can lead to verbose and difficult-to-maintain code
          *
          * @see https://typescript-eslint.io/rules/prefer-readonly-parameter-types
          */
