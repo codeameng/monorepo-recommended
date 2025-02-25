@@ -43,7 +43,7 @@ export const createTypescriptConfig = (options: Options): Config[] => {
          */
         '@typescript-eslint/prefer-readonly-parameter-types': 'off',
         /**
-         * Enforces consistent pattern for type imports.
+         * Enforces consistent usage of type imports.
          *
          * - Avoiding Unintentional Side Effects:
          *   - Some modules may cause side effects when imported (e.g., network requests, DOM operations)
@@ -53,18 +53,36 @@ export const createTypescriptConfig = (options: Options): Config[] => {
          * - Supporting Isolated Module Transpilation:
          *   - Helps transpilers like Babel/SWC/Vite identify pure type imports
          *   - Enables transpilers to correctly remove imports used only for type checking
-         *   - Optimizes final production code size
+         *   - Necessary for transpilers that don't have access to TypeScript's type system
          *
          * @see https://typescript-eslint.io/rules/consistent-type-imports
          */
         '@typescript-eslint/consistent-type-imports': 'error',
         /**
-         * Requires explicit return types on functions and class methods.
+         * Enforces explicit return type declarations for functions.
          *
-         * - Improves code maintainability and self-documentation
-         * - Prevents accidental type changes during refactoring
-         * - Makes function signatures more predictable
-         * - Helps catch type-related bugs early in development
+         * - Documentation:
+         *   - Makes return types visible in code reviews without hovering
+         *   - Provides better self-documentation directly in the code
+         *   - Improves code maintainability and readability
+         *
+         * - Prevents Unintended Inferred Types:
+         *   - Avoids unnecessarily complex inferred types
+         *   - Ensures intended return types are used rather than compiler inference
+         *
+         * - Ensures Correctness:
+         *   - Implements a contract that validates the function implementation
+         *   - Catches missing return statements or incorrect return values
+         *   - Alerts errors at the source rather than where the return value is used
+         *
+         * - Aids Refactoring:
+         *   - Helps maintain consistent return types during implementation changes
+         *   - Guides refactoring by immediately identifying type mismatches
+         *   - Provides better TypeScript guidance during large-scale changes
+         *
+         * - Improves Performance:
+         *   - Can improve TypeScript compiler performance
+         *   - Named types are more compact than inferred anonymous types
          *
          * @see https://typescript-eslint.io/rules/explicit-function-return-type
          */
