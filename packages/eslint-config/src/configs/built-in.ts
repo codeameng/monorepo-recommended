@@ -25,7 +25,7 @@ export const createBuiltInConfig = (): Config[] => {
          *   - Using flags or nested conditionals as alternatives can be error-prone
          *   - Well-placed continue statements can enhance code maintainability
          *
-         * @see https://eslint.org/docs/latest/rules/no-continue
+         * @see https://eslint.org/docs/rules/no-continue
          */
         'no-continue': 'off',
         /**
@@ -46,7 +46,7 @@ export const createBuiltInConfig = (): Config[] => {
          *   - Can be adjusted based on project requirements and context
          *   - Works best when used alongside other code quality metrics
          *
-         * @see https://eslint.org/docs/latest/rules/max-statements
+         * @see https://eslint.org/docs/rules/max-statements
          */
         'max-statements': ['error', 10],
         /**
@@ -67,7 +67,7 @@ export const createBuiltInConfig = (): Config[] => {
          *   - Makes type annotations more readable
          *   - Consistent with modern JavaScript best practices
          *
-         * @see https://eslint.org/docs/latest/rules/one-var
+         * @see https://eslint.org/docs/rules/one-var
          */
         'one-var': ['error', 'never'],
         /**
@@ -88,7 +88,7 @@ export const createBuiltInConfig = (): Config[] => {
          *   - Treats functions like other variables with consistent scoping rules
          *   - Reduces potential for temporal dead zone issues
          *
-         * @see https://eslint.org/docs/latest/rules/func-style
+         * @see https://eslint.org/docs/rules/func-style
          */
         'func-style': ['error', 'expression'],
         /**
@@ -109,7 +109,7 @@ export const createBuiltInConfig = (): Config[] => {
          *   - Particularly useful in TypeScript for conditional types
          *   - When used appropriately, improves code readability
          *
-         * @see https://eslint.org/docs/latest/rules/no-ternary
+         * @see https://eslint.org/docs/rules/no-ternary
          */
         'no-ternary': 'off',
         /**
@@ -130,7 +130,7 @@ export const createBuiltInConfig = (): Config[] => {
          *   - Not so restrictive as to force artificial function splitting
          *   - Accommodates proper error handling and documentation
          *
-         * @see https://eslint.org/docs/latest/rules/max-lines-per-function
+         * @see https://eslint.org/docs/rules/max-lines-per-function
          */
         'max-lines-per-function': [
           'error',
@@ -159,7 +159,7 @@ export const createBuiltInConfig = (): Config[] => {
          *   - Forces unnecessarily verbose alternative patterns
          *   - TypeScript's type system already provides safety around undefined
          *
-         * @see https://eslint.org/docs/latest/rules/no-undefined
+         * @see https://eslint.org/docs/rules/no-undefined
          */
         'no-undefined': 'off',
         /**
@@ -171,7 +171,7 @@ export const createBuiltInConfig = (): Config[] => {
          *   - Avoids duplicate functionality with task management systems
          *   - Allows more flexible and customized warning comment workflows
          *
-         * @see https://eslint.org/docs/latest/rules/no-warning-comments
+         * @see https://eslint.org/docs/rules/no-warning-comments
          */
         'no-warning-comments': 'off',
       },
