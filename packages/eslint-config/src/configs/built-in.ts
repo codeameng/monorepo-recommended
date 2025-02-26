@@ -29,26 +29,26 @@ export const createBuiltInConfig = (): Config[] => {
          */
         'no-continue': 'off',
         /**
-         * Configures a higher limit for the maximum number of statements allowed in a function.
+         * Configures the maximum number of statements allowed in a function.
          *
          * - Function Complexity Management:
-         *   - Allows more complex functions when appropriate
-         *   - Prevents arbitrary splitting of cohesive logic
-         *   - Recognizes that some complex algorithms require more statements
+         *   - Encourages breaking complex logic into smaller functions
+         *   - Improves code maintainability and readability
+         *   - Helps adhere to the single responsibility principle
          *
          * - Developer Experience:
-         *   - Avoids forcing artificial function boundaries
-         *   - Reduces refactoring overhead for reasonable function sizes
-         *   - Permits domain-specific complexity when necessary
+         *   - Prompts developers to consider function responsibilities and boundaries
+         *   - Simplifies code review and testing processes
+         *   - Facilitates quick understanding of function purpose and behavior
          *
          * - Practical Considerations:
-         *   - Some operations naturally require more statements to implement clearly
-         *   - Function length alone is not always indicative of poor code quality
-         *   - Other metrics like cyclomatic complexity often better indicate maintainability
+         *   - Appropriate function size limits help identify overly complex implementations
+         *   - Can be adjusted based on project requirements and context
+         *   - Works best when used alongside other code quality metrics
          *
          * @see https://eslint.org/docs/latest/rules/max-statements
          */
-        'max-statements': ['error', 16],
+        'max-statements': ['error', 10],
         /**
          * Enforces one variable declaration per statement.
          *
