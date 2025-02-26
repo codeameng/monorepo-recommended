@@ -5,6 +5,7 @@ import { createBuiltInConfig } from './configs/built-in.ts';
 import { createTypescriptConfig } from './configs/typescript.ts';
 import { GLOBS } from '$utils/globs.ts';
 import type { Config, StrictConfigWithExtends } from '$types/index.ts';
+import { createStylisticConfig } from './configs/stylistic.ts';
 
 interface Options {
   rootDirectory: string;
@@ -30,6 +31,11 @@ const createConfig = async (options: Options): Promise<Config[]> => {
       name: 'typescript',
       files: GLOBS.ALL_JS_LIKE,
       extends: createTypescriptConfig({ tsconfigRootDir: rootDirectory }),
+    },
+    {
+      name: 'stylistic',
+      files: GLOBS.ALL_JS_LIKE,
+      extends: createStylisticConfig(),
     },
   ] satisfies StrictConfigWithExtends[]);
 
