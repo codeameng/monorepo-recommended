@@ -2,9 +2,11 @@ import { createConfig, GLOBS } from '@packages/eslint-config';
 
 const { ESLINT_INJECT_ALL_RULES } = process.env;
 
+const shouldInjectAllRules = ESLINT_INJECT_ALL_RULES === 'true';
+
 export default createConfig({
   rootDirectory: import.meta.dirname,
-  shouldInjectAllRules: ESLINT_INJECT_ALL_RULES === 'true',
+  shouldInjectAllRules,
   overrideConfigs: [
     {
       files: GLOBS.ALL_JS_LIKE,
