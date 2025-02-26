@@ -10,20 +10,9 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Disables the restriction on using the continue statement.
          *
-         * - Code Readability:
-         *   - Allows for clearer expression of "early skip" logic in loops
-         *   - Reduces nesting levels in complex conditional blocks
-         *   - Improves scan-ability by highlighting exceptional cases first
-         *
-         * - Control Flow Management:
-         *   - Provides a straightforward way to skip iterations
-         *   - Reduces cognitive load when handling exception cases
-         *   - Allows for more linear code execution paths
-         *
-         * - Practical Considerations:
-         *   - Forcing alternatives often leads to more complex code
-         *   - Using flags or nested conditionals as alternatives can be error-prone
-         *   - Well-placed continue statements can enhance code maintainability
+         * Benefits: Improves code readability (clearer "early skip" logic, reduces nesting),
+         * simplifies control flow management, and often leads to more maintainable code
+         * compared to alternatives like flags or nested conditionals.
          *
          * @see https://eslint.org/docs/rules/no-continue
          */
@@ -31,20 +20,9 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Configures the maximum number of statements allowed in a function.
          *
-         * - Function Complexity Management:
-         *   - Encourages breaking complex logic into smaller functions
-         *   - Improves code maintainability and readability
-         *   - Helps adhere to the single responsibility principle
-         *
-         * - Developer Experience:
-         *   - Prompts developers to consider function responsibilities and boundaries
-         *   - Simplifies code review and testing processes
-         *   - Facilitates quick understanding of function purpose and behavior
-         *
-         * - Practical Considerations:
-         *   - Appropriate function size limits help identify overly complex implementations
-         *   - Can be adjusted based on project requirements and context
-         *   - Works best when used alongside other code quality metrics
+         * Benefits: Manages function complexity, encourages breaking down logic into
+         * smaller functions, improves maintainability, and helps adhere to the
+         * single responsibility principle.
          *
          * @see https://eslint.org/docs/rules/max-statements
          */
@@ -52,20 +30,8 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Enforces one variable declaration per statement.
          *
-         * - Code Clarity:
-         *   - Improves readability by giving each variable its own line
-         *   - Makes code review more straightforward
-         *   - Prevents confusion with complex initialization patterns
-         *
-         * - Debugging and Maintenance:
-         *   - Easier to add or remove individual variables
-         *   - Simplifies debugging by isolating variable declarations
-         *   - Reduces merge conflicts in version control
-         *
-         * - TypeScript Integration:
-         *   - Better aligns with TypeScript's type declaration syntax
-         *   - Makes type annotations more readable
-         *   - Consistent with modern JavaScript best practices
+         * Benefits: Improves code clarity, simplifies debugging and maintenance,
+         * and better aligns with TypeScript's type declaration syntax.
          *
          * @see https://eslint.org/docs/rules/one-var
          */
@@ -73,20 +39,9 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Enforces the use of function expressions instead of function declarations.
          *
-         * - Consistency and Predictability:
-         *   - Creates a uniform approach to function definitions
-         *   - Prevents mixing different function styles within the codebase
-         *   - Establishes clear patterns for code organization
-         *
-         * - Modern JavaScript Practices:
-         *   - Aligns with functional programming paradigms
-         *   - Works better with TypeScript's type system for complex functions
-         *   - Encourages the use of arrow functions for concise expressions
-         *
-         * - Scoping Benefits:
-         *   - Avoids function hoisting which can lead to confusing behavior
-         *   - Treats functions like other variables with consistent scoping rules
-         *   - Reduces potential for temporal dead zone issues
+         * Benefits: Creates consistency in function definitions, aligns with modern
+         * JavaScript practices, and avoids function hoisting which can lead to
+         * confusing behavior.
          *
          * @see https://eslint.org/docs/rules/func-style
          */
@@ -94,20 +49,8 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Disables the restriction on using ternary operators.
          *
-         * - Code Conciseness:
-         *   - Enables compact, expressive conditional assignments
-         *   - Reduces boilerplate for simple conditional logic
-         *   - Can lead to more declarative code patterns
-         *
-         * - Modern JavaScript Idioms:
-         *   - Ternary operators are a standard part of modern JS/TS development
-         *   - Common in React and other declarative frameworks
-         *   - Used extensively in functional programming patterns
-         *
-         * - Developer Experience:
-         *   - Well-understood by most developers
-         *   - Particularly useful in TypeScript for conditional types
-         *   - When used appropriately, improves code readability
+         * Benefits: Enables concise conditional expressions, aligns with modern
+         * JavaScript idioms, and improves code readability when used appropriately.
          *
          * @see https://eslint.org/docs/rules/no-ternary
          */
@@ -115,20 +58,9 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Sets a reasonable maximum length for functions.
          *
-         * - Code Organization:
-         *   - Encourages breaking large functions into smaller, focused units
-         *   - Promotes single responsibility principle
-         *   - Improves overall code structure and organization
-         *
-         * - Cognitive Load Management:
-         *   - Limits the amount of logic a developer needs to understand at once
-         *   - Makes functions easier to reason about and debug
-         *   - Enhances maintainability of the codebase
-         *
-         * - Practical Balance:
-         *   - Allows enough lines for meaningful implementation
-         *   - Not so restrictive as to force artificial function splitting
-         *   - Accommodates proper error handling and documentation
+         * Benefits: Encourages better code organization, reduces cognitive load,
+         * and strikes a practical balance that allows meaningful implementation
+         * without forcing artificial function splitting.
          *
          * @see https://eslint.org/docs/rules/max-lines-per-function
          */
@@ -144,20 +76,9 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Allows the use of undefined as a variable or property.
          *
-         * - TypeScript Integration:
-         *   - undefined is a fundamental concept in TypeScript's type system
-         *   - Used extensively with optional parameters and properties
-         *   - Essential for nullable and optional type handling
-         *
-         * - Modern JavaScript Practices:
-         *   - undefined is a standard primitive value in JavaScript
-         *   - Commonly used to represent uninitialized state
-         *   - Essential for optional chaining and nullish coalescing
-         *
-         * - Practical Considerations:
-         *   - Restricting undefined creates artificial limitations
-         *   - Forces unnecessarily verbose alternative patterns
-         *   - TypeScript's type system already provides safety around undefined
+         * Rationale: Undefined is fundamental to TypeScript's type system and modern
+         * JavaScript practices. Restricting it creates artificial limitations and
+         * forces unnecessarily verbose alternative patterns.
          *
          * @see https://eslint.org/docs/rules/no-undefined
          */
@@ -165,11 +86,8 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Disables ESLint warning comments checking in favor of dedicated tools.
          *
-         * - Rationale:
-         *   - Warning comments (TODO, FIXME) are better managed by specialized tools
-         *   - Dedicated tools provide better tracking and management features
-         *   - Avoids duplicate functionality with task management systems
-         *   - Allows more flexible and customized warning comment workflows
+         * Rationale: Warning comments (TODO, FIXME) are better managed by specialized
+         * tools that provide better tracking and management features.
          *
          * @see https://eslint.org/docs/rules/no-warning-comments
          */
