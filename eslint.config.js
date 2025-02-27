@@ -14,7 +14,6 @@ export default createConfig({
       rules: {
         'sort-keys': 'off',
         'sort-imports': 'off',
-        'arrow-body-style': 'off',
         'require-unicode-regexp': 'off',
         'capitalized-comments': 'off',
         '@typescript-eslint/no-magic-numbers': 'off',

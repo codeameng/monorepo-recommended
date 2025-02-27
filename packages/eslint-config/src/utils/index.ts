@@ -7,9 +7,8 @@ import type {
 } from '$types/index.ts';
 import eslintJs from '@eslint/js';
 
-const getScopedConfig = (config: Config): Config => {
-  return R.pick(config, ['files', 'ignores']);
-};
+const getScopedConfig = (config: Config): Config =>
+  R.pick(config, ['files', 'ignores']);
 
 const isDeprecatedRule = (rule: LooseRuleDefinition): boolean => {
   const isDeprecatedInMeta =
