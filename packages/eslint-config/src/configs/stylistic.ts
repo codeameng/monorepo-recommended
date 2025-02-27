@@ -1,14 +1,14 @@
 import type { Config } from '$types/index.ts';
 import { defineConfig } from '$utils/index.ts';
-import stylisticEslintPlugin from '@stylistic/eslint-plugin';
+// import stylisticEslintPlugin from '@stylistic/eslint-plugin';
 
 export const createStylisticConfig = (): Config[] => {
   return defineConfig([
-    {
-      plugins: {
-        '@stylistic': stylisticEslintPlugin,
-      },
-      rules: {},
-    },
+    // {
+    //   plugins: {
+    //     '@stylistic': stylisticEslintPlugin,
+    //   },
+    //   rules: {},
+    // },
   ]);
 };
