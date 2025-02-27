@@ -71,7 +71,7 @@ export const createBuiltInConfig = (): Config[] =>
          * Rationale: While disabling line-based function length restrictions, we still encourage
          * appropriate function decomposition. Functions should be split based on logical cohesion
          * rather than simple line count. This goal is better achieved through other more appropriate
-         * rules such as max-statements, complexity, etc. This approach more effectively promotes
+         * rules such as complexity, max-depth, etc. This approach more effectively promotes
          * code quality while avoiding readability issues that might arise from artificial
          * line-count-based function splitting.
          *
