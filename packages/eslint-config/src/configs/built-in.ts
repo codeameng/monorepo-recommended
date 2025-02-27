@@ -102,6 +102,16 @@ export const createBuiltInConfig = (): Config[] =>
          * @see https://eslint.org/docs/rules/no-warning-comments
          */
         'no-warning-comments': 'off',
+        /**
+         * Disables the requirement for comments to start with uppercase letters.
+         *
+         * Rationale: While consistent comment formatting has value, enforcing capitalization
+         * can reduce developers' willingness to write comments. The quality and presence of
+         * comments is more important than their format.
+         *
+         * @see https://eslint.org/docs/rules/capitalized-comments
+         */
+        'capitalized-comments': 'off',
       },
     },
   ]);
