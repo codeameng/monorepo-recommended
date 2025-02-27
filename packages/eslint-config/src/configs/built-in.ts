@@ -66,23 +66,18 @@ export const createBuiltInConfig = (): Config[] =>
          */
         'arrow-body-style': ['error', 'as-needed'],
         /**
-         * Sets a reasonable maximum length for functions.
+         * Disables the maximum length restriction for functions.
          *
-         * Benefits: Encourages better code organization, reduces cognitive load,
-         * and strikes a practical balance that allows meaningful implementation
-         * without forcing artificial function splitting.
+         * Rationale: While disabling line-based function length restrictions, we still encourage
+         * appropriate function decomposition. Functions should be split based on logical cohesion
+         * rather than simple line count. This goal is better achieved through other more appropriate
+         * rules such as max-statements, complexity, etc. This approach more effectively promotes
+         * code quality while avoiding readability issues that might arise from artificial
+         * line-count-based function splitting.
          *
          * @see https://eslint.org/docs/rules/max-lines-per-function
          */
-        'max-lines-per-function': [
-          'error',
-          {
-            max: 64,
-            skipBlankLines: true,
-            skipComments: true,
-            IIFEs: true,
-          },
-        ],
+        'max-lines-per-function': 'off',
         /**
          * Allows the use of undefined as a variable or property.
          *
