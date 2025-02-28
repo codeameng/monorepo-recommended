@@ -60,6 +60,18 @@ export const createTypescriptConfig = (options: Options): Config[] => {
          * @see https://typescript-eslint.io/rules/explicit-function-return-type
          */
         '@typescript-eslint/explicit-function-return-type': 'error',
+        /**
+         * Enforces the use of top-level import type qualifier to avoid side effects.
+         *
+         * Benefits: When using the verbatimModuleSyntax compiler option, prevents inline type imports
+         * from generating unnecessary empty imports (e.g., import {} from 'mod'). This avoids
+         * unintended side effects such as: module execution at runtime, increased bundle size,
+         * potential circular dependencies, and slower application startup. Ensures type-only
+         * imports are completely removed during compilation, keeping build output clean and minimal.
+         *
+         * @see https://typescript-eslint.io/rules/no-import-type-side-effects
+         */
+        '@typescript-eslint/no-import-type-side-effects': 'error',
       },
     },
   ]);

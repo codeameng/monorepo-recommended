@@ -14,7 +14,7 @@ export const createBuiltInConfig = (): Config[] =>
          * simplifies control flow management, and often leads to more maintainable code
          * compared to alternatives like flags or nested conditionals.
          *
-         * @see https://eslint.org/docs/rules/no-continue
+         * @see https://eslint.org/docs/latest/rules/no-continue
          */
         'no-continue': 'off',
         /**
@@ -24,7 +24,7 @@ export const createBuiltInConfig = (): Config[] =>
          * smaller functions, improves maintainability, and helps adhere to the
          * single responsibility principle.
          *
-         * @see https://eslint.org/docs/rules/max-statements
+         * @see https://eslint.org/docs/latest/rules/max-statements
          */
         'max-statements': ['error', 10],
         /**
@@ -33,7 +33,7 @@ export const createBuiltInConfig = (): Config[] =>
          * Benefits: Improves code clarity, simplifies debugging and maintenance,
          * and better aligns with TypeScript's type declaration syntax.
          *
-         * @see https://eslint.org/docs/rules/one-var
+         * @see https://eslint.org/docs/latest/rules/one-var
          */
         'one-var': ['error', 'never'],
         /**
@@ -43,7 +43,7 @@ export const createBuiltInConfig = (): Config[] =>
          * JavaScript practices, and avoids function hoisting which can lead to
          * confusing behavior.
          *
-         * @see https://eslint.org/docs/rules/func-style
+         * @see https://eslint.org/docs/latest/rules/func-style
          */
         'func-style': ['error', 'expression'],
         /**
@@ -52,7 +52,7 @@ export const createBuiltInConfig = (): Config[] =>
          * Benefits: Enables concise conditional expressions, aligns with modern
          * JavaScript idioms, and improves code readability when used appropriately.
          *
-         * @see https://eslint.org/docs/rules/no-ternary
+         * @see https://eslint.org/docs/latest/rules/no-ternary
          */
         'no-ternary': 'off',
         /**
@@ -62,7 +62,7 @@ export const createBuiltInConfig = (): Config[] =>
          * encourages functional programming patterns with concise expressions, and
          * maintains consistency in arrow function syntax across the codebase.
          *
-         * @see https://eslint.org/docs/rules/arrow-body-style
+         * @see https://eslint.org/docs/latest/rules/arrow-body-style
          */
         'arrow-body-style': ['error', 'as-needed'],
         /**
@@ -72,12 +72,12 @@ export const createBuiltInConfig = (): Config[] =>
          * and strikes a practical balance that allows meaningful implementation
          * without forcing artificial function splitting.
          *
-         * @see https://eslint.org/docs/rules/max-lines-per-function
+         * @see https://eslint.org/docs/latest/rules/max-lines-per-function
          */
         'max-lines-per-function': [
           'error',
           {
-            max: 64,
+            max: 50,
             skipBlankLines: true,
             skipComments: true,
             IIFEs: true,
@@ -90,7 +90,7 @@ export const createBuiltInConfig = (): Config[] =>
          * JavaScript practices. Restricting it creates artificial limitations and
          * forces unnecessarily verbose alternative patterns.
          *
-         * @see https://eslint.org/docs/rules/no-undefined
+         * @see https://eslint.org/docs/latest/rules/no-undefined
          */
         'no-undefined': 'off',
         /**
@@ -99,19 +99,29 @@ export const createBuiltInConfig = (): Config[] =>
          * Rationale: Warning comments (TODO, FIXME) are better managed by specialized
          * tools that provide better tracking and management features.
          *
-         * @see https://eslint.org/docs/rules/no-warning-comments
+         * @see https://eslint.org/docs/latest/rules/no-warning-comments
          */
         'no-warning-comments': 'off',
         /**
-         * Disables the requirement for comments to start with uppercase letters.
+         * Enforces capitalization of the first letter in block comments while ignoring all line comments.
          *
-         * Rationale: While consistent comment formatting has value, enforcing capitalization
-         * can reduce developers' willingness to write comments. The quality and presence of
-         * comments is more important than their format.
+         * Benefits: Maintains professionalism and consistency in documentation blocks
+         * where formal documentation is important, while allowing flexibility in quick
+         * line comments for development notes, debugging, and inline explanations without
+         * disrupting developer workflow.
          *
-         * @see https://eslint.org/docs/rules/capitalized-comments
+         * @see https://eslint.org/docs/latest/rules/capitalized-comments
          */
-        'capitalized-comments': 'off',
+        'capitalized-comments': [
+          'error',
+          'always',
+          {
+            block: {},
+            line: {
+              ignorePattern: '.*',
+            },
+          },
+        ],
       },
     },
   ]);
