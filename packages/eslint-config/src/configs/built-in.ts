@@ -26,7 +26,7 @@ export const createBuiltInConfig = (): Config[] =>
          *
          * @see https://eslint.org/docs/latest/rules/max-statements
          */
-        'max-statements': ['error', 10],
+        'max-statements': ['error', { max: 10 }],
         /**
          * Enforces one variable declaration per statement.
          *
@@ -120,6 +120,22 @@ export const createBuiltInConfig = (): Config[] =>
             line: {
               ignorePattern: '.*',
             },
+          },
+        ],
+        /**
+         * Prohibits the use of magic numbers (unnamed numeric literals) in code.
+         *
+         * Benefits: Improves code maintainability and readability by requiring developers
+         * to declare named constants for numeric values, making their purpose explicit.
+         * Prevents confusion about the meaning of arbitrary numbers and reduces errors when
+         * values need to be changed.
+         *
+         * @see https://typescript-eslint.io/rules/no-magic-numbers
+         */
+        '@typescript-eslint/no-magic-numbers': [
+          'error',
+          {
+            ignore: [-1, 0, 1],
           },
         ],
       },
