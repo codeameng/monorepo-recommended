@@ -35,7 +35,7 @@ const createConfig = async (options: Options): Promise<Config[]> => {
     {
       name: 'stylistic',
       files: GLOBS.ALL_JS_LIKE,
-      extends: createStylisticConfig(),
+      extends: await createStylisticConfig(),
     },
   ] satisfies StrictConfigWithExtends[]);
 
