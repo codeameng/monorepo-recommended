@@ -20,7 +20,19 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
          *
          * @see https://eslint.style/rules/default/quotes
          */
-        '@stylistic/quotes': ['error', singleQuote ? 'single' : 'double'],
+        '@stylistic/quotes': [
+          'error',
+          singleQuote ? 'single' : 'double',
+          {
+            ignoreStringLiterals: true,
+          },
+        ],
+        /**
+         * Disabled to prevent conflicts with Prettier formatting.
+         *
+         * @see https://eslint.style/rules/default/object-curly-spacing
+         */
+        '@stylistic/object-curly-spacing': 'off',
       },
     },
   ]);
