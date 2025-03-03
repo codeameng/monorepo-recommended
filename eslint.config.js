@@ -16,7 +16,6 @@ export default createConfig({
         'sort-imports': 'off',
         'require-unicode-regexp': 'off',
         '@typescript-eslint/naming-convention': 'off',
-        '@typescript-eslint/strict-boolean-expressions': 'off',
         '@stylistic/implicit-arrow-linebreak': 'off',
       },
     },

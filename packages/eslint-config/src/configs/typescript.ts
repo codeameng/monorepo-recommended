@@ -42,6 +42,20 @@ export const createTypescriptConfig = (options: Options): Config[] => {
         '@typescript-eslint/prefer-readonly-parameter-types': 'off',
 
         /**
+         * Restricts the types allowed in boolean expressions.
+         *
+         * Benefits: Prevents subtle bugs from implicit type conversions,
+         * makes boolean conditions more explicit and readable, and encourages
+         * proper null/undefined checking patterns.
+         *
+         * Configuration allows common TypeScript patterns while preventing dangerous
+         * implicit conversions.
+         *
+         * @see https://typescript-eslint.io/rules/strict-boolean-expressions
+         */
+        '@typescript-eslint/strict-boolean-expressions': 'error',
+
+        /**
          * Enforces consistent usage of type imports.
          *
          * Benefits: Avoids unintentional side effects from module imports,

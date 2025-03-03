@@ -83,7 +83,7 @@ export const createBuiltInConfig = (): Config[] =>
         'max-lines-per-function': [
           'error',
           {
-            max: 50,
+            max: 64,
             skipBlankLines: true,
             skipComments: true,
             IIFEs: true,
