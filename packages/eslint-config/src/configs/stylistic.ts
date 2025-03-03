@@ -78,6 +78,13 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
             allowClassStart: true,
           },
         ],
+
+        /**
+         * Disabled to prevent conflicts with Prettier formatting.
+         *
+         * @see https://eslint.style/rules/default/padded-blocks
+         */
+        '@stylistic/padded-blocks': 'off',
       },
     },
   ]);
