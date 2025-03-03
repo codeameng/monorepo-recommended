@@ -40,6 +40,7 @@ export const createTypescriptConfig = (options: Options): Config[] => {
          * @see https://typescript-eslint.io/rules/prefer-readonly-parameter-types
          */
         '@typescript-eslint/prefer-readonly-parameter-types': 'off',
+
         /**
          * Enforces consistent usage of type imports.
          *
@@ -50,6 +51,7 @@ export const createTypescriptConfig = (options: Options): Config[] => {
          * @see https://typescript-eslint.io/rules/consistent-type-imports
          */
         '@typescript-eslint/consistent-type-imports': 'error',
+
         /**
          * Enforces explicit return type declarations for functions.
          *
@@ -60,6 +62,7 @@ export const createTypescriptConfig = (options: Options): Config[] => {
          * @see https://typescript-eslint.io/rules/explicit-function-return-type
          */
         '@typescript-eslint/explicit-function-return-type': 'error',
+
         /**
          * Enforces the use of top-level import type qualifier to avoid side effects.
          *

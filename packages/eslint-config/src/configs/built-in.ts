@@ -17,6 +17,7 @@ export const createBuiltInConfig = (): Config[] =>
          * @see https://eslint.org/docs/latest/rules/no-continue
          */
         'no-continue': 'off',
+
         /**
          * Configures the maximum number of statements allowed in a function.
          *
@@ -27,6 +28,7 @@ export const createBuiltInConfig = (): Config[] =>
          * @see https://eslint.org/docs/latest/rules/max-statements
          */
         'max-statements': ['error', { max: 10 }],
+
         /**
          * Enforces one variable declaration per statement.
          *
@@ -36,6 +38,7 @@ export const createBuiltInConfig = (): Config[] =>
          * @see https://eslint.org/docs/latest/rules/one-var
          */
         'one-var': ['error', 'never'],
+
         /**
          * Enforces the use of function expressions instead of function declarations.
          *
@@ -46,6 +49,7 @@ export const createBuiltInConfig = (): Config[] =>
          * @see https://eslint.org/docs/latest/rules/func-style
          */
         'func-style': ['error', 'expression'],
+
         /**
          * Disables the restriction on using ternary operators.
          *
@@ -55,6 +59,7 @@ export const createBuiltInConfig = (): Config[] =>
          * @see https://eslint.org/docs/latest/rules/no-ternary
          */
         'no-ternary': 'off',
+
         /**
          * Enforces concise arrow function syntax using 'as-needed' approach.
          *
@@ -65,6 +70,7 @@ export const createBuiltInConfig = (): Config[] =>
          * @see https://eslint.org/docs/latest/rules/arrow-body-style
          */
         'arrow-body-style': ['error', 'as-needed'],
+
         /**
          * Sets a reasonable maximum length for functions.
          *
@@ -83,6 +89,7 @@ export const createBuiltInConfig = (): Config[] =>
             IIFEs: true,
           },
         ],
+
         /**
          * Allows the use of undefined as a variable or property.
          *
@@ -93,6 +100,7 @@ export const createBuiltInConfig = (): Config[] =>
          * @see https://eslint.org/docs/latest/rules/no-undefined
          */
         'no-undefined': 'off',
+
         /**
          * Disables ESLint warning comments checking in favor of dedicated tools.
          *
@@ -102,6 +110,7 @@ export const createBuiltInConfig = (): Config[] =>
          * @see https://eslint.org/docs/latest/rules/no-warning-comments
          */
         'no-warning-comments': 'off',
+
         /**
          * Enforces capitalization of the first letter in block comments while ignoring all line comments.
          *
@@ -122,6 +131,7 @@ export const createBuiltInConfig = (): Config[] =>
             },
           },
         ],
+
         /**
          * Prohibits the use of magic numbers (unnamed numeric literals) in code.
          *
