@@ -108,6 +108,76 @@ export const createTypescriptConfig = (options: Options): Config[] => {
             ignore: [-1, 0, 1],
           },
         ],
+
+        /**
+         * Enforces consistent naming conventions across the codebase.
+         *
+         * Benefits: Consistent naming patterns significantly improve code readability
+         * and maintainability by making code more predictable. Proper naming conventions
+         * help developers quickly understand the purpose and behavior of different code
+         * elements, reduce cognitive load when reading code, and prevent confusion about
+         * the nature or intent of variables, functions, and other identifiers.
+         *
+         * @see https://typescript-eslint.io/rules/naming-convention
+         */
+        '@typescript-eslint/naming-convention': [
+          'error',
+          {
+            selector: 'default',
+            format: ['camelCase'],
+          },
+          {
+            selector: 'import',
+            format: ['camelCase', 'PascalCase'],
+          },
+          {
+            selector: 'variable',
+            format: ['camelCase', 'UPPER_CASE'],
+          },
+          {
+            selector: 'variable',
+            modifiers: ['destructured'],
+            format: null,
+          },
+          {
+            selector: 'variable',
+            types: ['boolean'],
+            prefix: R.flatMap(
+              ['is', 'should', 'has', 'can', 'did', 'will'],
+              (prefix) => {
+                return [prefix, `${prefix.toUpperCase()}_`];
+              },
+            ),
+            format: ['PascalCase', 'UPPER_CASE'],
+          },
+          {
+            selector: 'variable',
+            types: ['boolean'],
+            modifiers: ['destructured'],
+            format: null,
+          },
+          {
+            selector: 'variable',
+            filter: {
+              regex: '^Zod[A-Z]',
+              match: true,
+            },
+            format: ['PascalCase'],
+          },
+          {
+            selector: 'objectLiteralProperty',
+            format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+          },
+          {
+            selector: 'objectLiteralProperty',
+            modifiers: ['requiresQuotes'],
+            format: null,
+          },
+          {
+            selector: 'typeLike',
+            format: ['PascalCase'],
+          },
+        ],
       },
     },
   ]);

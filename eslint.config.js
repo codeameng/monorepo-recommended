@@ -15,7 +15,6 @@ export default createConfig({
         'sort-keys': 'off',
         'sort-imports': 'off',
         'require-unicode-regexp': 'off',
-        '@typescript-eslint/naming-convention': 'off',
       },
     },
   ],
