@@ -18,7 +18,9 @@ const getGitignoreFiles = async (rootDirectory: string): Promise<string[]> => {
     allFiles,
     R.split(/\r?\n/),
     R.filter(R.endsWith('.gitignore')),
-    R.map((file) => path.join(rootDirectory, file)),
+    R.map((file) => {
+      return path.join(rootDirectory, file);
+    }),
   );
 };
 

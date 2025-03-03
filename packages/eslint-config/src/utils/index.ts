@@ -7,8 +7,9 @@ import type {
 } from '$types/index.ts';
 import eslintJs from '@eslint/js';
 
-const getScopedConfig = (config: Config): Config =>
-  R.pick(config, ['files', 'ignores']);
+const getScopedConfig = (config: Config): Config => {
+  return R.pick(config, ['files', 'ignores']);
+};
 
 const isDeprecatedRule = (rule: LooseRuleDefinition): boolean => {
   const isDeprecatedInMeta =
@@ -63,7 +64,9 @@ export const injectAllRules = (configs: Config[]): Config[] => {
         plugin.rules,
         R.omitBy(isDeprecatedRule),
         R.keys(),
-        R.mapToObj((ruleName) => [`${pluginName}/${ruleName}`, 'error']),
+        R.mapToObj((ruleName) => {
+          return [`${pluginName}/${ruleName}`, 'error'];
+        }),
       );
 
       scopedConfig.rules = R.merge(scopedConfig.rules, allRules);

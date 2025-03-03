@@ -131,6 +131,13 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
          * @see https://eslint.style/rules/default/function-paren-newline
          */
         '@stylistic/function-paren-newline': 'off',
+
+        /**
+         * Disabled to prevent conflicts with Prettier formatting.
+         *
+         * @see https://eslint.style/rules/default/implicit-arrow-linebreak
+         */
+        '@stylistic/implicit-arrow-linebreak': 'off',
       },
     },
   ]);

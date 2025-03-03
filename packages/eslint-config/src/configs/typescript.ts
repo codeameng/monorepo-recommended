@@ -19,7 +19,9 @@ export const createTypescriptConfig = (options: Options): Config[] => {
         eslintJs.configs.all.rules,
         R.keys(),
         R.intersection(R.keys(typescriptEslint.plugin.rules ?? {})),
-        R.mapToObj((ruleName) => [ruleName, 'off']),
+        R.mapToObj((ruleName) => {
+          return [ruleName, 'off'];
+        }),
       ),
     },
     {
