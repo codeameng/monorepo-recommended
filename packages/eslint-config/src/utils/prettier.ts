@@ -14,7 +14,9 @@ export const getPrettierConfig = async (): Promise<PrettierConfig> => {
   const defaultOptions: Record<string, unknown> = {};
 
   for (const option of options) {
-    if (!option.name) continue;
+    if (!option.name) {
+      continue;
+    }
     defaultOptions[option.name] = option.default;
   }
 

@@ -96,6 +96,41 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
          * @see https://eslint.style/rules/default/spaced-comment
          */
         '@stylistic/spaced-comment': 'error',
+
+        /**
+         * Disabled to prevent conflicts with Prettier formatting.
+         *
+         * @see https://eslint.style/rules/default/function-call-argument-newline
+         */
+        '@stylistic/function-call-argument-newline': 'off',
+
+        /**
+         * Disabled to prevent conflicts with Prettier formatting.
+         *
+         * @see https://eslint.style/rules/default/array-element-newline
+         */
+        '@stylistic/array-element-newline': 'off',
+
+        /**
+         * Disabled to prevent conflicts with Prettier formatting.
+         *
+         * @see https://eslint.style/rules/default/max-len
+         */
+        '@stylistic/max-len': 'off',
+
+        /**
+         * Disabled to prevent conflicts with Prettier formatting.
+         *
+         * @see https://eslint.style/rules/default/multiline-ternary
+         */
+        '@stylistic/multiline-ternary': 'off',
+
+        /**
+         * Disabled to prevent conflicts with Prettier formatting.
+         *
+         * @see https://eslint.style/rules/default/function-paren-newline
+         */
+        '@stylistic/function-paren-newline': 'off',
       },
     },
   ]);

@@ -75,6 +75,23 @@ export const createTypescriptConfig = (options: Options): Config[] => {
          * @see https://typescript-eslint.io/rules/no-import-type-side-effects
          */
         '@typescript-eslint/no-import-type-side-effects': 'error',
+
+        /**
+         * Prohibits the use of magic numbers (unnamed numeric literals) in code.
+         *
+         * Benefits: Improves code maintainability and readability by requiring developers
+         * to declare named constants for numeric values, making their purpose explicit.
+         * Prevents confusion about the meaning of arbitrary numbers and reduces errors when
+         * values need to be changed.
+         *
+         * @see https://typescript-eslint.io/rules/no-magic-numbers
+         */
+        '@typescript-eslint/no-magic-numbers': [
+          'error',
+          {
+            ignore: [-1, 0, 1],
+          },
+        ],
       },
     },
   ]);

@@ -112,6 +112,21 @@ export const createBuiltInConfig = (): Config[] =>
         'no-warning-comments': 'off',
 
         /**
+         * Enforces curly braces for all control statements (if, else, for, while, do).
+         *
+         * Benefits:
+         * - Defensive Programming: Prevents bugs from forgetting to add braces when
+         *   adding new lines to previously single-line statements
+         * - Code Consistency: Maintains uniform formatting across all control structures,
+         *   eliminating the need to decide between single-line and multi-line styles
+         * - Maintainability: No structural changes needed when expanding conditional
+         *   blocks, easier code reviews due to consistent formatting
+         *
+         * @see https://eslint.org/docs/latest/rules/curly
+         */
+        'curly': ['error', 'all'],
+
+        /**
          * Enforces capitalization of the first letter in block comments while ignoring all line comments.
          *
          * Benefits: Maintains professionalism and consistency in documentation blocks
@@ -129,23 +144,6 @@ export const createBuiltInConfig = (): Config[] =>
             line: {
               ignorePattern: '.*',
             },
-          },
-        ],
-
-        /**
-         * Prohibits the use of magic numbers (unnamed numeric literals) in code.
-         *
-         * Benefits: Improves code maintainability and readability by requiring developers
-         * to declare named constants for numeric values, making their purpose explicit.
-         * Prevents confusion about the meaning of arbitrary numbers and reduces errors when
-         * values need to be changed.
-         *
-         * @see https://typescript-eslint.io/rules/no-magic-numbers
-         */
-        '@typescript-eslint/no-magic-numbers': [
-          'error',
-          {
-            ignore: [-1, 0, 1],
           },
         ],
       },
