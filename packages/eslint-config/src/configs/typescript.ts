@@ -142,13 +142,8 @@ export const createTypescriptConfig = (options: Options): Config[] => {
           {
             selector: 'variable',
             types: ['boolean'],
-            prefix: R.flatMap(
-              ['is', 'should', 'has', 'can', 'did', 'will'],
-              (prefix) => {
-                return [prefix, `${prefix.toUpperCase()}_`];
-              },
-            ),
-            format: ['PascalCase', 'UPPER_CASE'],
+            format: ['PascalCase'],
+            prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
           },
           {
             selector: 'variable',
