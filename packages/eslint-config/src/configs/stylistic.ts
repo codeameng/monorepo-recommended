@@ -85,6 +85,17 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
          * @see https://eslint.style/rules/default/padded-blocks
          */
         '@stylistic/padded-blocks': 'off',
+
+        /**
+         * Enforces consistent spacing in comments.
+         *
+         * Benefits: Improves readability by ensuring that comments have proper spacing
+         * after comment markers. This makes comments more legible and
+         * distinguishable from code, enhancing overall code clarity.
+         *
+         * @see https://eslint.style/rules/default/spaced-comment
+         */
+        '@stylistic/spaced-comment': 'error',
       },
     },
   ]);
