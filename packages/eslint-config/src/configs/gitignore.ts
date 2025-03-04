@@ -27,6 +27,7 @@ const getGitignoreFiles = async (rootDirectory: string): Promise<string[]> => {
 interface Options {
   rootDirectory: string;
 }
+
 export const createGitignoreConfig = async (
   options: Options,
 ): Promise<Config[]> => {

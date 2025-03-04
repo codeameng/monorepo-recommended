@@ -138,6 +138,79 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
          * @see https://eslint.style/rules/default/implicit-arrow-linebreak
          */
         '@stylistic/implicit-arrow-linebreak': 'off',
+
+        /**
+         * Enforces consistent empty lines between statements to improve code readability.
+         *
+         * Benefits: Creates logical separation between different code blocks, making the code
+         * structure more apparent and easier to scan. Particularly useful for distinguishing
+         * related statements from unrelated ones in dense code sections.
+         *
+         * @see https://eslint.style/rules/default/padding-line-between-statements
+         */
+        '@stylistic/padding-line-between-statements': [
+          'error',
+          {
+            blankLine: 'always',
+            prev: '*',
+            next: 'return',
+          },
+          {
+            blankLine: 'always',
+            prev: ['const', 'let', 'var'],
+            next: '*',
+          },
+          {
+            blankLine: 'any',
+            prev: ['const', 'let', 'var'],
+            next: ['const', 'let', 'var'],
+          },
+          {
+            blankLine: 'always',
+            prev: 'directive',
+            next: '*',
+          },
+          {
+            blankLine: 'any',
+            prev: 'directive',
+            next: 'directive',
+          },
+          {
+            blankLine: 'always',
+            prev: ['case', 'default'],
+            next: '*',
+          },
+          {
+            blankLine: 'always',
+            prev: 'block-like',
+            next: '*',
+          },
+          {
+            blankLine: 'always',
+            prev: '*',
+            next: 'block-like',
+          },
+          {
+            blankLine: 'always',
+            prev: 'import',
+            next: '*',
+          },
+          {
+            blankLine: 'any',
+            prev: 'import',
+            next: 'import',
+          },
+          {
+            blankLine: 'always',
+            prev: 'export',
+            next: '*',
+          },
+          {
+            blankLine: 'always',
+            prev: '*',
+            next: 'export',
+          },
+        ],
       },
     },
   ]);

@@ -28,6 +28,7 @@ export const defineConfig = (configs: ConfigWithExtendsOrArray[]): Config[] => {
   R.forEach(flatConfigs, (config) => {
     if (!config.extends) {
       eslintConfigs.push(config);
+
       return;
     }
 
@@ -35,6 +36,7 @@ export const defineConfig = (configs: ConfigWithExtendsOrArray[]): Config[] => {
 
     R.forEach(flatExtends, (subConfig) => {
       const scopedConfig = getScopedConfig(config);
+
       eslintConfigs.push(R.merge(subConfig, scopedConfig));
     });
 

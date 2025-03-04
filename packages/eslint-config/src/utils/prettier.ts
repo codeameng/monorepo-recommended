@@ -17,6 +17,7 @@ export const getPrettierConfig = async (): Promise<PrettierConfig> => {
     if (R.isNullish(option.name)) {
       continue;
     }
+
     defaultOptions[option.name] = option.default;
   }
 
