@@ -2,11 +2,11 @@ import { R } from '@packages/utils';
 import { resolveConfig, getSupportInfo } from 'prettier';
 import { z } from 'zod';
 
-const ZodConfig = z.object({
+const ConfigSchema = z.object({
   singleQuote: z.boolean(),
 });
 
-type PrettierConfig = z.infer<typeof ZodConfig>;
+type PrettierConfig = z.infer<typeof ConfigSchema>;
 
 export const getPrettierConfig = async (): Promise<PrettierConfig> => {
   const { options } = await getSupportInfo();
@@ -20,5 +20,5 @@ export const getPrettierConfig = async (): Promise<PrettierConfig> => {
     defaultOptions[option.name] = option.default;
   }
 
-  return ZodConfig.parse(R.merge(defaultOptions, config));
+  return ConfigSchema.parse(R.merge(defaultOptions, config));
 };

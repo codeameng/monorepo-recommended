@@ -132,12 +132,7 @@ export const createTypescriptConfig = (options: Options): Config[] => {
           },
           {
             selector: 'variable',
-            format: ['camelCase', 'UPPER_CASE'],
-          },
-          {
-            selector: 'variable',
-            modifiers: ['destructured'],
-            format: null,
+            format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
           },
           {
             selector: 'variable',
@@ -150,14 +145,6 @@ export const createTypescriptConfig = (options: Options): Config[] => {
             types: ['boolean'],
             modifiers: ['destructured'],
             format: null,
-          },
-          {
-            selector: 'variable',
-            filter: {
-              regex: '^Zod[A-Z]',
-              match: true,
-            },
-            format: ['PascalCase'],
           },
           {
             selector: 'objectLiteralProperty',
