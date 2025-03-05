@@ -25,23 +25,22 @@ export const defineConfig = (configs: ConfigWithExtendsOrArray[]): Config[] => {
   const eslintConfigs: Config[] = [];
   const flatConfigs = R.flat(configs);
 
-  R.forEach(flatConfigs, (config) => {
+  for (const config of flatConfigs) {
     if (!config.extends) {
       eslintConfigs.push(config);
-
-      return;
+      continue;
     }
 
     const flatExtends = R.flat(config.extends);
 
-    R.forEach(flatExtends, (subConfig) => {
+    for (const subConfig of flatExtends) {
       const scopedConfig = getScopedConfig(config);
 
       eslintConfigs.push(R.merge(subConfig, scopedConfig));
-    });
+    }
 
     eslintConfigs.push(R.omit(config, ['extends']));
-  });
+  }
 
   return R.pipe(eslintConfigs, R.map(R.omitBy(R.isNullish)));
 };
@@ -49,17 +48,17 @@ export const defineConfig = (configs: ConfigWithExtendsOrArray[]): Config[] => {
 export const injectAllRules = (configs: Config[]): Config[] => {
   const allRulesConfigs: Config[] = [eslintJs.configs.all];
 
-  R.forEach(configs, (config) => {
+  for (const config of configs) {
     if (!config.plugins) {
-      return;
+      continue;
     }
 
     const scopedConfig = getScopedConfig(config);
     const pluginsEntries = R.entries(config.plugins);
 
-    R.forEach(pluginsEntries, ([pluginName, plugin]) => {
+    for (const [pluginName, plugin] of pluginsEntries) {
       if (!plugin.rules) {
-        return;
+        continue;
       }
 
       const allRules: Rules = R.pipe(
@@ -72,10 +71,10 @@ export const injectAllRules = (configs: Config[]): Config[] => {
       );
 
       scopedConfig.rules = R.merge(scopedConfig.rules, allRules);
-    });
+    }
 
     allRulesConfigs.push(scopedConfig);
-  });
+  }
 
   return R.concat(allRulesConfigs, configs);
 };

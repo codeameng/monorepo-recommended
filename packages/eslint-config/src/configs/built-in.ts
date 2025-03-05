@@ -30,7 +30,7 @@ export const createBuiltInConfig = (): Config[] => {
         'max-statements': [
           'error',
           {
-            max: 10,
+            max: 16,
           },
         ],
 
