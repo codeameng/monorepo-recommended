@@ -56,6 +56,41 @@ export const createImportXConfig = (typescriptProject: string[]): Config[] => {
          * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/extensions.md
          */
         'import-x/extensions': ['error', 'always'],
+
+        /**
+         * Requires all exports to be grouped together in a single declaration or assignment.
+         *
+         * Improves code readability by keeping all exports in one place, makes it easier to see
+         * what a module provides, ensures consistent export patterns across the codebase, and
+         * simplifies maintenance by centralizing export management.
+         *
+         * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/group-exports.md
+         */
+        'import-x/group-exports': 'error',
+
+        /**
+         * Requires all exports to be placed at the end of the file.
+         *
+         * Enhances code organization by establishing a consistent structure,
+         * improves readability by making exports easy to locate at a predictable position,
+         * separates implementation from interface, and creates a clear visual distinction
+         * between internal logic and public API.
+         *
+         * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/exports-last.md
+         */
+        'import-x/exports-last': 'error',
+
+        /**
+         * Requires all import statements to be placed at the top of the file.
+         *
+         * Improves code organization by establishing a clear dependency section,
+         * enhances readability by keeping all module dependencies visible at a glance,
+         * prevents potential temporal dead zone issues with imports, and provides
+         * a consistent structural pattern across the entire codebase.
+         *
+         * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/first.md
+         */
+        'import-x/first': 'error',
       },
     },
   ]);

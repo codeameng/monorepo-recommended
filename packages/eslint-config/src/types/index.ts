@@ -1,23 +1,30 @@
 import type { ConfigArray } from 'typescript-eslint';
 
-export type Config = ConfigArray[number];
-
+type Config = ConfigArray[number];
 type ConfigOrArray = Config | Config[];
 
-export interface ConfigWithExtends extends Config {
+interface ConfigWithExtends extends Config {
   extends?: ConfigOrArray[];
 }
-
-export type ConfigWithExtendsOrArray = ConfigWithExtends | ConfigWithExtends[];
-
-export interface StrictConfigWithExtends {
+type ConfigWithExtendsOrArray = ConfigWithExtends | ConfigWithExtends[];
+interface StrictConfigWithExtends {
   name: ConfigWithExtends['name'];
   files: ConfigWithExtends['files'];
   extends: ConfigWithExtends['extends'];
 }
 
-export type Plugin = NonNullable<Config['plugins']>[string];
+type Plugin = NonNullable<Config['plugins']>[string];
 
-export type LooseRuleDefinition = NonNullable<Plugin['rules']>[string];
+type LooseRuleDefinition = NonNullable<Plugin['rules']>[string];
 
-export type Rules = NonNullable<Config['rules']>;
+type Rules = NonNullable<Config['rules']>;
+
+export type {
+  Config,
+  ConfigWithExtends,
+  ConfigWithExtendsOrArray,
+  StrictConfigWithExtends,
+  Plugin,
+  LooseRuleDefinition,
+  Rules,
+};

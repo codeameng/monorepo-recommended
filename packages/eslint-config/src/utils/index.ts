@@ -21,7 +21,7 @@ const isDeprecatedRule = (rule: LooseRuleDefinition): boolean => {
   return isDeprecatedInMeta ?? false;
 };
 
-export const defineConfig = (configs: ConfigWithExtendsOrArray[]): Config[] => {
+const defineConfig = (configs: ConfigWithExtendsOrArray[]): Config[] => {
   const eslintConfigs: Config[] = [];
   const flatConfigs = R.flat(configs);
 
@@ -45,7 +45,7 @@ export const defineConfig = (configs: ConfigWithExtendsOrArray[]): Config[] => {
   return R.pipe(eslintConfigs, R.map(R.omitBy(R.isNullish)));
 };
 
-export const injectAllRules = (configs: Config[]): Config[] => {
+const injectAllRules = (configs: Config[]): Config[] => {
   const allRulesConfigs: Config[] = [eslintJs.configs.all];
 
   for (const config of configs) {
@@ -78,3 +78,5 @@ export const injectAllRules = (configs: Config[]): Config[] => {
 
   return R.concat(allRulesConfigs, configs);
 };
+
+export { defineConfig, injectAllRules };
