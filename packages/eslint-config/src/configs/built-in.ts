@@ -27,7 +27,12 @@ export const createBuiltInConfig = (): Config[] => {
          *
          * @see https://eslint.org/docs/latest/rules/max-statements
          */
-        'max-statements': ['error', { max: 10 }],
+        'max-statements': [
+          'error',
+          {
+            max: 10,
+          },
+        ],
 
         /**
          * Enforces one variable declaration per statement.

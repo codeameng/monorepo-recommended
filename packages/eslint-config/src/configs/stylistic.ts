@@ -213,12 +213,14 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
         ],
 
         /**
-         * Enforces consistent line break style for object literals.
+         * Enforces object properties to always be on separate lines.
          *
-         * Improves code readability by ensuring consistent formatting
-         * of object literals. Objects with multiple properties are displayed with
-         * properties on separate lines, making complex objects easier to read and
-         * maintain while preserving space efficiency for simpler objects.
+         * This strict approach to object formatting provides several benefits:
+         * - Improves readability by giving each property its own line
+         * - Makes code reviews easier by highlighting property changes in diffs
+         * - Establishes a consistent pattern throughout the codebase
+         * - Reduces merge conflicts when multiple developers add properties
+         * - Scales naturally as objects grow without requiring reformatting
          *
          * @see https://eslint.style/rules/default/object-curly-newline
          */
@@ -227,7 +229,7 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
           {
             ObjectExpression: {
               multiline: true,
-              minProperties: 2,
+              minProperties: 1,
               consistent: true,
             },
           },
@@ -247,7 +249,9 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
         '@stylistic/multiline-comment-style': [
           'error',
           'separate-lines',
-          { checkJSDoc: false },
+          {
+            checkJSDoc: false,
+          },
         ],
       },
     },
