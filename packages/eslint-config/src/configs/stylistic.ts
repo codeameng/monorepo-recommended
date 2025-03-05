@@ -59,7 +59,7 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
         /**
          * Enforces consistent spacing around comments.
          *
-         * Benefits: Enhances code readability by visually separating block comments (documentation)
+         * Enhances code readability by visually separating block comments (documentation)
          * from code with blank lines, while allowing line comments to remain compact with their
          * related code. This balanced approach treats block comments as conceptual dividers
          * for major code sections, while preserving the density of line comments for inline
@@ -89,7 +89,7 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
         /**
          * Enforces consistent spacing in comments.
          *
-         * Benefits: Improves readability by ensuring that comments have proper spacing
+         * Improves readability by ensuring that comments have proper spacing
          * after comment markers. This makes comments more legible and
          * distinguishable from code, enhancing overall code clarity.
          *
@@ -142,7 +142,7 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
         /**
          * Enforces consistent empty lines between statements to improve code readability.
          *
-         * Benefits: Creates logical separation between different code blocks, making the code
+         * Creates logical separation between different code blocks, making the code
          * structure more apparent and easier to scan. Particularly useful for distinguishing
          * related statements from unrelated ones in dense code sections.
          *
@@ -215,7 +215,7 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
         /**
          * Enforces consistent line break style for object literals.
          *
-         * Benefits: Improves code readability by ensuring consistent formatting
+         * Improves code readability by ensuring consistent formatting
          * of object literals. Objects with multiple properties are displayed with
          * properties on separate lines, making complex objects easier to read and
          * maintain while preserving space efficiency for simpler objects.
@@ -236,7 +236,7 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
         /**
          * Enforces a specific style for multiline comments.
          *
-         * Benefits: Standardizes comment formatting across the codebase by requiring
+         * Standardizes comment formatting across the codebase by requiring
          * separate-line comments. This approach improves comment readability by
          * giving each comment line its own distinct marker, making comments easier
          * to edit and maintain over time. JSDoc comments are exempted to preserve

@@ -36,7 +36,7 @@ export const createTypescriptConfig = (options: Options): Config[] => {
         /**
          * Disables readonly parameter types requirement.
          *
-         * Rationale: Improves developer experience (reduces type definition burden,
+         * Improves developer experience (reduces type definition burden,
          * minimizes conflicts with third-party libraries), and is too restrictive
          * in practice, potentially leading to difficult-to-maintain code.
          *
@@ -47,7 +47,7 @@ export const createTypescriptConfig = (options: Options): Config[] => {
         /**
          * Restricts the types allowed in boolean expressions.
          *
-         * Benefits: Prevents subtle bugs from implicit type conversions,
+         * Prevents subtle bugs from implicit type conversions,
          * makes boolean conditions more explicit and readable, and encourages
          * proper null/undefined checking patterns.
          *
@@ -61,7 +61,7 @@ export const createTypescriptConfig = (options: Options): Config[] => {
         /**
          * Enforces consistent usage of type imports.
          *
-         * Benefits: Avoids unintentional side effects from module imports,
+         * Avoids unintentional side effects from module imports,
          * supports isolated module transpilation, and helps transpilers
          * (like Babel/SWC/Vite) correctly identify and handle pure type imports.
          *
@@ -72,7 +72,7 @@ export const createTypescriptConfig = (options: Options): Config[] => {
         /**
          * Enforces explicit return type declarations for functions.
          *
-         * Benefits: Improves code readability and self-documentation, prevents
+         * Improves code readability and self-documentation, prevents
          * unintended type inference, ensures correctness (validates function implementation),
          * aids refactoring, and may improve TypeScript compiler performance.
          *
@@ -83,7 +83,7 @@ export const createTypescriptConfig = (options: Options): Config[] => {
         /**
          * Enforces the use of top-level import type qualifier to avoid side effects.
          *
-         * Benefits: When using the verbatimModuleSyntax compiler option, prevents inline type imports
+         * When using the verbatimModuleSyntax compiler option, prevents inline type imports
          * from generating unnecessary empty imports (e.g., import {} from 'mod'). This avoids
          * unintended side effects such as: module execution at runtime, increased bundle size,
          * potential circular dependencies, and slower application startup. Ensures type-only
@@ -96,7 +96,7 @@ export const createTypescriptConfig = (options: Options): Config[] => {
         /**
          * Prohibits the use of magic numbers (unnamed numeric literals) in code.
          *
-         * Benefits: Improves code maintainability and readability by requiring developers
+         * Improves code maintainability and readability by requiring developers
          * to declare named constants for numeric values, making their purpose explicit.
          * Prevents confusion about the meaning of arbitrary numbers and reduces errors when
          * values need to be changed.
@@ -113,7 +113,7 @@ export const createTypescriptConfig = (options: Options): Config[] => {
         /**
          * Enforces consistent naming conventions across the codebase.
          *
-         * Benefits: Consistent naming patterns significantly improve code readability
+         * Consistent naming patterns significantly improve code readability
          * and maintainability by making code more predictable. Proper naming conventions
          * help developers quickly understand the purpose and behavior of different code
          * elements, reduce cognitive load when reading code, and prevent confusion about

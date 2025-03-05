@@ -10,7 +10,7 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Disables the restriction on using the continue statement.
          *
-         * Benefits: Improves code readability (clearer "early skip" logic, reduces nesting),
+         * Improves code readability (clearer "early skip" logic, reduces nesting),
          * simplifies control flow management, and often leads to more maintainable code
          * compared to alternatives like flags or nested conditionals.
          *
@@ -21,7 +21,7 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Configures the maximum number of statements allowed in a function.
          *
-         * Benefits: Manages function complexity, encourages breaking down logic into
+         * Manages function complexity, encourages breaking down logic into
          * smaller functions, improves maintainability, and helps adhere to the
          * single responsibility principle.
          *
@@ -32,7 +32,7 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Enforces one variable declaration per statement.
          *
-         * Benefits: Improves code clarity, simplifies debugging and maintenance,
+         * Improves code clarity, simplifies debugging and maintenance,
          * and better aligns with TypeScript's type declaration syntax.
          *
          * @see https://eslint.org/docs/latest/rules/one-var
@@ -42,7 +42,7 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Enforces the use of function expressions instead of function declarations.
          *
-         * Benefits: Creates consistency in function definitions, aligns with modern
+         * Creates consistency in function definitions, aligns with modern
          * JavaScript practices, and avoids function hoisting which can lead to
          * confusing behavior.
          *
@@ -53,7 +53,7 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Disables the restriction on using ternary operators.
          *
-         * Benefits: Enables concise conditional expressions, aligns with modern
+         * Enables concise conditional expressions, aligns with modern
          * JavaScript idioms, and improves code readability when used appropriately.
          *
          * @see https://eslint.org/docs/latest/rules/no-ternary
@@ -63,7 +63,7 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Enforces consistent use of braces around arrow function bodies.
          *
-         * Benefits: Improves code consistency by always requiring braces,
+         * Improves code consistency by always requiring braces,
          * enhances code clarity by maintaining a uniform structure,
          * and reduces potential errors when expanding function logic later.
          *
@@ -74,7 +74,7 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Sets a reasonable maximum length for functions.
          *
-         * Benefits: Encourages better code organization, reduces cognitive load,
+         * Encourages better code organization, reduces cognitive load,
          * and strikes a practical balance that allows meaningful implementation
          * without forcing artificial function splitting.
          *
@@ -93,7 +93,7 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Allows the use of undefined as a variable or property.
          *
-         * Rationale: Undefined is fundamental to TypeScript's type system and modern
+         * Undefined is fundamental to TypeScript's type system and modern
          * JavaScript practices. Restricting it creates artificial limitations and
          * forces unnecessarily verbose alternative patterns.
          *
@@ -104,7 +104,7 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Disables ESLint warning comments checking in favor of dedicated tools.
          *
-         * Rationale: Warning comments (TODO, FIXME) are better managed by specialized
+         * Warning comments (TODO, FIXME) are better managed by specialized
          * tools that provide better tracking and management features.
          *
          * @see https://eslint.org/docs/latest/rules/no-warning-comments
@@ -129,7 +129,7 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Enforces capitalization of the first letter in block comments while ignoring all line comments.
          *
-         * Benefits: Maintains professionalism and consistency in documentation blocks
+         * Maintains professionalism and consistency in documentation blocks
          * where formal documentation is important, while allowing flexibility in quick
          * line comments for development notes, debugging, and inline explanations without
          * disrupting developer workflow.
