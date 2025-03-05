@@ -103,6 +103,19 @@ export const createImportXConfig = (typescriptProject: string[]): Config[] => {
          * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-rename-default.md
          */
         'import-x/no-rename-default': 'off',
+
+        /**
+         * Disabled to allow direct imports of Node.js builtin modules.
+         *
+         * In a Node.js environment or full-stack application, direct access to Node's core modules
+         * is often necessary for server-side functionality. Disabling this rule enables developers
+         * to leverage the standard library efficiently without unnecessary wrappers, maintaining
+         * idiomatic Node.js code patterns when working with file systems, networking, and other
+         * server-side capabilities.
+         *
+         * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-nodejs-modules.md
+         */
+        'import-x/no-nodejs-modules': 'off',
       },
     },
   ]);
