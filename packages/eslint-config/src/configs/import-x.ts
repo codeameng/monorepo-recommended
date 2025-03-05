@@ -44,6 +44,18 @@ export const createImportXConfig = (typescriptProject: string[]): Config[] => {
          * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/prefer-default-export.md
          */
         'import-x/prefer-default-export': 'off',
+
+        /**
+         * Enforces the explicit use of file extensions in all import statements.
+         *
+         * Improved code clarity by making the exact file type immediately visible,
+         * enhanced tooling compatibility across different environments, simplified debugging
+         * by providing complete file paths, and better alignment with ESM standards
+         * where extensions are often required.
+         *
+         * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/extensions.md
+         */
+        'import-x/extensions': ['error', 'always'],
       },
     },
   ]);
