@@ -467,6 +467,7 @@ __metadata:
     "@stylistic/eslint-plugin": "npm:4.2.0"
     eslint: "npm:9.21.0"
     eslint-config-flat-gitignore: "npm:2.1.0"
+    prettier: "npm:3.5.3"
     simple-git: "npm:3.27.0"
     tsup: "npm:8.4.0"
     typescript: "npm:5.8.2"
@@ -474,7 +475,6 @@ __metadata:
     zod: "npm:3.24.2"
   peerDependencies:
     eslint: 9.21.0
-    prettier: 3.5.3
   languageName: unknown
   linkType: soft
 
