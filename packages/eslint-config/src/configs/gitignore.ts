@@ -24,15 +24,9 @@ const getGitignoreFiles = async (rootDirectory: string): Promise<string[]> => {
   );
 };
 
-interface Options {
-  rootDirectory: string;
-}
-
 export const createGitignoreConfig = async (
-  options: Options,
+  rootDirectory: string,
 ): Promise<Config[]> => {
-  const { rootDirectory } = options;
-
   return defineConfig([
     eslintConfigFlatGitignore({
       root: true,

@@ -253,6 +253,13 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
             checkJSDoc: false,
           },
         ],
+
+        /**
+         * Disabled to prevent conflicts with Prettier formatting.
+         *
+         * @see https://eslint.style/rules/default/no-multiple-empty-lines
+         */
+        '@stylistic/no-multiple-empty-lines': 'off',
       },
     },
   ]);

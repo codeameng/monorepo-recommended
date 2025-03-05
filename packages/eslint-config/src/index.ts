@@ -20,9 +20,7 @@ const createConfig = async (options: Options): Promise<Config[]> => {
     {
       name: 'gitignore',
       files: undefined,
-      extends: await createGitignoreConfig({
-        rootDirectory,
-      }),
+      extends: await createGitignoreConfig(rootDirectory),
     },
     {
       name: 'built-in',
@@ -32,9 +30,7 @@ const createConfig = async (options: Options): Promise<Config[]> => {
     {
       name: 'typescript',
       files: GLOBS.ALL_JS_LIKE,
-      extends: createTypescriptConfig({
-        tsconfigRootDir: rootDirectory,
-      }),
+      extends: createTypescriptConfig(rootDirectory),
     },
     {
       name: 'stylistic',

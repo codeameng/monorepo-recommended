@@ -4,13 +4,7 @@ import typescriptEslint from 'typescript-eslint';
 import eslintJs from '@eslint/js';
 import { R } from '@packages/utils';
 
-interface Options {
-  tsconfigRootDir: string;
-}
-
-export const createTypescriptConfig = (options: Options): Config[] => {
-  const { tsconfigRootDir } = options;
-
+export const createTypescriptConfig = (tsconfigRootDir: string): Config[] => {
   return defineConfig([
     typescriptEslint.configs.strictTypeChecked,
     typescriptEslint.configs.stylisticTypeChecked,
