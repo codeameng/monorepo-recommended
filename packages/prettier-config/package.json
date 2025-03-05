@@ -8,14 +8,14 @@
   },
   "dependencies": {
     "@packages/tsup-config": "workspace:*",
-    "prettier": "3.4.2"
+    "prettier": "3.5.3"
   },
   "devDependencies": {
     "@packages/typescript-config": "workspace:*",
-    "tsup": "8.3.5",
-    "typescript": "5.7.3"
+    "tsup": "8.4.0",
+    "typescript": "5.8.2"
   },
   "peerDependencies": {
-    "prettier": "3.4.2"
+    "prettier": "3.5.3"
   }
 }

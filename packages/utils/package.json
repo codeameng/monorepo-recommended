@@ -8,11 +8,11 @@
   },
   "dependencies": {
     "@packages/tsup-config": "workspace:*",
-    "remeda": "2.20.1"
+    "remeda": "2.21.0"
   },
   "devDependencies": {
     "@packages/typescript-config": "workspace:*",
-    "tsup": "8.3.5",
-    "typescript": "5.7.3"
+    "tsup": "8.4.0",
+    "typescript": "5.8.2"
   }
 }
