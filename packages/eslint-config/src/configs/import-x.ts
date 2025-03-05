@@ -91,6 +91,18 @@ export const createImportXConfig = (typescriptProject: string[]): Config[] => {
          * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/first.md
          */
         'import-x/first': 'error',
+
+        /**
+         * Disabled to allow renaming default exports when importing from third-party libraries.
+         *
+         * While our codebase discourages default exports (enforced by no-default-export),
+         * we still need to interact with external libraries that may use default exports.
+         * Allowing renaming provides flexibility to align imported names with our project
+         * conventions, improving code clarity and consistency when working with external modules.
+         *
+         * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-rename-default.md
+         */
+        'import-x/no-rename-default': 'off',
       },
     },
   ]);
