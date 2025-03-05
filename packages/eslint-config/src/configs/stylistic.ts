@@ -211,6 +211,44 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
             next: 'export',
           },
         ],
+
+        /**
+         * Enforces consistent line break style for object literals.
+         *
+         * Benefits: Improves code readability by ensuring consistent formatting
+         * of object literals. Objects with multiple properties are displayed with
+         * properties on separate lines, making complex objects easier to read and
+         * maintain while preserving space efficiency for simpler objects.
+         *
+         * @see https://eslint.style/rules/default/object-curly-newline
+         */
+        '@stylistic/object-curly-newline': [
+          'error',
+          {
+            ObjectExpression: {
+              multiline: true,
+              minProperties: 2,
+              consistent: true,
+            },
+          },
+        ],
+
+        /**
+         * Enforces a specific style for multiline comments.
+         *
+         * Benefits: Standardizes comment formatting across the codebase by requiring
+         * separate-line comments. This approach improves comment readability by
+         * giving each comment line its own distinct marker, making comments easier
+         * to edit and maintain over time. JSDoc comments are exempted to preserve
+         * their specialized format.
+         *
+         * @see https://eslint.style/rules/default/multiline-comment-style
+         */
+        '@stylistic/multiline-comment-style': [
+          'error',
+          'separate-lines',
+          { checkJSDoc: false },
+        ],
       },
     },
   ]);
