@@ -12,8 +12,17 @@ export default createConfig({
       rules: {
         'sort-keys': 'off',
         'sort-imports': 'off',
+        'import-x/order': 'off',
         'require-unicode-regexp': 'off',
         'import-x/dynamic-import-chunkname': 'off',
+      },
+    },
+
+    /** Disable import-x/no-default-export for specific files */
+    {
+      files: GLOBS.ALL_JS_LIKE_CONFIG,
+      rules: {
+        'import-x/no-default-export': 'off',
       },
     },
   ],
