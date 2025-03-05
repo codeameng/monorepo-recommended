@@ -6,6 +6,7 @@ import { createTypescriptConfig } from './configs/typescript.ts';
 import { GLOBS } from '$utils/globs.ts';
 import type { Config, StrictConfigWithExtends } from '$types/index.ts';
 import { createStylisticConfig } from './configs/stylistic.ts';
+import { createImportXConfig } from './configs/import-x.ts';
 
 interface Options {
   rootDirectory: string;
@@ -15,6 +16,8 @@ interface Options {
 
 const createConfig = async (options: Options): Promise<Config[]> => {
   const { rootDirectory, shouldInjectAllRules, overrideConfigs } = options;
+
+  const typescriptProject = ['**/tsconfig.json', '**/tsconfig.*.json'];
 
   const configs = defineConfig([
     {
@@ -31,6 +34,11 @@ const createConfig = async (options: Options): Promise<Config[]> => {
       name: 'typescript',
       files: GLOBS.ALL_JS_LIKE,
       extends: createTypescriptConfig(rootDirectory),
+    },
+    {
+      name: 'import-x',
+      files: GLOBS.ALL_JS_LIKE,
+      extends: createImportXConfig(typescriptProject),
     },
     {
       name: 'stylistic',

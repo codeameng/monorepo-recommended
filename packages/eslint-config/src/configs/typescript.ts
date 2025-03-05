@@ -1,19 +1,19 @@
 import type { Config } from '$types/index.ts';
 import { defineConfig } from '$utils/index.ts';
-import typescriptEslint from 'typescript-eslint';
+import { configs, plugin } from 'typescript-eslint';
 import eslintJs from '@eslint/js';
 import { R } from '@packages/utils';
 
 export const createTypescriptConfig = (tsconfigRootDir: string): Config[] => {
   return defineConfig([
-    typescriptEslint.configs.strictTypeChecked,
-    typescriptEslint.configs.stylisticTypeChecked,
+    configs.strictTypeChecked,
+    configs.stylisticTypeChecked,
     {
       name: 'disable-overridden-rules',
       rules: R.pipe(
         eslintJs.configs.all.rules,
         R.keys(),
-        R.intersection(R.keys(typescriptEslint.plugin.rules ?? {})),
+        R.intersection(R.keys(plugin.rules ?? {})),
         R.mapToObj((ruleName) => {
           return [ruleName, 'off'];
         }),
