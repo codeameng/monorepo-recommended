@@ -24,10 +24,11 @@ const getGitignoreFiles = async (rootDirectory: string): Promise<string[]> => {
 
 export const createGitignoreConfig = async (
   rootDirectory: string,
-): Promise<Config[]> =>
-  defineConfig([
+): Promise<Config[]> => {
+  return defineConfig([
     eslintConfigFlatGitignore({
       root: true,
       files: await getGitignoreFiles(rootDirectory),
     }),
   ]);
+};

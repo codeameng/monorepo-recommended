@@ -4,8 +4,8 @@ import { configs, plugin } from 'typescript-eslint';
 import eslintJs from '@eslint/js';
 import { R } from '@packages/utils';
 
-export const createTypescriptConfig = (tsconfigRootDir: string): Config[] =>
-  defineConfig([
+export const createTypescriptConfig = (tsconfigRootDir: string): Config[] => {
+  return defineConfig([
     configs.strictTypeChecked,
     configs.stylisticTypeChecked,
     {
@@ -156,3 +156,4 @@ export const createTypescriptConfig = (tsconfigRootDir: string): Config[] =>
       },
     },
   ]);
+};
