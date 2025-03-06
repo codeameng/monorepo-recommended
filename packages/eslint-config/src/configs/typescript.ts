@@ -4,8 +4,8 @@ import { configs, plugin } from 'typescript-eslint';
 import eslintJs from '@eslint/js';
 import { R } from '@packages/utils';
 
-export const createTypescriptConfig = (tsconfigRootDir: string): Config[] => {
-  return defineConfig([
+export const createTypescriptConfig = (tsconfigRootDir: string): Config[] =>
+  defineConfig([
     configs.strictTypeChecked,
     configs.stylisticTypeChecked,
     {
@@ -14,9 +14,7 @@ export const createTypescriptConfig = (tsconfigRootDir: string): Config[] => {
         eslintJs.configs.all.rules,
         R.keys(),
         R.intersection(R.keys(plugin.rules ?? {})),
-        R.mapToObj((ruleName) => {
-          return [ruleName, 'off'];
-        }),
+        R.mapToObj((ruleName) => [ruleName, 'off']),
       ),
     },
     {
@@ -158,4 +156,3 @@ export const createTypescriptConfig = (tsconfigRootDir: string): Config[] => {
       },
     },
   ]);
-};

@@ -2,8 +2,8 @@ import type { Config } from '$types/index.ts';
 import { defineConfig } from '$utils/index.ts';
 import eslintJs from '@eslint/js';
 
-export const createBuiltInConfig = (): Config[] => {
-  return defineConfig([
+export const createBuiltInConfig = (): Config[] =>
+  defineConfig([
     eslintJs.configs.recommended,
     {
       rules: {
@@ -66,15 +66,15 @@ export const createBuiltInConfig = (): Config[] => {
         'no-ternary': 'off',
 
         /**
-         * Enforces consistent use of braces around arrow function bodies.
+         * Enforces consistent use of braces around arrow function bodies when needed.
          *
-         * Improves code consistency by always requiring braces,
-         * enhances code clarity by maintaining a uniform structure,
-         * and reduces potential errors when expanding function logic later.
+         * Improves code conciseness by omitting braces for simple expressions,
+         * reduces visual noise for straightforward functions,
+         * and maintains readability while allowing for more elegant functional patterns.
          *
          * @see https://eslint.org/docs/latest/rules/arrow-body-style
          */
-        'arrow-body-style': ['error', 'always'],
+        'arrow-body-style': ['error', 'as-needed'],
 
         /**
          * Sets a reasonable maximum length for functions.
@@ -154,4 +154,3 @@ export const createBuiltInConfig = (): Config[] => {
       },
     },
   ]);
-};

@@ -25,9 +25,7 @@ const readTypescriptAliasPatterns = async (
 
   return R.flatMap(tsconfigFiles, (file) => {
     const configPath = path.join(rootDirectory, file);
-    const configFile = readConfigFile(configPath, (path) => {
-      return sys.readFile(path);
-    });
+    const configFile = readConfigFile(configPath, (path) => sys.readFile(path));
     const parsedConfig = parseJsonConfigFileContent(
       configFile.config,
       sys,
@@ -37,9 +35,7 @@ const readTypescriptAliasPatterns = async (
     return R.pipe(
       parsedConfig.options.paths ?? {},
       R.keys(),
-      R.map((str) => {
-        return globToRegexp(str).source;
-      }),
+      R.map((str) => globToRegexp(str).source),
     );
   });
 };

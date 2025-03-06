@@ -18,19 +18,16 @@ const getGitignoreFiles = async (rootDirectory: string): Promise<string[]> => {
     allFiles,
     R.split(/\r?\n/),
     R.filter(R.endsWith('.gitignore')),
-    R.map((file) => {
-      return path.join(rootDirectory, file);
-    }),
+    R.map((file) => path.join(rootDirectory, file)),
   );
 };
 
 export const createGitignoreConfig = async (
   rootDirectory: string,
-): Promise<Config[]> => {
-  return defineConfig([
+): Promise<Config[]> =>
+  defineConfig([
     eslintConfigFlatGitignore({
       root: true,
       files: await getGitignoreFiles(rootDirectory),
     }),
   ]);
-};
