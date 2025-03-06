@@ -2,8 +2,63 @@ import type { Config } from '$types/index.ts';
 import { defineConfig } from '$utils/index.ts';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import { R } from '@packages/utils';
+import { globby } from 'globby';
+import path from 'path';
+import { parseJsonConfigFileContent, readConfigFile, sys } from 'typescript';
+import globToRegexp from 'glob-to-regexp';
 
-export const createImportXConfig = (typescriptProject: string[]): Config[] => {
+interface ReadTypescriptAliasPatternsOptions {
+  rootDirectory: string;
+  typescriptProject: string[];
+}
+
+const readTypescriptAliasPatterns = async (
+  options: ReadTypescriptAliasPatternsOptions,
+): Promise<string[]> => {
+  const { rootDirectory, typescriptProject } = options;
+
+  const tsconfigFiles = await globby(typescriptProject, {
+    cwd: rootDirectory,
+    gitignore: true,
+  });
+
+  return R.flatMap(tsconfigFiles, (file) => {
+    const configPath = path.join(rootDirectory, file);
+    const configFile = readConfigFile(configPath, (path) => {
+      return sys.readFile(path);
+    });
+    const parsedConfig = parseJsonConfigFileContent(
+      configFile.config,
+      sys,
+      path.dirname(configPath),
+    );
+
+    return R.pipe(
+      parsedConfig.options.paths ?? {},
+      R.keys(),
+      R.map((str) => {
+        return globToRegexp(str).source;
+      }),
+    );
+  });
+};
+
+interface CreateImportXConfigOptions {
+  rootDirectory: string;
+  typescriptProject: string[];
+}
+
+export const createImportXConfig = async (
+  options: CreateImportXConfigOptions,
+): Promise<Config[]> => {
+  const { rootDirectory, typescriptProject } = options;
+
+  const typescriptAliasPatterns = await readTypescriptAliasPatterns({
+    rootDirectory,
+    typescriptProject,
+  });
+
   return defineConfig([
     eslintPluginImportX.flatConfigs.recommended,
     eslintPluginImportX.flatConfigs.typescript,
@@ -116,6 +171,29 @@ export const createImportXConfig = (typescriptProject: string[]): Config[] => {
          * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-nodejs-modules.md
          */
         'import-x/no-nodejs-modules': 'off',
+
+        /**
+         * Enforced to prevent parent directory relative imports (../foo).
+         *
+         * Using parent directory imports creates tight coupling between modules and folder structure,
+         * making code more brittle when refactoring. This rule encourages the use of aliased imports
+         * instead, which creates a more maintainable codebase by decoupling module references from
+         * physical file locations. Path aliases provide stable import references that remain valid
+         * even when files are moved, reducing refactoring overhead and making import statements more
+         * meaningful and self-documenting.
+         *
+         * TypeScript path aliases defined in tsconfig are automatically excluded from this rule.
+         *
+         * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-relative-parent-imports.md
+         */
+        'import-x/no-relative-parent-imports': [
+          'error',
+          {
+            ignore: R.isEmpty(typescriptAliasPatterns)
+              ? undefined
+              : typescriptAliasPatterns,
+          },
+        ],
       },
     },
   ]);

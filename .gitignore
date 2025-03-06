@@ -114,20 +114,24 @@ $RECYCLE.BIN/
 # │                                                                           │
 # │                                                                           │
 # ┴──────────────── Start: Workspace Rules
-# dependency directories
+# VSCode configuration files
+.vscode/*
+!.vscode/extensions.json
+
+# Dependency directories
 node_modules/
 
-# build directories
+# Build directories
 dist/
 
-# turbo cache
+# Turbo cache
 .turbo
 
-# unsupported lock files
+# Unsupported lock files
 package-lock.json
 pnpm-lock.yaml
 
-# typescript build info
+# TypeScript build info
 *.tsbuildinfo
 # ┬───────────────── End: Workspace Rules
 # │                                                                           │

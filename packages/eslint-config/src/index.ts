@@ -38,12 +38,15 @@ const createConfig = async (options: Options): Promise<Config[]> => {
     {
       name: 'import-x',
       files: GLOBS.ALL_JS_LIKE,
-      extends: createImportXConfig(typescriptProject),
+      extends: await createImportXConfig({
+        rootDirectory,
+        typescriptProject,
+      }),
     },
     {
       name: 'stylistic',
       files: GLOBS.ALL_JS_LIKE,
-      extends: await createStylisticConfig(),
+      extends: createStylisticConfig(),
     },
   ] satisfies StrictConfigWithExtends[]);
 

@@ -3,8 +3,8 @@ import { defineConfig } from '$utils/index.ts';
 import { getPrettierConfig } from '$utils/prettier.ts';
 import stylisticESLintPlugin from '@stylistic/eslint-plugin';
 
-export const createStylisticConfig = async (): Promise<Config[]> => {
-  const { singleQuote } = await getPrettierConfig();
+export const createStylisticConfig = (): Config[] => {
+  const { singleQuote } = getPrettierConfig();
 
   return defineConfig([
     {

@@ -14,16 +14,19 @@
     "eslint-config-flat-gitignore": "2.1.0",
     "eslint-import-resolver-typescript": "3.8.3",
     "eslint-plugin-import-x": "4.6.1",
+    "glob-to-regexp": "0.4.1",
+    "globby": "14.1.0",
     "prettier": "3.5.3",
     "simple-git": "3.27.0",
+    "typescript": "5.8.2",
     "typescript-eslint": "8.26.0",
     "zod": "3.24.2"
   },
   "devDependencies": {
     "@packages/typescript-config": "workspace:*",
+    "@types/glob-to-regexp": "0.4.4",
     "eslint": "9.21.0",
-    "tsup": "8.4.0",
-    "typescript": "5.8.2"
+    "tsup": "8.4.0"
   },
   "peerDependencies": {
     "eslint": "9.21.0"

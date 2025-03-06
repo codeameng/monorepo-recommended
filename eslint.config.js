@@ -14,9 +14,10 @@ export default createConfig({
         'sort-imports': 'off',
         'import-x/order': 'off',
         'require-unicode-regexp': 'off',
+        'no-duplicate-imports': 'off',
         'import-x/dynamic-import-chunkname': 'off',
         'import-x/no-internal-modules': 'off',
-        'import-x/no-relative-parent-imports': 'off',
+        '@typescript-eslint/no-shadow': 'off',
       },
     },
 
