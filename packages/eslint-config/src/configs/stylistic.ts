@@ -236,23 +236,17 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
         ],
 
         /**
-         * Enforces a specific style for multiline comments.
+         * Disabled multiline comment style enforcement.
          *
-         * Standardizes comment formatting across the codebase by requiring
-         * separate-line comments. This approach improves comment readability by
-         * giving each comment line its own distinct marker, making comments easier
-         * to edit and maintain over time. JSDoc comments are exempted to preserve
-         * their specialized format.
+         * This rule is disabled to allow developers to flexibly choose comment styles
+         * based on specific contexts. Both block comments and multiple single-line comments
+         * have their advantages in different scenarios. Enforcing a single style might
+         * reduce readability in certain situations. Maintaining flexibility helps developers
+         * select the most appropriate comment style for the context.
          *
          * @see https://eslint.style/rules/default/multiline-comment-style
          */
-        '@stylistic/multiline-comment-style': [
-          'error',
-          'separate-lines',
-          {
-            checkJSDoc: false,
-          },
-        ],
+        '@stylistic/multiline-comment-style': 'off',
 
         /**
          * Disabled to prevent conflicts with Prettier formatting.
