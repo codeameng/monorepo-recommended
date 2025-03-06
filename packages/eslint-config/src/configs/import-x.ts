@@ -22,22 +22,25 @@ const readTypescriptAliasPatterns = async (
     cwd: rootDirectory,
     gitignore: true,
   });
-
-  return R.flatMap(tsconfigFiles, (file) => {
-    const configPath = path.join(rootDirectory, file);
-    const configFile = readConfigFile(configPath, (path) => sys.readFile(path));
-    const parsedConfig = parseJsonConfigFileContent(
+  const aliasPatterns = R.flatMap(tsconfigFiles, (tsconfigFile) => {
+    const filename = path.join(rootDirectory, tsconfigFile);
+    const configFile = readConfigFile(filename, (filePath) =>
+      sys.readFile(filePath),
+    );
+    const config = parseJsonConfigFileContent(
       configFile.config,
       sys,
-      path.dirname(configPath),
+      path.dirname(filename),
     );
 
     return R.pipe(
-      parsedConfig.options.paths ?? {},
+      config.options.paths ?? {},
       R.keys(),
       R.map((str) => globToRegexp(str).source),
     );
   });
+
+  return aliasPatterns;
 };
 
 interface CreateImportXConfigOptions {
