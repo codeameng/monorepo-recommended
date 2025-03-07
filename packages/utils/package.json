@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@packages/tsup-config": "workspace:*",
+    "p-props": "6.0.0",
     "remeda": "2.21.0"
   },
   "devDependencies": {

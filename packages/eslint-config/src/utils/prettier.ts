@@ -1,4 +1,4 @@
-import { R } from '@packages/utils';
+import { pProps, R } from '@packages/utils';
 import { resolveConfig, getSupportInfo } from 'prettier';
 import { z } from 'zod';
 
@@ -11,10 +11,10 @@ export const getPrettierConfig = async (): Promise<
 > => {
   const defaultOptions: Record<string, unknown> = {};
 
-  const [supportInfo, config] = await Promise.all([
-    getSupportInfo(),
-    resolveConfig('prettier.config.js'),
-  ]);
+  const { supportInfo, config } = await pProps({
+    supportInfo: getSupportInfo(),
+    config: resolveConfig('prettier.config.js'),
+  });
 
   for (const option of supportInfo.options) {
     if (R.isEmpty(option.name)) {

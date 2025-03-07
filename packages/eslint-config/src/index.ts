@@ -1,4 +1,4 @@
-import { R } from '@packages/utils';
+import { pProps, R } from '@packages/utils';
 import { defineConfig, injectAllRules } from '$utils/index.ts';
 import { createGitignoreConfig } from './configs/gitignore.ts';
 import { createBuiltInConfig } from './configs/built-in.ts';
@@ -19,22 +19,22 @@ const createConfig = async (options: Options): Promise<Config[]> => {
 
   const typescriptProject = ['**/tsconfig.json', '**/tsconfig.*.json'];
 
-  const [
+  const {
     gitignoreConfig,
     builtInConfig,
     typescriptConfig,
     importXConfig,
     stylisticConfig,
-  ] = await Promise.all([
-    createGitignoreConfig(rootDirectory),
-    createBuiltInConfig(),
-    createTypescriptConfig(rootDirectory),
-    createImportXConfig({
+  } = await pProps({
+    gitignoreConfig: createGitignoreConfig(rootDirectory),
+    builtInConfig: createBuiltInConfig(),
+    typescriptConfig: createTypescriptConfig(rootDirectory),
+    importXConfig: createImportXConfig({
       rootDirectory,
       typescriptProject,
     }),
-    createStylisticConfig(),
-  ]);
+    stylisticConfig: createStylisticConfig(),
+  });
 
   const configs = defineConfig([
     {
