@@ -19,34 +19,48 @@ const createConfig = async (options: Options): Promise<Config[]> => {
 
   const typescriptProject = ['**/tsconfig.json', '**/tsconfig.*.json'];
 
+  const [
+    gitignoreConfig,
+    builtInConfig,
+    typescriptConfig,
+    importXConfig,
+    stylisticConfig,
+  ] = await Promise.all([
+    createGitignoreConfig(rootDirectory),
+    createBuiltInConfig(),
+    createTypescriptConfig(rootDirectory),
+    createImportXConfig({
+      rootDirectory,
+      typescriptProject,
+    }),
+    createStylisticConfig(),
+  ]);
+
   const configs = defineConfig([
     {
       name: 'gitignore',
       files: undefined,
-      extends: await createGitignoreConfig(rootDirectory),
+      extends: gitignoreConfig,
     },
     {
       name: 'built-in',
       files: GLOBS.ALL_JS_LIKE,
-      extends: createBuiltInConfig(),
+      extends: builtInConfig,
     },
     {
       name: 'typescript',
       files: GLOBS.ALL_JS_LIKE,
-      extends: createTypescriptConfig(rootDirectory),
+      extends: typescriptConfig,
     },
     {
       name: 'import-x',
       files: GLOBS.ALL_JS_LIKE,
-      extends: await createImportXConfig({
-        rootDirectory,
-        typescriptProject,
-      }),
+      extends: importXConfig,
     },
     {
       name: 'stylistic',
       files: GLOBS.ALL_JS_LIKE,
-      extends: createStylisticConfig(),
+      extends: stylisticConfig,
     },
   ] satisfies StrictConfigWithExtends[]);
 

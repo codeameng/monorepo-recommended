@@ -188,9 +188,7 @@ export const createImportXConfig = async (
         'import-x/no-relative-parent-imports': [
           'error',
           {
-            ignore: R.isEmpty(typescriptAliasPatterns)
-              ? undefined
-              : typescriptAliasPatterns,
+            ignore: typescriptAliasPatterns,
           },
         ],
       },

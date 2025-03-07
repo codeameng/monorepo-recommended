@@ -6,13 +6,17 @@ const ConfigSchema = z.object({
   singleQuote: z.boolean(),
 });
 
-const { options } = await getSupportInfo();
-const config = await resolveConfig('prettier.config.js');
-
-export const getPrettierConfig = (): z.infer<typeof ConfigSchema> => {
+export const getPrettierConfig = async (): Promise<
+  z.infer<typeof ConfigSchema>
+> => {
   const defaultOptions: Record<string, unknown> = {};
 
-  for (const option of options) {
+  const [supportInfo, config] = await Promise.all([
+    getSupportInfo(),
+    resolveConfig('prettier.config.js'),
+  ]);
+
+  for (const option of supportInfo.options) {
     if (R.isEmpty(option.name)) {
       continue;
     }
