@@ -198,6 +198,12 @@ export const createImportXConfig = async (
             ignore: typescriptAliasPatterns,
           },
         ],
+        'import-x/no-internal-modules': [
+          'error',
+          {
+            allow: ['**/index.ts'],
+          },
+        ],
       },
     },
   ]);

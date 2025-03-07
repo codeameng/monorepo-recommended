@@ -1,12 +1,13 @@
 import { pProps, R } from '@packages/utils';
-import { defineESLintConfig, injectAllRules } from '$utils/index.ts';
-import { createGitignoreConfig } from './configs/gitignore.ts';
-import { createBuiltInConfig } from './configs/built-in.ts';
-import { createTypescriptConfig } from './configs/typescript.ts';
-import { GLOBS } from '$utils/globs.ts';
+import { defineESLintConfig, GLOBS, injectAllRules } from '$utils/index.ts';
 import type { Config, StrictConfigWithExtends } from '$types/index.ts';
-import { createStylisticConfig } from './configs/stylistic.ts';
-import { createImportXConfig } from './configs/import-x.ts';
+import {
+  createBuiltInConfig,
+  createGitignoreConfig,
+  createImportXConfig,
+  createStylisticConfig,
+  createTypescriptConfig,
+} from './configs/index.ts';
 
 interface Options {
   rootDirectory: string;

@@ -103,3 +103,5 @@ const getPrettierConfig = async (): Promise<z.infer<typeof ConfigSchema>> => {
 };
 
 export { defineESLintConfig, injectAllRules, getPrettierConfig };
+
+export { GLOBS } from './globs.ts';
