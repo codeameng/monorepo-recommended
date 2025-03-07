@@ -1,5 +1,5 @@
 import { pProps, R } from '@packages/utils';
-import { defineConfig, injectAllRules } from '$utils/index.ts';
+import { defineESLintConfig, injectAllRules } from '$utils/index.ts';
 import { createGitignoreConfig } from './configs/gitignore.ts';
 import { createBuiltInConfig } from './configs/built-in.ts';
 import { createTypescriptConfig } from './configs/typescript.ts';
@@ -36,7 +36,7 @@ const createConfig = async (options: Options): Promise<Config[]> => {
     stylisticConfig: createStylisticConfig(),
   });
 
-  const configs = defineConfig([
+  const configs = defineESLintConfig([
     {
       name: 'gitignore',
       files: undefined,

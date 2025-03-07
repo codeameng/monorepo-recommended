@@ -23,7 +23,7 @@ const isDeprecatedRule = (rule: LooseRuleDefinition): boolean => {
   return isDeprecatedInMeta ?? false;
 };
 
-const defineConfig = (configs: ConfigWithExtendsOrArray[]): Config[] => {
+const defineESLintConfig = (configs: ConfigWithExtendsOrArray[]): Config[] => {
   const eslintConfigs: Config[] = [];
   const flatConfigs = R.flat(configs);
 
@@ -102,4 +102,4 @@ const getPrettierConfig = async (): Promise<z.infer<typeof ConfigSchema>> => {
   return ConfigSchema.parse(R.merge(defaultOptions, config));
 };
 
-export { defineConfig, injectAllRules, getPrettierConfig };
+export { defineESLintConfig, injectAllRules, getPrettierConfig };

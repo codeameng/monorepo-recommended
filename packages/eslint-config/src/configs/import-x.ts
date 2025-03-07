@@ -1,5 +1,5 @@
 import type { Config } from '$types/index.ts';
-import { defineConfig } from '$utils/index.ts';
+import { defineESLintConfig } from '$utils/index.ts';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import { R } from '@packages/utils';
@@ -58,7 +58,7 @@ export const createImportXConfig = async (
     typescriptProject,
   });
 
-  return defineConfig([
+  return defineESLintConfig([
     eslintPluginImportX.flatConfigs.recommended,
     eslintPluginImportX.flatConfigs.typescript,
     {

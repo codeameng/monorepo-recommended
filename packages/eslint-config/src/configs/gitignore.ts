@@ -1,5 +1,5 @@
 import type { Config } from '$types/index.ts';
-import { defineConfig } from '$utils/index.ts';
+import { defineESLintConfig } from '$utils/index.ts';
 import { R } from '@packages/utils';
 import eslintConfigFlatGitignore from 'eslint-config-flat-gitignore';
 import { globby } from 'globby';
@@ -13,7 +13,7 @@ export const createGitignoreConfig = async (
     gitignore: true,
   });
 
-  return defineConfig([
+  return defineESLintConfig([
     eslintConfigFlatGitignore({
       root: true,
       files: R.map(gitignoreFiles, (file) => path.basename(file)),

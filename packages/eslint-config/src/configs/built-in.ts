@@ -1,9 +1,9 @@
 import type { Config } from '$types/index.ts';
-import { defineConfig } from '$utils/index.ts';
+import { defineESLintConfig } from '$utils/index.ts';
 import eslintJs from '@eslint/js';
 
 export const createBuiltInConfig = (): Config[] => {
-  return defineConfig([
+  return defineESLintConfig([
     eslintJs.configs.recommended,
     {
       rules: {
