@@ -198,6 +198,17 @@ export const createImportXConfig = async (
             ignore: typescriptAliasPatterns,
           },
         ],
+
+        /**
+         * Restricts importing from nested internal paths within modules.
+         *
+         * Enforcing public API boundaries by preventing direct imports of internal implementation
+         * details improves encapsulation and maintainability. This rule encourages a clean module
+         * architecture where consumers interact only with intended public interfaces rather than
+         * implementation details, reducing coupling between components.
+         *
+         * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-internal-modules.md
+         */
         'import-x/no-internal-modules': [
           'error',
           {
