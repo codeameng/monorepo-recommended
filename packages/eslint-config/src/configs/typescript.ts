@@ -9,7 +9,14 @@ export const createTypescriptConfig = (tsconfigRootDir: string): Config[] => {
     configs.strictTypeChecked,
     configs.stylisticTypeChecked,
     {
-      name: 'disable-overridden-rules',
+      languageOptions: {
+        parserOptions: {
+          projectService: true,
+          tsconfigRootDir,
+        },
+      },
+    },
+    {
       rules: R.pipe(
         eslintJs.configs.all.rules,
         R.keys(),
@@ -18,12 +25,6 @@ export const createTypescriptConfig = (tsconfigRootDir: string): Config[] => {
       ),
     },
     {
-      languageOptions: {
-        parserOptions: {
-          projectService: true,
-          tsconfigRootDir,
-        },
-      },
       rules: {
         /**
          * Disables readonly parameter types requirement.

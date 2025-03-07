@@ -69,6 +69,13 @@ export const createImportXConfig = async (
           }),
         ],
       },
+    },
+    {
+      rules: {
+        'no-duplicate-imports': 'off',
+      },
+    },
+    {
       rules: {
         /**
          * Disallows the use of default exports in favor of named exports.

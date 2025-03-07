@@ -10,6 +10,8 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
       plugins: {
         '@stylistic': stylisticESLintPlugin,
       },
+    },
+    {
       rules: {
         /**
          * Configures quote style based on Prettier configuration.
