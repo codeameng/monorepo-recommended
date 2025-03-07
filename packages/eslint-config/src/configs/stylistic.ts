@@ -1,6 +1,5 @@
 import type { Config } from '$types/index.ts';
-import { defineConfig } from '$utils/index.ts';
-import { getPrettierConfig } from '$utils/prettier.ts';
+import { defineConfig, getPrettierConfig } from '$utils/index.ts';
 import stylisticESLintPlugin from '@stylistic/eslint-plugin';
 
 export const createStylisticConfig = async (): Promise<Config[]> => {

@@ -1,4 +1,4 @@
-import { R } from '@packages/utils';
+import { pProps, R } from '@packages/utils';
 import type {
   Config,
   ConfigWithExtendsOrArray,
@@ -6,6 +6,8 @@ import type {
   Rules,
 } from '$types/index.ts';
 import eslintJs from '@eslint/js';
+import { z } from 'zod';
+import { getSupportInfo, resolveConfig } from 'prettier';
 
 const getScopedConfig = (config: Config): Config => {
   return R.pick(config, ['files', 'ignores']);
@@ -77,4 +79,27 @@ const injectAllRules = (configs: Config[]): Config[] => {
   return R.concat(allRulesConfigs, configs);
 };
 
-export { defineConfig, injectAllRules };
+const ConfigSchema = z.object({
+  singleQuote: z.boolean(),
+});
+
+const getPrettierConfig = async (): Promise<z.infer<typeof ConfigSchema>> => {
+  const defaultOptions: Record<string, unknown> = {};
+
+  const { supportInfo, config } = await pProps({
+    supportInfo: getSupportInfo(),
+    config: resolveConfig('prettier.config.js'),
+  });
+
+  for (const option of supportInfo.options) {
+    if (R.isEmpty(option.name)) {
+      continue;
+    }
+
+    defaultOptions[option.name] = option.default;
+  }
+
+  return ConfigSchema.parse(R.merge(defaultOptions, config));
+};
+
+export { defineConfig, injectAllRules, getPrettierConfig };
