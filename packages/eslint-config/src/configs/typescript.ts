@@ -154,6 +154,17 @@ export const createTypescriptConfig = (tsconfigRootDir: string): Config[] => {
             format: ['PascalCase'],
           },
         ],
+
+        /**
+         * Disallows variable declarations from shadowing variables declared in the outer scope.
+         *
+         * Prevents bugs and confusion arising from variables with the same name but different
+         * meanings or values in nested scopes. Improves code clarity, prevents accidental
+         * reference to the wrong variable, and makes the codebase more maintainable.
+         *
+         * @see https://typescript-eslint.io/rules/no-shadow
+         */
+        '@typescript-eslint/no-shadow': 'error',
       },
     },
   ]);
