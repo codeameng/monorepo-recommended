@@ -15,7 +15,6 @@ export default createConfig({
         'import-x/order': 'off',
         'require-unicode-regexp': 'off',
         'import-x/dynamic-import-chunkname': 'off',
-        'import-x/no-namespace': 'off',
       },
     },
 
