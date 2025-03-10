@@ -11,9 +11,9 @@ import {
 import pProps from 'p-props';
 
 interface Options {
+  overrideConfigs: Config[];
   rootDirectory: string;
   shouldInjectAllRules: boolean;
-  overrideConfigs: Config[];
 }
 
 const createConfig = async (options: Options): Promise<Config[]> => {

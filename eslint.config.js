@@ -11,6 +11,8 @@ export default createConfig({
       // TODO: Remove these rules once we have a better way to handle them
       rules: {
         'sort-keys': 'off',
+        'perfectionist/sort-objects': 'off',
+        'perfectionist/sort-imports': 'off',
         'require-unicode-regexp': 'off',
         'import-x/dynamic-import-chunkname': 'off',
       },

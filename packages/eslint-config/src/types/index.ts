@@ -8,9 +8,9 @@ interface ConfigWithExtends extends Config {
 }
 type ConfigWithExtendsOrArray = ConfigWithExtends | ConfigWithExtends[];
 interface StrictConfigWithExtends {
-  name: ConfigWithExtends['name'];
-  files: ConfigWithExtends['files'];
   extends: ConfigWithExtends['extends'];
+  files: ConfigWithExtends['files'];
+  name: ConfigWithExtends['name'];
 }
 
 type Plugin = NonNullable<Config['plugins']>[string];
