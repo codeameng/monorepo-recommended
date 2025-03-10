@@ -9,14 +9,15 @@
   "dependencies": {
     "@eslint/js": "9.21.0",
     "@packages/tsup-config": "workspace:*",
-    "@packages/utils": "workspace:*",
     "@stylistic/eslint-plugin": "4.2.0",
     "eslint-config-flat-gitignore": "2.1.0",
     "eslint-import-resolver-typescript": "3.8.3",
     "eslint-plugin-import-x": "4.6.1",
     "glob-to-regexp": "0.4.1",
     "globby": "14.1.0",
+    "p-props": "6.0.0",
     "prettier": "3.5.3",
+    "remeda": "2.21.1",
     "typescript": "5.8.2",
     "typescript-eslint": "8.26.0",
     "zod": "3.24.2"

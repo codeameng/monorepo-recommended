@@ -1,5 +1,4 @@
-import { pProps, R } from '@packages/utils';
-import { defineESLintConfig, GLOBS, injectAllRules } from '$utils/index.ts';
+import { defineESLintConfig, GLOBS, injectAllRules, R } from '$utils/index.ts';
 import type { Config, StrictConfigWithExtends } from '$types/index.ts';
 import {
   createBuiltInConfig,
@@ -8,6 +7,7 @@ import {
   createStylisticConfig,
   createTypescriptConfig,
 } from './configs/index.ts';
+import pProps from 'p-props';
 
 interface Options {
   rootDirectory: string;

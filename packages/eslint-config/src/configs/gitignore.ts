@@ -1,6 +1,5 @@
 import type { Config } from '$types/index.ts';
-import { defineESLintConfig } from '$utils/index.ts';
-import { R } from '@packages/utils';
+import { defineESLintConfig, R } from '$utils/index.ts';
 import eslintConfigFlatGitignore from 'eslint-config-flat-gitignore';
 import { globby } from 'globby';
 import path from 'path';

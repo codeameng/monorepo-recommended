@@ -1,8 +1,7 @@
 import type { Config } from '$types/index.ts';
-import { defineESLintConfig } from '$utils/index.ts';
+import { defineESLintConfig, R } from '$utils/index.ts';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
-import { R } from '@packages/utils';
 import { globby } from 'globby';
 import path from 'path';
 import { parseJsonConfigFileContent, readConfigFile, sys } from 'typescript';
@@ -215,6 +214,19 @@ export const createImportXConfig = async (
             allow: ['**/index.ts'],
           },
         ],
+
+        /**
+         * Prevents circular dependencies between modules.
+         *
+         * Circular dependencies can lead to unexpected behavior, runtime errors,
+         * and maintenance challenges. Enforcing a directed acyclic graph structure
+         * in the dependency tree improves code quality, simplifies reasoning about
+         * module relationships, enhances testability, and prevents initialization
+         * issues that can occur with mutual dependencies.
+         *
+         * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-cycle.md
+         */
+        'import-x/no-cycle': 'error',
       },
     },
   ]);

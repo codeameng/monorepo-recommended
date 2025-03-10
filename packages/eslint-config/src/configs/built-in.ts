@@ -151,6 +151,18 @@ export const createBuiltInConfig = (): Config[] => {
             },
           },
         ],
+
+        /**
+         * Enforces a minimum and/or maximum identifier length.
+         *
+         * Disabled in this configuration as overly restrictive identifier length limits can
+         * reduce code readability and expressiveness. Teams should establish their own
+         * conventions for identifier naming based on their specific context rather than
+         * enforcing arbitrary length constraints.
+         *
+         * @see https://eslint.org/docs/latest/rules/id-length
+         */
+        'id-length': 'off',
       },
     },
   ]);

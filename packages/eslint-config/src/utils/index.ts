@@ -1,4 +1,3 @@
-import { pProps, R } from '@packages/utils';
 import type {
   Config,
   ConfigWithExtendsOrArray,
@@ -8,6 +7,8 @@ import type {
 import eslintJs from '@eslint/js';
 import { z } from 'zod';
 import { getSupportInfo, resolveConfig } from 'prettier';
+import pProps from 'p-props';
+import { R } from './remeda.ts';
 
 const getScopedConfig = (config: Config): Config => {
   return R.pick(config, ['files', 'ignores']);
@@ -105,3 +106,5 @@ const getPrettierConfig = async (): Promise<z.infer<typeof ConfigSchema>> => {
 export { defineESLintConfig, injectAllRules, getPrettierConfig };
 
 export { GLOBS } from './globs.ts';
+
+export { R } from './remeda.ts';

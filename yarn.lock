@@ -454,7 +454,6 @@ __metadata:
     "@eslint/js": "npm:9.21.0"
     "@packages/tsup-config": "workspace:*"
     "@packages/typescript-config": "workspace:*"
-    "@packages/utils": "workspace:*"
     "@stylistic/eslint-plugin": "npm:4.2.0"
     "@types/glob-to-regexp": "npm:0.4.4"
     eslint: "npm:9.21.0"
@@ -463,7 +462,9 @@ __metadata:
     eslint-plugin-import-x: "npm:4.6.1"
     glob-to-regexp: "npm:0.4.1"
     globby: "npm:14.1.0"
+    p-props: "npm:6.0.0"
     prettier: "npm:3.5.3"
+    remeda: "npm:2.21.1"
     tsup: "npm:8.4.0"
     typescript: "npm:5.8.2"
     typescript-eslint: "npm:8.26.0"
@@ -507,19 +508,6 @@ __metadata:
     "@tsconfig/strictest": "npm:2.0.5"
   peerDependencies:
     typescript: 5.8.2
-  languageName: unknown
-  linkType: soft
-
-"@packages/utils@workspace:*, @packages/utils@workspace:packages/utils":
-  version: 0.0.0-use.local
-  resolution: "@packages/utils@workspace:packages/utils"
-  dependencies:
-    "@packages/tsup-config": "workspace:*"
-    "@packages/typescript-config": "workspace:*"
-    p-props: "npm:6.0.0"
-    remeda: "npm:2.21.0"
-    tsup: "npm:8.4.0"
-    typescript: "npm:5.8.2"
   languageName: unknown
   linkType: soft
 
@@ -2537,12 +2525,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remeda@npm:2.21.0":
-  version: 2.21.0
-  resolution: "remeda@npm:2.21.0"
+"remeda@npm:2.21.1":
+  version: 2.21.1
+  resolution: "remeda@npm:2.21.1"
   dependencies:
-    type-fest: "npm:^4.35.0"
-  checksum: 10c0/003de949953de25ddf4b86d50d2dcea992ced9cca10ff163b240bd1165d04ddd2b871893f55a18224f0bb3736c8549145fe5cb89cf73d1c4f8593fa6545c4f30
+    type-fest: "npm:^4.37.0"
+  checksum: 10c0/8793e944263cd2272d4f4332fc7671e9f7fd53e57107efcb6c45d5f7ad2bafa1777a11426de5788dd98808f984ad2d41a56d26b7c7560ad57a8019e39b851edd
   languageName: node
   linkType: hard
 
@@ -3129,7 +3117,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:^4.35.0":
+"type-fest@npm:^4.37.0":
   version: 4.37.0
   resolution: "type-fest@npm:4.37.0"
   checksum: 10c0/5bad189f66fbe3431e5d36befa08cab6010e56be68b7467530b7ef94c3cf81ef775a8ac3047c8bbda4dd3159929285870357498d7bc1df062714f9c5c3a84926
