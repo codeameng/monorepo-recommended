@@ -1,6 +1,11 @@
+import path from 'path';
+
 import eslintJs from '@eslint/js';
+import globToRegexp from 'glob-to-regexp';
+import { globby } from 'globby';
 import pProps from 'p-props';
 import { getSupportInfo, resolveConfig } from 'prettier';
+import { parseJsonConfigFileContent, readConfigFile, sys } from 'typescript';
 import { z } from 'zod';
 
 import type {
@@ -48,6 +53,41 @@ const defineESLintConfig = (configs: ConfigWithExtendsOrArray[]): Config[] => {
   }
 
   return R.pipe(eslintConfigs, R.map(R.omitBy(R.isNullish)));
+};
+
+interface ReadTypescriptAliasPatternsOptions {
+  rootDirectory: string;
+  typescriptProject: string[];
+}
+
+const readTypescriptAliasPatterns = async (
+  options: ReadTypescriptAliasPatternsOptions,
+): Promise<string[]> => {
+  const { rootDirectory, typescriptProject } = options;
+
+  const tsconfigFiles = await globby(typescriptProject, {
+    cwd: rootDirectory,
+    gitignore: true,
+  });
+  const aliasPatterns = R.flatMap(tsconfigFiles, (tsconfigFile) => {
+    const filename = path.join(rootDirectory, tsconfigFile);
+    const configFile = readConfigFile(filename, (filePath) =>
+      sys.readFile(filePath),
+    );
+    const config = parseJsonConfigFileContent(
+      configFile.config,
+      sys,
+      path.dirname(filename),
+    );
+
+    return R.pipe(
+      config.options.paths ?? {},
+      R.keys(),
+      R.map((str) => globToRegexp(str).source),
+    );
+  });
+
+  return aliasPatterns;
 };
 
 const injectAllRules = (configs: Config[]): Config[] => {
@@ -105,7 +145,12 @@ const getPrettierConfig = async (): Promise<z.infer<typeof ConfigSchema>> => {
   return ConfigSchema.parse(R.merge(defaultOptions, config));
 };
 
-export { defineESLintConfig, getPrettierConfig, injectAllRules };
+export {
+  defineESLintConfig,
+  getPrettierConfig,
+  injectAllRules,
+  readTypescriptAliasPatterns,
+};
 
 export { GLOBS } from './globs.ts';
 

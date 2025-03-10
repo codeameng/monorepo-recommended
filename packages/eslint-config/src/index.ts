@@ -1,6 +1,12 @@
 import pProps from 'p-props';
 
-import { defineESLintConfig, GLOBS, injectAllRules, R } from '$utils/index.ts';
+import {
+  defineESLintConfig,
+  GLOBS,
+  injectAllRules,
+  R,
+  readTypescriptAliasPatterns,
+} from '$utils/index.ts';
 
 import type { Config, StrictConfigWithExtends } from '$types/index.ts';
 
@@ -23,6 +29,10 @@ const createConfig = async (options: Options): Promise<Config[]> => {
   const { rootDirectory, shouldInjectAllRules, overrideConfigs } = options;
 
   const typescriptProject = ['**/tsconfig.json', '**/tsconfig.*.json'];
+  const typescriptAliasPatterns = await readTypescriptAliasPatterns({
+    rootDirectory,
+    typescriptProject,
+  });
 
   const {
     gitignoreConfig,
@@ -36,8 +46,8 @@ const createConfig = async (options: Options): Promise<Config[]> => {
     builtInConfig: createBuiltInConfig(),
     typescriptConfig: createTypescriptConfig(rootDirectory),
     importXConfig: createImportXConfig({
-      rootDirectory,
       typescriptProject,
+      typescriptAliasPatterns,
     }),
     perfectionistConfig: createPerfectionistConfig(),
     stylisticConfig: createStylisticConfig(),

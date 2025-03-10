@@ -1,64 +1,19 @@
-import path from 'path';
-
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import eslintPluginImportX from 'eslint-plugin-import-x';
-import globToRegexp from 'glob-to-regexp';
-import { globby } from 'globby';
-import { parseJsonConfigFileContent, readConfigFile, sys } from 'typescript';
 
-import { defineESLintConfig, R } from '$utils/index.ts';
+import { defineESLintConfig } from '$utils/index.ts';
 
 import type { Config } from '$types/index.ts';
 
-interface ReadTypescriptAliasPatternsOptions {
-  rootDirectory: string;
-  typescriptProject: string[];
-}
-
-const readTypescriptAliasPatterns = async (
-  options: ReadTypescriptAliasPatternsOptions,
-): Promise<string[]> => {
-  const { rootDirectory, typescriptProject } = options;
-
-  const tsconfigFiles = await globby(typescriptProject, {
-    cwd: rootDirectory,
-    gitignore: true,
-  });
-  const aliasPatterns = R.flatMap(tsconfigFiles, (tsconfigFile) => {
-    const filename = path.join(rootDirectory, tsconfigFile);
-    const configFile = readConfigFile(filename, (filePath) =>
-      sys.readFile(filePath),
-    );
-    const config = parseJsonConfigFileContent(
-      configFile.config,
-      sys,
-      path.dirname(filename),
-    );
-
-    return R.pipe(
-      config.options.paths ?? {},
-      R.keys(),
-      R.map((str) => globToRegexp(str).source),
-    );
-  });
-
-  return aliasPatterns;
-};
-
 interface CreateImportXConfigOptions {
-  rootDirectory: string;
+  typescriptAliasPatterns: string[];
   typescriptProject: string[];
 }
 
-export const createImportXConfig = async (
+export const createImportXConfig = (
   options: CreateImportXConfigOptions,
-): Promise<Config[]> => {
-  const { rootDirectory, typescriptProject } = options;
-
-  const typescriptAliasPatterns = await readTypescriptAliasPatterns({
-    rootDirectory,
-    typescriptProject,
-  });
+): Config[] => {
+  const { typescriptProject, typescriptAliasPatterns } = options;
 
   return defineESLintConfig([
     eslintPluginImportX.flatConfigs.recommended,
@@ -230,6 +185,22 @@ export const createImportXConfig = async (
          * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-cycle.md
          */
         'import-x/no-cycle': 'error',
+
+        /**
+         * Disables the rule that limits the number of dependencies a module can have.
+         *
+         * While limiting dependencies can reduce complexity and coupling, this restriction
+         * can be too rigid for many real-world applications. Complex components or service
+         * modules often legitimately require numerous dependencies to function properly.
+         * Enforcing an arbitrary limit could lead to artificial code splitting or unnecessary
+         * abstractions that might actually reduce code quality and readability.
+         *
+         * Instead, we rely on code reviews and other architectural practices to ensure
+         * dependencies are managed appropriately based on the specific context of each module.
+         *
+         * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/max-dependencies.md
+         */
+        'import-x/max-dependencies': 'off',
       },
     },
   ]);
