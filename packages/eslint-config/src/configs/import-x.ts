@@ -1,11 +1,14 @@
-import type { Config } from '$types/index.ts';
-import { defineESLintConfig, R } from '$utils/index.ts';
-import eslintPluginImportX from 'eslint-plugin-import-x';
-import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
-import { globby } from 'globby';
 import path from 'path';
-import { parseJsonConfigFileContent, readConfigFile, sys } from 'typescript';
+
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import eslintPluginImportX from 'eslint-plugin-import-x';
 import globToRegexp from 'glob-to-regexp';
+import { globby } from 'globby';
+import { parseJsonConfigFileContent, readConfigFile, sys } from 'typescript';
+
+import { defineESLintConfig, R } from '$utils/index.ts';
+
+import type { Config } from '$types/index.ts';
 
 interface ReadTypescriptAliasPatternsOptions {
   rootDirectory: string;

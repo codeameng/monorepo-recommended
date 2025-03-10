@@ -1,8 +1,11 @@
-import type { Config } from '$types/index.ts';
-import { defineESLintConfig, R } from '$utils/index.ts';
+import path from 'path';
+
 import eslintConfigFlatGitignore from 'eslint-config-flat-gitignore';
 import { globby } from 'globby';
-import path from 'path';
+
+import { defineESLintConfig, R } from '$utils/index.ts';
+
+import type { Config } from '$types/index.ts';
 
 export const createGitignoreConfig = async (
   rootDirectory: string,

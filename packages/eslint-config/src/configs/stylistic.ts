@@ -1,6 +1,8 @@
-import type { Config } from '$types/index.ts';
-import { defineESLintConfig, getPrettierConfig } from '$utils/index.ts';
 import stylisticESLintPlugin from '@stylistic/eslint-plugin';
+
+import { defineESLintConfig, getPrettierConfig } from '$utils/index.ts';
+
+import type { Config } from '$types/index.ts';
 
 export const createStylisticConfig = async (): Promise<Config[]> => {
   const { singleQuote } = await getPrettierConfig();

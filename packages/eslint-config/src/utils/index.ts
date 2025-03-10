@@ -1,13 +1,15 @@
+import eslintJs from '@eslint/js';
+import pProps from 'p-props';
+import { getSupportInfo, resolveConfig } from 'prettier';
+import { z } from 'zod';
+
 import type {
   Config,
   ConfigWithExtendsOrArray,
   LooseRuleDefinition,
   Rules,
 } from '$types/index.ts';
-import eslintJs from '@eslint/js';
-import { z } from 'zod';
-import { getSupportInfo, resolveConfig } from 'prettier';
-import pProps from 'p-props';
+
 import { R } from './remeda.ts';
 
 const getScopedConfig = (config: Config): Config => {

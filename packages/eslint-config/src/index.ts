@@ -1,5 +1,9 @@
+import pProps from 'p-props';
+
 import { defineESLintConfig, GLOBS, injectAllRules, R } from '$utils/index.ts';
+
 import type { Config, StrictConfigWithExtends } from '$types/index.ts';
+
 import {
   createBuiltInConfig,
   createGitignoreConfig,
@@ -8,7 +12,6 @@ import {
   createStylisticConfig,
   createTypescriptConfig,
 } from './configs/index.ts';
-import pProps from 'p-props';
 
 interface Options {
   overrideConfigs: Config[];

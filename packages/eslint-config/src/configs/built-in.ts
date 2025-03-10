@@ -1,6 +1,8 @@
-import type { Config } from '$types/index.ts';
-import { defineESLintConfig } from '$utils/index.ts';
 import eslintJs from '@eslint/js';
+
+import { defineESLintConfig } from '$utils/index.ts';
+
+import type { Config } from '$types/index.ts';
 
 export const createBuiltInConfig = (): Config[] => {
   return defineESLintConfig([

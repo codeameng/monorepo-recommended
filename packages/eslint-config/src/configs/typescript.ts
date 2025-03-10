@@ -1,7 +1,9 @@
-import type { Config } from '$types/index.ts';
-import { defineESLintConfig, R } from '$utils/index.ts';
-import { configs, plugin } from 'typescript-eslint';
 import eslintJs from '@eslint/js';
+import { configs, plugin } from 'typescript-eslint';
+
+import { defineESLintConfig, R } from '$utils/index.ts';
+
+import type { Config } from '$types/index.ts';
 
 export const createTypescriptConfig = (tsconfigRootDir: string): Config[] => {
   return defineESLintConfig([

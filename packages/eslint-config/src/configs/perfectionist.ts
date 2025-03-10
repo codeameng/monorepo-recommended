@@ -1,6 +1,8 @@
-import type { Config } from '$types/index.ts';
-import { defineESLintConfig } from '$utils/index.ts';
 import eslintPluginPerfectionist from 'eslint-plugin-perfectionist';
+
+import { defineESLintConfig } from '$utils/index.ts';
+
+import type { Config } from '$types/index.ts';
 
 export const createPerfectionistConfig = (): Config[] => {
   return defineESLintConfig([
@@ -62,6 +64,41 @@ export const createPerfectionistConfig = (): Config[] => {
          * @see https://perfectionist.dev/rules/sort-interfaces
          */
         'perfectionist/sort-interfaces': 'error',
+
+        'perfectionist/sort-imports': [
+          'error',
+          {
+            customGroups: {
+              value: {
+                'global-alias': String.raw`^\$.*$`,
+              },
+              type: {
+                'global-alias-type': String.raw`^\$.*$`,
+              },
+            },
+            groups: [
+              'builtin',
+              'builtin-type',
+              'external',
+              'external-type',
+              'internal',
+              'internal-type',
+              'global-alias',
+              'global-alias-type',
+              'parent',
+              'parent-type',
+              'sibling',
+              'sibling-type',
+              'index',
+              'index-type',
+              'object',
+              'style',
+              'side-effect',
+              'side-effect-style',
+              'unknown',
+            ],
+          },
+        ],
       },
     },
   ]);
