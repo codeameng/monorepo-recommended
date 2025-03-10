@@ -166,6 +166,20 @@ export const createTypescriptConfig = (tsconfigRootDir: string): Config[] => {
          * @see https://typescript-eslint.io/rules/no-shadow
          */
         '@typescript-eslint/no-shadow': 'error',
+
+        /**
+         * Enforces consistent usage of type exports.
+         *
+         * Ensures proper separation between runtime values and type-only exports,
+         * which helps bundlers and transpilers correctly eliminate type information
+         * during compilation. Prevents accidental inclusion of type-only exports
+         * in runtime code, reducing bundle size and avoiding unexpected runtime
+         * errors. Makes code intentions clearer by explicitly marking which exports
+         * are types versus runtime values, improving code readability and maintainability.
+         *
+         * @see https://typescript-eslint.io/rules/consistent-type-exports
+         */
+        '@typescript-eslint/consistent-type-exports': 'error',
       },
     },
   ]);

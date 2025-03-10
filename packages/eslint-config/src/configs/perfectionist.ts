@@ -40,18 +40,21 @@ export const createPerfectionistConfig = (
         'perfectionist/sort-named-exports': 'error',
 
         /**
-         * Disables automatic sorting of module declarations.
+         * Enforces consistent ordering of module contents.
          *
-         * While organizing modules can be beneficial, automatic module sorting may
-         * interfere with intentional module ordering that serves specific purposes,
-         * such as dependency initialization order or custom organizational patterns
-         * established by the team. Preserving manual control over module ordering
-         * allows developers to express architectural intent and maintain critical
-         * execution sequences when necessary.
+         * Consistently organized module contents improve code readability and maintainability
+         * by providing a predictable structure that developers can easily navigate. This
+         * standardization helps team members quickly locate specific functions, variables,
+         * or classes within a module without having to scan the entire file. It reduces
+         * cognitive load when working with large modules, minimizes merge conflicts when
+         * multiple developers contribute to the same file, and creates a more professional
+         * and polished codebase. By grouping related functionality together in a consistent
+         * order, the code becomes more self-documenting and the module's purpose and structure
+         * become immediately clear.
          *
          * @see https://perfectionist.dev/rules/sort-modules
          */
-        'perfectionist/sort-modules': 'off',
+        'perfectionist/sort-modules': 'error',
 
         /**
          * Enforces consistent ordering of interface properties.
