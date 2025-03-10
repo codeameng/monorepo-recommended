@@ -4,6 +4,7 @@ import {
   createBuiltInConfig,
   createGitignoreConfig,
   createImportXConfig,
+  createPerfectionistConfig,
   createStylisticConfig,
   createTypescriptConfig,
 } from './configs/index.ts';
@@ -25,6 +26,7 @@ const createConfig = async (options: Options): Promise<Config[]> => {
     builtInConfig,
     typescriptConfig,
     importXConfig,
+    perfectionistConfig,
     stylisticConfig,
   } = await pProps({
     gitignoreConfig: createGitignoreConfig(rootDirectory),
@@ -34,6 +36,7 @@ const createConfig = async (options: Options): Promise<Config[]> => {
       rootDirectory,
       typescriptProject,
     }),
+    perfectionistConfig: createPerfectionistConfig(),
     stylisticConfig: createStylisticConfig(),
   });
 
@@ -57,6 +60,11 @@ const createConfig = async (options: Options): Promise<Config[]> => {
       name: 'import-x',
       files: GLOBS.ALL_JS_LIKE,
       extends: importXConfig,
+    },
+    {
+      name: 'perfectionist',
+      files: GLOBS.ALL_JS_LIKE,
+      extends: perfectionistConfig,
     },
     {
       name: 'stylistic',
