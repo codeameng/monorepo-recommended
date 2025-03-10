@@ -22,7 +22,19 @@ export const createPerfectionistConfig = (): Config[] => {
       },
     },
     {
-      rules: {},
+      rules: {
+        /**
+         * Enforces consistent ordering of named exports.
+         *
+         * Consistently organized named exports improve code readability and maintainability
+         * by making exports easier to scan, understand, and locate. This reduces cognitive load
+         * when working with modules and helps team members quickly identify available exports
+         * without needing to parse the entire file.
+         *
+         * @see https://perfectionist.dev/rules/sort-named-exports
+         */
+        'perfectionist/sort-named-exports': 'error',
+      },
     },
   ]);
 };

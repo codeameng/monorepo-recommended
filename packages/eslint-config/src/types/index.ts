@@ -23,8 +23,8 @@ export type {
   Config,
   ConfigWithExtends,
   ConfigWithExtendsOrArray,
-  StrictConfigWithExtends,
-  Plugin,
   LooseRuleDefinition,
+  Plugin,
   Rules,
+  StrictConfigWithExtends,
 };

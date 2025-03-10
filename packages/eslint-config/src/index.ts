@@ -80,4 +80,4 @@ const createConfig = async (options: Options): Promise<Config[]> => {
   );
 };
 
-export { GLOBS, createConfig };
+export { createConfig, GLOBS };

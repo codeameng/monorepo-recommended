@@ -103,7 +103,7 @@ const getPrettierConfig = async (): Promise<z.infer<typeof ConfigSchema>> => {
   return ConfigSchema.parse(R.merge(defaultOptions, config));
 };
 
-export { defineESLintConfig, injectAllRules, getPrettierConfig };
+export { defineESLintConfig, getPrettierConfig, injectAllRules };
 
 export { GLOBS } from './globs.ts';
 
