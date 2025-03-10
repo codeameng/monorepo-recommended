@@ -4,7 +4,9 @@ import { defineESLintConfig } from '$utils/index.ts';
 
 import type { Config } from '$types/index.ts';
 
-export const createPerfectionistConfig = (): Config[] => {
+export const createPerfectionistConfig = (
+  typescriptAliasPatterns: string[],
+): Config[] => {
   return defineESLintConfig([
     {
       plugins: {
@@ -65,15 +67,29 @@ export const createPerfectionistConfig = (): Config[] => {
          */
         'perfectionist/sort-interfaces': 'error',
 
+        /**
+         * Enforces consistent ordering of import statements.
+         *
+         * Well-ordered imports significantly improve code maintainability and readability by
+         * creating a logical structure that developers can quickly scan and understand. This
+         * organization reduces the time needed to locate specific imports and helps prevent
+         * duplicate imports. Consistently ordered imports also minimize merge conflicts when
+         * multiple developers add new dependencies to the same file. Additionally, grouping
+         * imports by their source type (built-in, external, internal, etc.) creates a clear
+         * visual hierarchy that reflects dependency relationships and improves the overall
+         * architecture understanding.
+         *
+         * @see https://perfectionist.dev/rules/sort-imports
+         */
         'perfectionist/sort-imports': [
           'error',
           {
             customGroups: {
               value: {
-                'global-alias': String.raw`^\$.*$`,
+                'global-alias': typescriptAliasPatterns,
               },
               type: {
-                'global-alias-type': String.raw`^\$.*$`,
+                'global-alias-type': typescriptAliasPatterns,
               },
             },
             groups: [
@@ -99,6 +115,22 @@ export const createPerfectionistConfig = (): Config[] => {
             ],
           },
         ],
+
+        /**
+         * Enforces consistent ordering of named imports within import statements.
+         *
+         * Properly sorted named imports significantly improve code navigation efficiency by
+         * creating a predictable pattern that developers can quickly scan. This reduces the
+         * cognitive effort required when working with modules that have numerous imports.
+         * It also minimizes merge conflicts when multiple developers add new imports to the
+         * same import statement, simplifies identifying duplicate imports during code reviews,
+         * and creates visual consistency across the entire codebase. Well-organized imports
+         * serve as implicit documentation, making the dependencies between modules more
+         * immediately apparent.
+         *
+         * @see https://perfectionist.dev/rules/sort-named-imports
+         */
+        'perfectionist/sort-named-imports': 'error',
       },
     },
   ]);

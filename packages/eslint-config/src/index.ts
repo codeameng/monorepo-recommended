@@ -49,7 +49,7 @@ const createConfig = async (options: Options): Promise<Config[]> => {
       typescriptProject,
       typescriptAliasPatterns,
     }),
-    perfectionistConfig: createPerfectionistConfig(),
+    perfectionistConfig: createPerfectionistConfig(typescriptAliasPatterns),
     stylisticConfig: createStylisticConfig(),
   });
 
