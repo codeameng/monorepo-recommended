@@ -257,6 +257,13 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
          * @see https://eslint.style/rules/default/no-multiple-empty-lines
          */
         '@stylistic/no-multiple-empty-lines': 'off',
+
+        /**
+         * Disabled to prevent conflicts with Prettier formatting.
+         *
+         * @see https://eslint.style/rules/default/space-before-function-paren
+         */
+        '@stylistic/space-before-function-paren': 'off',
       },
     },
   ]);
