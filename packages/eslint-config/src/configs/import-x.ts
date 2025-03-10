@@ -73,7 +73,7 @@ export const createImportXConfig = (
          *
          * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/extensions.md
          */
-        'import-x/extensions': ['error', 'always'],
+        'import-x/extensions': ['error', 'ignorePackages'],
 
         /**
          * Requires all exports to be grouped together in a single declaration or assignment.
@@ -169,7 +169,7 @@ export const createImportXConfig = (
         'import-x/no-internal-modules': [
           'error',
           {
-            allow: ['**/index.ts'],
+            allow: ['**/node_modules/**', '**/index.ts'],
           },
         ],
 
