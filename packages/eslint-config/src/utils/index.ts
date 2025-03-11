@@ -13,7 +13,7 @@ import type {
   ConfigWithExtendsOrArray,
   LooseRuleDefinition,
   Rules,
-} from '$types/index.ts';
+} from '@/types/index.ts';
 
 import { R } from './remeda.ts';
 

@@ -6,9 +6,9 @@ import {
   injectAllRules,
   R,
   readTypescriptAliasPatterns,
-} from '$utils/index.ts';
+} from '@/utils/index.ts';
 
-import type { Config, StrictConfigWithExtends } from '$types/index.ts';
+import type { Config, StrictConfigWithExtends } from '@/types/index.ts';
 
 import {
   createBuiltInConfig,
