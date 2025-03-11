@@ -68,16 +68,16 @@ const readTypescriptAliasPatterns = async (
   const tsconfigFiles = await globby(typescriptProject, {
     cwd: rootDirectory,
     gitignore: true,
+    absolute: true,
   });
   const aliasPatterns = R.flatMap(tsconfigFiles, (tsconfigFile) => {
-    const filename = path.join(rootDirectory, tsconfigFile);
-    const configFile = readConfigFile(filename, (filePath) =>
+    const configFile = readConfigFile(tsconfigFile, (filePath) =>
       sys.readFile(filePath),
     );
     const config = parseJsonConfigFileContent(
       configFile.config,
       sys,
-      path.dirname(filename),
+      path.dirname(tsconfigFile),
     );
 
     return R.pipe(
