@@ -1,12 +1,12 @@
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 
-import { defineESLintConfig } from '@/utils/index.ts';
+import { defineESLintConfig, R } from '@/utils/index.ts';
 
 import type { Config } from '@/types/index.ts';
 
 interface CreateImportXConfigOptions {
-  typescriptAliases: { patterns: string[] };
+  typescriptAliases: { patterns: string[]; paths: string[] };
   typescriptProject: string[];
 }
 
@@ -169,7 +169,13 @@ export const createImportXConfig = (
         'import-x/no-internal-modules': [
           'error',
           {
-            allow: ['**/node_modules/**', '**/index.ts'],
+            allow: [
+              '**/node_modules/**',
+              '*/index.ts',
+              ...R.map(typescriptAliases.paths, (path) =>
+                path.replace(/\*$/, 'index.ts'),
+              ),
+            ],
           },
         ],
 

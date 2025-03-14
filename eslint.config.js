@@ -15,6 +15,7 @@ export default createConfig({
         'require-unicode-regexp': 'off',
         'import-x/dynamic-import-chunkname': 'off',
         '@stylistic/object-property-newline': 'off',
+        'perfectionist/sort-object-types': 'off',
       },
     },
 
