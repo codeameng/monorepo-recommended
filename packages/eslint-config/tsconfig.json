@@ -2,8 +2,8 @@
   "extends": "@packages/typescript-config/tsconfig.node.json",
   "compilerOptions": {
     "paths": {
-      "@/types/*": ["./src/types/*"],
-      "@/utils/*": ["./src/utils/*"],
+      "~types/*": ["./src/types/*"],
+      "~utils/*": ["./src/utils/*"],
     },
   },
   "exclude": ["dist"],

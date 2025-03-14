@@ -1,9 +1,9 @@
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 
-import { defineESLintConfig, R } from '@/utils/index.ts';
+import { defineESLintConfig, R } from '~utils/index.ts';
 
-import type { Config } from '@/types/index.ts';
+import type { Config } from '~types/index.ts';
 
 interface CreateImportXConfigOptions {
   typescriptAliases: { patterns: string[]; paths: string[] };
