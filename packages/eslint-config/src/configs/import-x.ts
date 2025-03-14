@@ -6,14 +6,14 @@ import { defineESLintConfig } from '@/utils/index.ts';
 import type { Config } from '@/types/index.ts';
 
 interface CreateImportXConfigOptions {
-  typescriptAliasPatterns: string[];
+  typescriptAliases: { patterns: string[] };
   typescriptProject: string[];
 }
 
 export const createImportXConfig = (
   options: CreateImportXConfigOptions,
 ): Config[] => {
-  const { typescriptProject, typescriptAliasPatterns } = options;
+  const { typescriptProject, typescriptAliases } = options;
 
   return defineESLintConfig([
     eslintPluginImportX.flatConfigs.recommended,
@@ -152,7 +152,7 @@ export const createImportXConfig = (
         'import-x/no-relative-parent-imports': [
           'error',
           {
-            ignore: typescriptAliasPatterns,
+            ignore: typescriptAliases.patterns,
           },
         ],
 

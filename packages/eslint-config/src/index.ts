@@ -47,11 +47,9 @@ const createConfig = async (options: Options): Promise<Config[]> => {
     typescriptConfig: createTypescriptConfig(rootDirectory),
     importXConfig: createImportXConfig({
       typescriptProject,
-      typescriptAliasPatterns: typescriptAliases.aliasPatterns,
+      typescriptAliases,
     }),
-    perfectionistConfig: createPerfectionistConfig(
-      typescriptAliases.aliasPatterns,
-    ),
+    perfectionistConfig: createPerfectionistConfig(typescriptAliases),
     stylisticConfig: createStylisticConfig(),
   });
 

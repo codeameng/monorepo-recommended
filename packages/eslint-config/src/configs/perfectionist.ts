@@ -4,9 +4,9 @@ import { defineESLintConfig } from '@/utils/index.ts';
 
 import type { Config } from '@/types/index.ts';
 
-export const createPerfectionistConfig = (
-  typescriptAliasPatterns: string[],
-): Config[] => {
+export const createPerfectionistConfig = (typescriptAliases: {
+  patterns: string[];
+}): Config[] => {
   return defineESLintConfig([
     {
       plugins: {
@@ -89,10 +89,10 @@ export const createPerfectionistConfig = (
           {
             customGroups: {
               value: {
-                'global-alias': typescriptAliasPatterns,
+                'global-alias': typescriptAliases.patterns,
               },
               type: {
-                'global-alias-type': typescriptAliasPatterns,
+                'global-alias-type': typescriptAliases.patterns,
               },
             },
             groups: [

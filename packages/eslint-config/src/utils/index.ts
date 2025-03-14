@@ -58,7 +58,7 @@ const defineESLintConfig = (configs: ConfigWithExtendsOrArray[]): Config[] => {
 const readTypescriptAliases = async (options: {
   rootDirectory: string;
   typescriptProject: string[];
-}): Promise<{ aliases: string[]; aliasPatterns: string[] }> => {
+}): Promise<{ paths: string[]; patterns: string[] }> => {
   const { rootDirectory, typescriptProject } = options;
 
   const tsconfigFiles = await globby(typescriptProject, {
@@ -66,7 +66,7 @@ const readTypescriptAliases = async (options: {
     gitignore: true,
     absolute: true,
   });
-  const aliases = R.flatMap(tsconfigFiles, (tsconfigFile) => {
+  const paths = R.flatMap(tsconfigFiles, (tsconfigFile) => {
     const configFile = readConfigFile(tsconfigFile, (filePath) =>
       sys.readFile(filePath),
     );
@@ -78,11 +78,11 @@ const readTypescriptAliases = async (options: {
 
     return R.keys(config.options.paths ?? {});
   });
-  const aliasPatterns = R.map(aliases, (alias) => globToRegexp(alias).source);
+  const patterns = R.map(paths, (alias) => globToRegexp(alias).source);
 
   return {
-    aliases,
-    aliasPatterns,
+    paths,
+    patterns,
   };
 };
 
