@@ -5,7 +5,7 @@ import {
   GLOBS,
   injectAllRules,
   R,
-  readTypescriptAliasPatterns,
+  readTypescriptAliases,
 } from '@/utils/index.ts';
 
 import type { Config, StrictConfigWithExtends } from '@/types/index.ts';
@@ -29,7 +29,7 @@ const createConfig = async (options: Options): Promise<Config[]> => {
   const { rootDirectory, shouldInjectAllRules, overrideConfigs } = options;
 
   const typescriptProject = ['**/tsconfig.json', '**/tsconfig.*.json'];
-  const typescriptAliasPatterns = await readTypescriptAliasPatterns({
+  const typescriptAliases = await readTypescriptAliases({
     rootDirectory,
     typescriptProject,
   });
@@ -47,9 +47,11 @@ const createConfig = async (options: Options): Promise<Config[]> => {
     typescriptConfig: createTypescriptConfig(rootDirectory),
     importXConfig: createImportXConfig({
       typescriptProject,
-      typescriptAliasPatterns,
+      typescriptAliasPatterns: typescriptAliases.aliasPatterns,
     }),
-    perfectionistConfig: createPerfectionistConfig(typescriptAliasPatterns),
+    perfectionistConfig: createPerfectionistConfig(
+      typescriptAliases.aliasPatterns,
+    ),
     stylisticConfig: createStylisticConfig(),
   });
 

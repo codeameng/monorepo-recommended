@@ -14,6 +14,7 @@ export default createConfig({
         'perfectionist/sort-objects': 'off',
         'require-unicode-regexp': 'off',
         'import-x/dynamic-import-chunkname': 'off',
+        '@stylistic/object-property-newline': 'off',
       },
     },
 

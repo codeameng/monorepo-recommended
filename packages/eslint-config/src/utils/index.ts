@@ -55,14 +55,10 @@ const defineESLintConfig = (configs: ConfigWithExtendsOrArray[]): Config[] => {
   return R.pipe(eslintConfigs, R.map(R.omitBy(R.isNullish)));
 };
 
-interface ReadTypescriptAliasPatternsOptions {
+const readTypescriptAliases = async (options: {
   rootDirectory: string;
   typescriptProject: string[];
-}
-
-const readTypescriptAliasPatterns = async (
-  options: ReadTypescriptAliasPatternsOptions,
-): Promise<string[]> => {
+}): Promise<{ aliases: string[]; aliasPatterns: string[] }> => {
   const { rootDirectory, typescriptProject } = options;
 
   const tsconfigFiles = await globby(typescriptProject, {
@@ -70,7 +66,7 @@ const readTypescriptAliasPatterns = async (
     gitignore: true,
     absolute: true,
   });
-  const aliasPatterns = R.flatMap(tsconfigFiles, (tsconfigFile) => {
+  const aliases = R.flatMap(tsconfigFiles, (tsconfigFile) => {
     const configFile = readConfigFile(tsconfigFile, (filePath) =>
       sys.readFile(filePath),
     );
@@ -80,14 +76,14 @@ const readTypescriptAliasPatterns = async (
       path.dirname(tsconfigFile),
     );
 
-    return R.pipe(
-      config.options.paths ?? {},
-      R.keys(),
-      R.map((str) => globToRegexp(str).source),
-    );
+    return R.keys(config.options.paths ?? {});
   });
+  const aliasPatterns = R.map(aliases, (alias) => globToRegexp(alias).source);
 
-  return aliasPatterns;
+  return {
+    aliases,
+    aliasPatterns,
+  };
 };
 
 const injectAllRules = (configs: Config[]): Config[] => {
@@ -149,7 +145,7 @@ export {
   defineESLintConfig,
   getPrettierConfig,
   injectAllRules,
-  readTypescriptAliasPatterns,
+  readTypescriptAliases,
 };
 
 export { GLOBS } from './globs.ts';
