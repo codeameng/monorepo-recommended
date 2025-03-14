@@ -218,12 +218,11 @@ export const createStylisticConfig = async (): Promise<Config[]> => {
         /**
          * Enforces object properties to always be on separate lines.
          *
-         * This strict approach to object formatting provides several benefits:
-         * - Improves readability by giving each property its own line
-         * - Makes code reviews easier by highlighting property changes in diffs
-         * - Establishes a consistent pattern throughout the codebase
-         * - Reduces merge conflicts when multiple developers add properties
-         * - Scales naturally as objects grow without requiring reformatting
+         * This strict approach improves readability by giving each property its own line,
+         * makes code reviews easier by highlighting property changes in diffs, establishes
+         * consistent patterns throughout the codebase, reduces merge conflicts when multiple
+         * developers add properties, and scales naturally as objects grow without requiring
+         * reformatting.
          *
          * @see https://eslint.style/rules/default/object-curly-newline
          */

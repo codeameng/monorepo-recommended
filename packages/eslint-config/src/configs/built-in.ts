@@ -121,13 +121,9 @@ export const createBuiltInConfig = (): Config[] => {
         /**
          * Enforces curly braces for all control statements (if, else, for, while, do).
          *
-         * Benefits:
-         * - Defensive Programming: Prevents bugs from forgetting to add braces when
-         *   adding new lines to previously single-line statements
-         * - Code Consistency: Maintains uniform formatting across all control structures,
-         *   eliminating the need to decide between single-line and multi-line styles
-         * - Maintainability: No structural changes needed when expanding conditional
-         *   blocks, easier code reviews due to consistent formatting
+         * Promotes defensive programming by preventing bugs from omitted braces, maintains
+         * consistent formatting across control structures, and improves maintainability by
+         * eliminating structural changes when expanding conditional blocks and simplifying code reviews.
          *
          * @see https://eslint.org/docs/latest/rules/curly
          */
